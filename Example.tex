@@ -1,0 +1,135 @@
+% !TeX program = XeLaTeX
+% !TeX encoding = UTF-8 Unicode
+\documentclass[
+  varwidth=24884759sp,
+  convert={
+    convertexe={magick},
+    command=\unexpanded{\convertexe\space -density 137 -units PixelsPerInch \infile\space \ifx\size\empty\else -resize \size\fi\space -quality 100 \outfile}
+  }
+]{standalone}
+\usepackage{xcolor}
+\definecolor{ImperialRed}{HTML}{ED2939}
+\definecolor{PaleBlue}{HTML}{C1E9F2}
+\definecolor{CyanBlue}{HTML}{1EACEC}
+\usepackage{xeCJK}
+\newlength\ccwd
+\setlength\ccwd{2762834sp}
+\setmainfont{TeX Gyre Termes}[
+  Scale=1.1050295857988166,
+  WordSpace={0.8099062918340027,1.3801874163319946,0.4297188755020080},
+  SmallCapsFeatures={LetterSpace=5}
+]
+\setCJKmainfont{Source Han Serif SC Medium}[
+  BoldFont=Source Han Serif SC Heavy,
+  CharacterWidth=Full
+]
+\newcommand*\sampletext{汉字示例 Example}
+\newcommand*\ideographicbaseline{-0.120}
+\newcommand*\xheight{0.461}
+\newcommand*\capheight{0.676}
+\newlength\totalwidth
+\setlength\totalwidth{4\ccwd}
+\newcommand*\drawbox[9]{%
+  \leavevmode
+  \addtolength\totalwidth{#1em}%
+  \addtolength\totalwidth{#2em}%
+  \addtolength\totalwidth{#3em}%
+  \addtolength\totalwidth{#4em}%
+  \addtolength\totalwidth{#5em}%
+  \addtolength\totalwidth{#6em}%
+  \addtolength\totalwidth{#7em}%
+  \addtolength\totalwidth{#8em}%
+  \addtolength\totalwidth{#9em}%
+  \rlap{%
+    \color{ImperialRed}%
+    \rule[-0.1pt]{\totalwidth}{0.2pt}%
+  }%
+  \rlap{%
+    \color{PaleBlue}%
+    \rule[\dimexpr\xheight em-0.1pt]{\totalwidth}{0.2pt}%
+    \kern-\totalwidth
+    \rule[\dimexpr\capheight em-0.1pt]{\totalwidth}{0.2pt}%
+  }%
+  \rlap{%
+    \color{CyanBlue}%
+    \rule[\ideographicbaseline\ccwd]{\totalwidth}{0.2pt}%
+    \kern-\totalwidth
+    \rule[\dimexpr\ideographicbaseline\ccwd+\ccwd-0.2pt]{\totalwidth}{0.2pt}%
+    \kern-\totalwidth
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.2pt%
+    \kern\ccwd
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern\ccwd
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern\ccwd
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern\ccwd
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#1em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#2em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#3em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#4em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#5em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#6em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#7em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#8em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
+    \kern#9em%
+    \kern-0.2pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+  }%
+}
+\begin{document}
+\fontsize{2762834sp}{4144251sp}\selectfont
+\bfseries
+\rule{0pt}{3294679sp}%
+\rule{863386sp}{0pt}%
+\sampletext
+\rule{863422sp}{0pt}%
+\par
+\rule[-1194926sp]{0pt}{1194926sp}%
+\rule{863386sp}{0pt}%
+\drawbox
+  {0.2024765729585007}
+  {0.667}% E
+  {0.500}% x
+  {0.500}% a
+  {0.833}% m
+  {-0.015}% kern
+  {0.556}% p
+  {0.278}% l
+  {0.444}% e
+\sampletext
+\end{document}
