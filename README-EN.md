@@ -1,5 +1,7 @@
-[简体中文](https://github.com/RuixiZhang42/font-mixing-guide) [English](README-EN.md)
+[简体中文](https://github.com/RuixiZhang42/font-pairing-guide)
+/
+[English](README-EN.md)
 
-# Font mixing guide
+# Font pairing guide
 
 ![Example](Example.png)
