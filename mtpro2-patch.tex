@@ -1,0 +1,153 @@
+%
+% This is file `mtpro2-patch.tex'.
+%
+% There are 3 bugs needed to be fixed by hand.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following line
+%
+%   \alloc@0\count\countdef\insc@unt\pointcount@
+%
+% with
+%
+%   \newcount\pointcount@
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following line
+%
+%   \left#1
+%
+% with
+%
+%   \left#1%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following line
+%
+%   \kern-2\nulldelimiterspace\mskip-\thinmuskip
+%
+% with
+%
+%   \kern-2\nulldelimiterspace
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+% Scaling factors
+\newcommand*\mtp@scale{1.1050295857988166}
+\newcommand*\mtp@scriptscale{1.0330955268894753}
+\newcommand*\mtp@scriptscriptscale{1.0189822000194005}
+% MathTime Professional 2 Lite
+\DeclareFontShape{LMP1}{mtt}{m}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2mif
+  <7-9> s*[\mtp@scriptscale] mt2mis
+  <9-> s*[\mtp@scale] mt2mit}{}
+\DeclareFontShape{LMP2}{mtt}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2syf
+  <7-9> s*[\mtp@scriptscale] mt2sys
+  <9-> s*[\mtp@scale] mt2syt}{\skewchar\font32}
+\DeclareFontShape{LMP3}{mtt}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2exa
+  <7-9> s*[\mtp@scriptscale] mt2exa
+  <9-> s*[\mtp@scale] mt2exa}{}
+\DeclareFontShape{U}{mtt}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2mbf
+  <7-9> s*[\mtp@scriptscale] mt2mbs
+  <9-> s*[\mtp@scale] mt2mbt}{}
+% MathTime Professional 2 Complete
+\ifmtp@full
+\DeclareFontShape{LMP1}{mtt}{b}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bmif
+  <7-9> s*[\mtp@scriptscale] mt2bmis
+  <9-> s*[\mtp@scale] mt2bmit}{}
+\DeclareFontShape{LMP2}{mtt}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bsyf
+  <7-9> s*[\mtp@scriptscale] mt2bsys
+  <9-> s*[\mtp@scale] mt2bsyt}{\skewchar\font32}
+\DeclareFontShape{LMP2}{mtt}{eb}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hsyf
+  <7-9> s*[\mtp@scriptscale] mt2hsys
+  <9-> s*[\mtp@scale] mt2hsyt}{\skewchar\font32}
+\DeclareFontShape{LMP3}{mtt}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bexa
+  <7-9> s*[\mtp@scriptscale] mt2bexa
+  <9-> s*[\mtp@scale] mt2bexa}{}
+\DeclareFontShape{LMP3}{mtt}{eb}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hexa
+  <7-9> s*[\mtp@scriptscale] mt2hexa
+  <9-> s*[\mtp@scale] mt2hexa}{}
+\DeclareFontShape{U}{mt2sya}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2syaf
+  <7-9> s*[\mtp@scriptscale] mt2syas
+  <9-> s*[\mtp@scale] mt2syat}{}
+\DeclareFontShape{U}{mt2sya}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bsyaf
+  <7-9> s*[\mtp@scriptscale] mt2bsyas
+  <9-> s*[\mtp@scale] mt2bsyat}{}
+\DeclareFontShape{U}{mt2sya}{eb}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hsyaf
+  <7-9> s*[\mtp@scriptscale] mt2hsyas
+  <9-> s*[\mtp@scale] mt2hsyat}{}
+% umt2ms.fd
+\DeclareFontFamily{U}{mt2ms}{\skewchar\font42}
+\DeclareFontShape{U}{mt2ms}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2mcf
+  <7-9> s*[\mtp@scriptscale] mt2mcs
+  <9-> s*[\mtp@scale] mt2mct}{}
+\DeclareFontShape{U}{mt2ms}{m}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2msf
+  <7-9> s*[\mtp@scriptscale] mt2mss
+  <9-> s*[\mtp@scale] mt2mst}{}
+\DeclareFontShape{U}{mt2ms}{b}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bmsf
+  <7-9> s*[\mtp@scriptscale] mt2bmss
+  <9-> s*[\mtp@scale] mt2bmst}{}
+% umt2mf.fd
+\DeclareFontFamily{U}{mt2mf}{}
+\DeclareFontShape{U}{mt2mf}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2mff
+  <7-9> s*[\mtp@scriptscale] mt2mfs
+  <9-> s*[\mtp@scale] mt2mft}{}
+\DeclareFontShape{U}{mt2mf}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bmff
+  <7-9> s*[\mtp@scriptscale] mt2bmfs
+  <9-> s*[\mtp@scale] mt2bmft}{}
+% umt2bb.fd
+\DeclareFontFamily{U}{mt2bb}{\skewchar\font45}
+\DeclareFontShape{U}{mt2bb}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bbf
+  <7-9> s*[\mtp@scriptscale] mt2bbs
+  <9-> s*[\mtp@scale] mt2bbt}{}
+\DeclareFontShape{U}{mt2bb}{m}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bbif
+  <7-9> s*[\mtp@scriptscale] mt2bbis
+  <9-> s*[\mtp@scale] mt2bbit}{}
+\DeclareFontShape{U}{mt2bb}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2bbdf
+  <7-9> s*[\mtp@scriptscale] mt2bbds
+  <9-> s*[\mtp@scale] mt2bbdt}{}
+% umt2hrb.fd
+\DeclareFontFamily{U}{mt2hrb}{\skewchar\font45}
+\DeclareFontShape{U}{mt2hrb}{m}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hrbf
+  <7-9> s*[\mtp@scriptscale] mt2hrbs
+  <9-> s*[\mtp@scale] mt2hrbt}{}
+\DeclareFontShape{U}{mt2hrb}{m}{it}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hbif
+  <7-9> s*[\mtp@scriptscale] mt2hbis
+  <9-> s*[\mtp@scale] mt2hbit}{}
+\DeclareFontShape{U}{mt2hrb}{b}{n}{%
+  <-7> s*[\mtp@scriptscriptscale] mt2hrbdf
+  <7-9> s*[\mtp@scriptscale] mt2hrbds
+  <9-> s*[\mtp@scale] mt2hrbdt}{}
+\fi
+% \defaultscriptratio       = 0.7
+% \defaultscriptscriptratio = 0.55
+\DeclareMathSizes{7.5bp}{7.5bp}{5.323bp}{5pt}
+\DeclareMathSizes{9bp}{9bp}{6.832bp}{5.368bp}
+\DeclareMathSizes{10.5bp}{10.5bp}{7.862bp}{6.263bp}
+\DeclareMathSizes{12bp}{12bp}{8.966bp}{6.973bp}% Sub-optimal
+\makeatother
