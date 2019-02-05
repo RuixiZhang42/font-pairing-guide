@@ -37,9 +37,15 @@
 %
 \makeatletter
 % Scaling factors
-\newcommand*\mtp@scale{1.1050295857988166}
-\newcommand*\mtp@scriptscale{1.0330955268894753}
-\newcommand*\mtp@scriptscriptscale{1.0189822000194005}
+\ifx\mtp@scale\@undefined
+  \def\mtp@scale{1.10502958579881657}
+\fi
+\ifx\mtp@scriptscale\@undefined
+  \def\mtp@scriptscale{1.03309552688947532}
+\fi
+\ifx\mtp@scriptscriptscale\@undefined
+  \def\mtp@scriptscriptscale{1.01898220001940052}
+\fi
 % MathTime Professional 2 Lite
 \DeclareFontShape{LMP1}{mtt}{m}{it}{%
   <-7> s*[\mtp@scriptscriptscale] mt2mif
