@@ -28,10 +28,12 @@
 \newcommand*\ideographicbaseline{-0.120}
 \newcommand*\xheight{0.461}
 \newcommand*\capheight{0.676}
+\newcommand*\spacewidth{0.20247657295850067}
 \newlength\totalwidth
 \setlength\totalwidth{4\ccwd}
-\newcommand*\drawbox[9]{%
+\newcommand*\drawbox[8]{%
   \leavevmode
+  \addtolength\totalwidth{\spacewidth em}%
   \addtolength\totalwidth{#1em}%
   \addtolength\totalwidth{#2em}%
   \addtolength\totalwidth{#3em}%
@@ -40,7 +42,6 @@
   \addtolength\totalwidth{#6em}%
   \addtolength\totalwidth{#7em}%
   \addtolength\totalwidth{#8em}%
-  \addtolength\totalwidth{#9em}%
   \rlap{%
     \color{ImperialRed}%
     \rule[-0.1pt]{\totalwidth}{0.2pt}%
@@ -75,6 +76,10 @@
     \kern-0.1pt%
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
     \kern-0.1pt%
+    \kern\spacewidth em%
+    \kern-0.1pt%
+    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
+    \kern-0.1pt%
     \kern#1em%
     \kern-0.1pt%
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
@@ -104,10 +109,6 @@
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
     \kern-0.1pt%
     \kern#8em%
-    \kern-0.1pt%
-    \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
-    \kern-0.1pt%
-    \kern#9em%
     \kern-0.2pt%
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
   }%
@@ -123,7 +124,6 @@
 \rule[-1194926sp]{0pt}{1194926sp}%
 \rule{863386sp}{0pt}%
 \drawbox
-  {0.20247657295850067}% space
   {0.667}% E
   {0.500}% x
   {0.500}% a
