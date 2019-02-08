@@ -1,0 +1,89 @@
+% !TeX program = XeLaTeX
+% !TeX encoding = UTF-8 Unicode
+%
+% This is file `mtpro2-glyph-set.tex'.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%
+%   Transferring the generated files, including the DVI and
+% the PDF files, from this file is explicitly prohibited.
+%
+%   严禁传播通过此文件生成的文件，包括 DVI 与 PDF 文件。
+%
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\documentclass{article}
+\usepackage{mathtools}
+\usepackage[no-math]{fontspec}
+\setmainfont{TeX Gyre Termes}[
+  SmallCapsFeatures={LetterSpace=5}
+]
+\usepackage[
+  slantedGreek,
+  mtpccal,mtpscr,mtpfrak,mtphrb
+]{mtpro2}
+\DeclareMathSymbol\zswash{\mathalpha}{letters}{"B4}
+\newcommand\test[1]{%
+  $#1$\par
+  $\scriptstyle#1$\par
+  $\scriptscriptstyle#1$\par
+  \medskip\par
+}
+\newcommand\testext[1]{%
+  $#1$\par
+  $\displaystyle#1$\par
+  \medskip\par
+}
+\newcommand*\digits{%
+  0123456789%
+}
+\newcommand*\latinalphabet{%
+  abcdefghi[\imath]j[\jmath]kl[\ell]mnop[\wp]qrstuvwxyz[\zswash]%
+}
+\newcommand*\Latinalphabet{%
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ%
+}
+\newcommand*\greekalphabet{%
+  \alpha\beta[\varbeta]\gamma\delta[\vardelta]\epsilon[\varepsilon]%
+  \zeta\eta\theta[\vartheta]\iota\kappa[\varkappa]\lambda\mu\nu\xi
+  \pi[\varpi]\rho[\varrho]\sigma[\varsigma]\tau\upsilon\phi[\varphi]%
+  \chi\psi\omega
+}
+\newcommand*\Greekalphabet{%
+  \Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
+}
+\newcommand*\upgreekalphabet{%
+  \upalpha\upbeta[\upvarbeta]\upgamma\updelta[\upvardelta]%
+  \upepsilon[\upvarepsilon]\upzeta\upeta\uptheta[\upvartheta]%
+  \upiota\upkappa[\upvarkappa]\uplambda\upmu\upnu\upxi
+  \uppi[\upvarpi]\uprho[\upvarrho]\upsigma[\upvarsigma]%
+  \uptau\upupsilon\upphi[\upvarphi]\upchi\uppsi\upomega
+}
+\newcommand*\upGreekalphabet{%
+  \upGamma\upDelta\upTheta\upLambda\upXi\upPi
+  \upSigma\upUpsilon\upPhi\upPsi\upOmega
+}
+\newcommand*\punctuationandothers{%
+  !,.?()[]<>/\partial\flat\natural\sharp\star\smile\frown
+  \leftharpoonup\leftharpoondown\rightharpoonup\rightharpoondown
+  \lhook\rhook\dagger\ddagger\mathsection\mathparagraph\dbar\updbar
+}
+\parindent  0pt\relax
+\thinmuskip 0mu\relax
+\medmuskip  0mu\relax
+\thickmuskip0mu\relax
+\pagestyle{empty}
+\begin{document}
+\test\digits
+\test\latinalphabet
+\test\Latinalphabet
+\test\greekalphabet
+\test\Greekalphabet
+\test\upgreekalphabet
+\test\upGreekalphabet
+\test\punctuationandothers
+\end{document}
