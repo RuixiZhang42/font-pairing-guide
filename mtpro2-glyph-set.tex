@@ -26,7 +26,22 @@
   slantedGreek,
   mtpccal,mtpscr,mtpfrak,mtphrb
 ]{mtpro2}
-\DeclareMathSymbol\zswash{\mathalpha}{letters}{"B4}
+\DeclareMathSymbol{\zswash}  {\mathalpha}{letters}{"B4}
+\DeclareMathSymbol{\mbfimath}{\mathalpha}{letters}{"10}
+\DeclareMathSymbol{\mbfjmath}{\mathalpha}{letters}{"11}
+\DeclareMathSymbol{\mbfgrave}{\mathalpha}{letters}{"12}
+\DeclareMathSymbol{\mbfacute}{\mathalpha}{letters}{"13}
+\DeclareMathSymbol{\mbfcheck}{\mathalpha}{letters}{"14}
+\DeclareMathSymbol{\mbfbreve}{\mathalpha}{letters}{"15}
+\DeclareMathSymbol{\mbfbar}  {\mathalpha}{letters}{"16}
+\DeclareMathSymbol{\mbfhat}  {\mathalpha}{letters}{94}
+\DeclareMathSymbol{\mbfdot}  {\mathalpha}{letters}{95}
+\DeclareMathSymbol{\mbftilde}{\mathalpha}{letters}{126}
+\DeclareMathSymbol{\mbfddot} {\mathalpha}{letters}{127}
+\DeclareMathSymbol{\mbfldot} {\mathalpha}{letters}{46}
+%\DeclareMathSymbol{\calMi}   {\mathalpha}{letters}{'075}
+%\DeclareMathSymbol{\calMii}  {\mathalpha}{letters}{'076}
+\usepackage{bm}
 \newcommand\test[1]{%
   $#1$\par
   $\scriptstyle#1$\par
@@ -44,8 +59,30 @@
 \newcommand*\latinalphabet{%
   abcdefghi[\imath]j[\jmath]kl[\ell]mnop[\wp]qrstuvwxyz[\zswash]%
 }
+\newcommand*\ordinarylatinalphabet{%
+  abcdefghijklmnopqrstuvwxyz%
+}
+\newcommand*\calandbblatinalphabet{%
+  abcdefghi[\imath]j[\jmath]klmnopqrstuvwxyz%
+}
+\newcommand*\scrlatinalphabet{%
+  abcdefghi[\imath]j[\jmath]klmnopqr[\altr]stuvwxyz[\altz]%
+}
+\newcommand*\fraklatinalphabet{%
+  abcdefghi[\imath]j[\jmath]klmnopqrstuvwx[\altx]y[\alty]z%
+}
 \newcommand*\Latinalphabet{%
   ABCDEFGHIJKLMNOPQRSTUVWXYZ%
+}
+\newcommand*\calLatinalphabet{%
+  ABCDEFG[\altG]HIJKLM[\altM]N[\altN]OPQ[\altQ]RSTUVWXY[\altY]Z%
+}
+\newcommand*\scrLatinalphabet{%
+  ABC[\altC]DEFG[\altG]HI[\altI]JKL[\altL]MN%
+  OPQ[\altQ]RS[\altS]TUVWXY[\altY]Z[\altZ]%
+}
+\newcommand*\frakLatinalphabet{%
+  ABCDEFGHIJKLMNOPQRSTUVWXY[\altY]Z%
 }
 \newcommand*\greekalphabet{%
   \alpha\beta[\varbeta]\gamma\delta[\vardelta]\epsilon[\varepsilon]%
@@ -72,12 +109,23 @@
   \leftharpoonup\leftharpoondown\rightharpoonup\rightharpoondown
   \lhook\rhook\dagger\ddagger\mathsection\mathparagraph\dbar\updbar
 }
+\newcommand*\mbfothers{%
+  \mbfimath\mbfjmath
+  \mbfgrave\mbfacute\mbfcheck\mbfbreve\mbfbar
+  \mbfhat\mbfdot\mbftilde\mbfddot\mbfldot
+}
+\newcommand*\bmpunctuationandothers{%
+  !,.?()[]<>/\partial\flat\natural\sharp\star\smile\frown
+  \leftharpoonup\leftharpoondown\rightharpoonup\rightharpoondown
+  \lhook\rhook\dagger\ddagger\dbar\updbar
+}
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
 \medmuskip  0mu\relax
 \thickmuskip0mu\relax
 \pagestyle{empty}
 \begin{document}
+\section{Math italic, 183}
 \test\digits
 \test\latinalphabet
 \test\Latinalphabet
@@ -86,4 +134,41 @@
 \test\upgreekalphabet
 \test\upGreekalphabet
 \test\punctuationandothers
+\section{Math bold, 74 \& space}
+\test{\mbf\digits}%
+\test{\mbf\ordinarylatinalphabet}%
+\test{\mbf\Latinalphabet}%
+\test{\mbf\mbfothers}%
+\section{Bold math italic, 181}
+\test{\bm\digits}%
+\test{\bm\latinalphabet}%
+\test{\bm\Latinalphabet}%
+\test{\bm\greekalphabet}%
+\test{\bm\Greekalphabet}%
+\test{\bm\upgreekalphabet}%
+\test{\bm\upGreekalphabet}%
+\test{\bm\bmpunctuationandothers}%
+\section{Math curly, 59 \& space}
+\test{\mathcal\calandbblatinalphabet}%
+\test{\mathcal\calLatinalphabet}%
+\section{Math script, 64 \& space}
+\test{\mathscr\scrlatinalphabet}%
+\test{\mathscr\scrLatinalphabet}%
+\section{Bold math script, 64 \& space}
+\test{\bm{\mathscr\scrlatinalphabet}}%
+\test{\bm{\mathscr\scrLatinalphabet}}%
+\section{Math fraktur, 57 \& space}
+\test{\mathfrak\fraklatinalphabet}%
+\test{\mathfrak\frakLatinalphabet}%
+\section{Bold math fraktur, 57 \& space}
+\test{\bm{\mathfrak\fraklatinalphabet}}%
+\test{\bm{\mathfrak\frakLatinalphabet}}%
+\section{Math holey roman bold, 64 \& space}
+\test{\mathbb\digits}%
+\test{\mathbb\calandbblatinalphabet}%
+\test{\mathbb\Latinalphabet}%
+\section{Math holey roman dark, 64 \& space}
+\test{\bm{\mathbb\digits}}%
+\test{\bm{\mathbb\calandbblatinalphabet}}%
+\test{\bm{\mathbb\Latinalphabet}}%
 \end{document}
