@@ -41,11 +41,53 @@
 \DeclareMathSymbol{\mbfldot} {\mathalpha}{letters}{46}
 %\DeclareMathSymbol{\calMi}   {\mathalpha}{letters}{'075}
 %\DeclareMathSymbol{\calMii}  {\mathalpha}{letters}{'076}
+\DeclareMathSymbol{\bmhmtie} {\mathord}  {symbols}{65}
+\expandafter\DeclareMathSymbol\csname hm!\endcsname
+  {\mathclose}{symbols}{246}
+\expandafter\DeclareMathSymbol\csname hm,\endcsname
+  {\mathpunct}{symbols}{233}
+\expandafter\DeclareMathSymbol\csname hm.\endcsname
+  {\mathord}{symbols}{232}
+\expandafter\DeclareMathSymbol\csname hm?\endcsname
+  {\mathclose}{symbols}{247}
+\expandafter\DeclareMathSymbol\csname hm(\endcsname
+  {\mathopen}{symbols}{230}
+\expandafter\DeclareMathSymbol\csname hm)\endcsname
+  {\mathclose}{symbols}{231}
+\expandafter\DeclareMathSymbol\csname hm[\endcsname
+  {\mathopen}{symbols}{248}
+\expandafter\DeclareMathSymbol\csname hm]\endcsname
+  {\mathclose}{symbols}{249}
+\expandafter\DeclareMathSymbol\csname hm<\endcsname
+  {\mathrel}{symbols}{234}
+\expandafter\DeclareMathSymbol\csname hm>\endcsname
+  {\mathrel}{symbols}{236}
+\expandafter\DeclareMathSymbol\csname hm/\endcsname
+  {\mathord}{symbols}{235}
+\DeclareMathSymbol{\hmpartial}{\mathord}{symbols}{238}
+\DeclareMathSymbol{\hmflat}{\mathord}{symbols}{239}
+\DeclareMathSymbol{\hmnatural}{\mathord}{symbols}{240}
+\DeclareMathSymbol{\hmsharp}{\mathord}{symbols}{241}
+\DeclareMathSymbol{\hmstar}{\mathbin}{symbols}{237}
+\DeclareMathSymbol{\hmsmile}{\mathrel}{symbols}{242}
+\DeclareMathSymbol{\hmfrown}{\mathrel}{symbols}{243}
+\DeclareMathSymbol{\hmleftharpoonup}{\mathrel}{symbols}{224}
+\DeclareMathSymbol{\hmleftharpoondown}{\mathrel}{symbols}{225}
+\DeclareMathSymbol{\hmrightharpoonup}{\mathrel}{symbols}{226}
+\DeclareMathSymbol{\hmrightharpoondown}{\mathrel}{symbols}{227}
+\DeclareMathSymbol{\hmlhook}{\mathrel}{symbols}{228}
+\DeclareMathSymbol{\hmrhook}{\mathrel}{symbols}{229}
+\DeclareMathSymbol{\hmdagger}{\mathbin}{symbols}{250}
+\DeclareMathSymbol{\hmddagger}{\mathbin}{symbols}{251}
+\DeclareMathSymbol{\hmell}{\mathord}{symbols}{244}
+\DeclareMathSymbol{\hmwp}{\mathord}{symbols}{245}
 \usepackage{bm}
-\usepackage[hmargin=1.75in,vmargin=1.25in]{geometry}
+\usepackage[hmargin=1.65in,vmargin=1.25in]{geometry}
 \newcommand\test[1]{%
   $#1$\par
+  \smallskip\par
   $\scriptstyle#1$\par
+  \smallskip\par
   $\scriptscriptstyle#1$\par
   \medskip\par
 }
@@ -120,6 +162,17 @@
   \leftharpoonup\leftharpoondown\rightharpoonup\rightharpoondown
   \lhook\rhook\dagger\ddagger\dbar\updbar
 }
+\newcommand*\hmpunctuationandothers{%
+  \csname hm!\endcsname\csname hm,\endcsname
+  \csname hm.\endcsname\csname hm?\endcsname
+  \csname hm(\endcsname\csname hm)\endcsname
+  \csname hm[\endcsname\csname hm]\endcsname
+  \csname hm<\endcsname\csname hm>\endcsname
+  \csname hm/\endcsname
+  \hmpartial\hmflat\hmnatural\hmsharp\hmstar\hmsmile\hmfrown
+  \hmleftharpoonup\hmleftharpoondown\hmrightharpoonup\hmrightharpoondown
+  \hmlhook\hmrhook\hmdagger\hmddagger\hmell\hmwp
+}
 \newcommand*\mathem{\mskip18mu\relax}
 \newcommand*\mathen{\mskip9mu\relax}
 \newcommand*\basicsymbolsi{%
@@ -150,7 +203,7 @@
 \newcommand*\basicsymbolsiv{%
   \dddot*\mathen\ddddot*\mathen % 2
   \dotup*\mathen\ddotup*\mathen\dddotup*\mathen\ddddotup*\mathen % 4
-  \what*\mathen\wtilde*\mathen\wcheck*\mathen\wbar*\mathen\wwbar*\mathen % 5
+  \what*\mathen\wtilde*\mathen\wcheck*\mathen\wbar*\mathen\wwbar*% 5
   \angle\models\bowtie\cong\Longleftrightarrow\rightleftharpoons\notin % 7
   \notless\notleq\notprec\notpreceq\notsubset\notsubseteq\notsqsubseteq % 7
   \notgr\notgeq\notsucc\notsucceq\notsupset\notsupseteq\notsqsupseteq % 7
@@ -159,9 +212,7 @@
 \newcommand*\basicsymbolsv{%
   \doteq\hookleftarrow\hookrightarrow\longleftarrow\longrightarrow % 5
   \Longleftarrow\Longrightarrow\mapsto\longmapsto\longleftrightarrow % 5
-  \straightbraces\lbrace\rbrace%\morphedbraces\lbrace\rbrace % 2
-  \text{Serge\u\i\ \t Iur'ev}% 1
-} % 13
+} % 10
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
 \medmuskip  0mu\relax
@@ -215,9 +266,36 @@
 \test{\bm{\mathbb\calandbblatinalphabet}}%
 \test{\bm{\mathbb\Latinalphabet}}%
 \section{Basic symbols, 187}
-\test\basicsymbolsi
-\test\basicsymbolsii
-\test\basicsymbolsiii
-\test\basicsymbolsiv
-\test\basicsymbolsv
+\test{%
+  \basicsymbolsi   \hfill\mathstrut\penalty0 %
+  \basicsymbolsii  \hfill\mathstrut\penalty0 %
+  \basicsymbolsiii \hfill\mathstrut\penalty0 %
+  \basicsymbolsiv  \hfill\mathstrut\penalty0 %
+  \basicsymbolsv
+  \text{~Serge\u\i~\t Iur'ev~}% 1
+  \straightbraces\lbrace\rbrace % 2
+}%
+\section{Bold basic symbols, 187}
+\test{%
+  \bm\basicsymbolsi   \hfill\mathstrut\penalty0 %
+  \bm\basicsymbolsii  \hfill\mathstrut\penalty0 %
+  \bm\basicsymbolsiii \hfill\mathstrut\penalty0 %
+  \bm\basicsymbolsiv  \hfill\mathstrut\penalty0 %
+  \bm\basicsymbolsv
+  \textbf{~Serge\u\i~I$\bm\bmhmtie$ur'ev~}% 1
+  \straightbraces\bm{\lbrace\rbrace}% 2
+}%
+\section{Heavy basic symbols, 215}
+\test{%
+  \hm\basicsymbolsi   \hfill\mathstrut\penalty0 %
+  \hm\basicsymbolsii  \hfill\mathstrut\penalty0 %
+  \hm\basicsymbolsiii \hfill\mathstrut\penalty0 %
+  \hm\basicsymbolsiv  \hfill\mathstrut\penalty0 %
+  \hm\basicsymbolsv
+  \textbf{~Serge\u\i~I$\hm\bmhmtie$ur'ev~}% 1
+  \straightbraces\hm{\lbrace\rbrace}% 2
+  \hfill\mathstrut\penalty0 %
+  \textbf{\qquad\qquad\qquad28 punctuation and others:\quad}%
+  \hm\hmpunctuationandothers
+}%
 \end{document}
