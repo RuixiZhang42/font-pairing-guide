@@ -42,6 +42,7 @@
 %\DeclareMathSymbol{\calMi}   {\mathalpha}{letters}{'075}
 %\DeclareMathSymbol{\calMii}  {\mathalpha}{letters}{'076}
 \usepackage{bm}
+\usepackage[hmargin=1.75in,vmargin=1.25in]{geometry}
 \newcommand\test[1]{%
   $#1$\par
   $\scriptstyle#1$\par
@@ -119,6 +120,48 @@
   \leftharpoonup\leftharpoondown\rightharpoonup\rightharpoondown
   \lhook\rhook\dagger\ddagger\dbar\updbar
 }
+\newcommand*\mathem{\mskip18mu\relax}
+\newcommand*\mathen{\mskip9mu\relax}
+\newcommand*\basicsymbolsi{%
+  *+-:;=\langle\rangle|\backslash % 10
+  \aleph\Re\Im\infty\prime\emptyset\nabla\surd\top\bot % 10
+  \forall\exists\neg\clubsuit\diamondsuit\heartsuit\spadesuit % 7
+  \smallint\triangleleft\triangleright\bigtriangleup\bigtriangledown % 5
+  \wedge\vee\cap\cup\sqcap\sqcup\uplus\amalg\diamond\bullet % 10
+  \wr\div\odot\oslash\otimes\ominus\oplus % 7
+} % 49
+\newcommand*\basicsymbolsii{%
+  \mp\pm\circ\bigcirc\cdot\times\propto\sqsubseteq\sqsupseteq % 9
+  \parallel\dashv\vdash\nearrow\searrow\nwarrow\swarrow % 7
+  \Leftrightarrow\Leftarrow\Rightarrow\leq\geq\approx % 6
+  \succ\prec\succeq\preceq\supset\subset\supseteq\subseteq % 8
+  \in\ni\gg\ll\not\mathem % 5
+  \leftrightarrow\leftarrow\rightarrow\mapstochar % 4
+} % 39
+\newcommand*\basicsymbolsiii{%
+  \sim\simeq\equiv\asymp\Relbar\vec*% 6
+  \grave*\acute*\check*\breve*\bar*\hat*\dot*\tilde*\ddot*\mathring*% 10
+  \uparrow\downarrow\updownarrow\Uparrow\Downarrow\Updownarrow % 6
+  \lbrace\rbrace\lceil\rceil\lfloor\rfloor % 6
+  \openclubsuit\shadedclubsuit\openspadesuit\shadedspadesuit % 4
+  \hbar\hslash\digamma\comp\setdif\cupprod\capprod\simarrow\varland % 9
+  \contraction\coloneq\eqcolon\hateq\circdashbullet\bulletdashcirc % 6
+} % 47
+\newcommand*\basicsymbolsiv{%
+  \dddot*\mathen\ddddot*\mathen % 2
+  \dotup*\mathen\ddotup*\mathen\dddotup*\mathen\ddddotup*\mathen % 4
+  \what*\mathen\wtilde*\mathen\wcheck*\mathen\wbar*\mathen\wwbar*\mathen % 5
+  \angle\models\bowtie\cong\Longleftrightarrow\rightleftharpoons\notin % 7
+  \notless\notleq\notprec\notpreceq\notsubset\notsubseteq\notsqsubseteq % 7
+  \notgr\notgeq\notsucc\notsucceq\notsupset\notsupseteq\notsqsupseteq % 7
+  \neq\notequiv\notsim\notsimeq\notapprox\notcong\notasymp % 7
+} % 39
+\newcommand*\basicsymbolsv{%
+  \doteq\hookleftarrow\hookrightarrow\longleftarrow\longrightarrow % 5
+  \Longleftarrow\Longrightarrow\mapsto\longmapsto\longleftrightarrow % 5
+  \straightbraces\lbrace\rbrace%\morphedbraces\lbrace\rbrace % 2
+  \text{Serge\u\i\ \t Iur'ev}% 1
+} % 13
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
 \medmuskip  0mu\relax
@@ -171,4 +214,10 @@
 \test{\bm{\mathbb\digits}}%
 \test{\bm{\mathbb\calandbblatinalphabet}}%
 \test{\bm{\mathbb\Latinalphabet}}%
+\section{Basic symbols, 187}
+\test\basicsymbolsi
+\test\basicsymbolsii
+\test\basicsymbolsiii
+\test\basicsymbolsiv
+\test\basicsymbolsv
 \end{document}
