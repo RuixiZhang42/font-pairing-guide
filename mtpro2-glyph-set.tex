@@ -81,6 +81,10 @@
 \DeclareMathSymbol{\hmddagger}{\mathbin}{symbols}{251}
 \DeclareMathSymbol{\hmell}{\mathord}{symbols}{244}
 \DeclareMathSymbol{\hmwp}{\mathord}{symbols}{245}
+\DeclareMathSymbol{\bmulcorner}{\mathopen} {AMSa}{"70}
+\DeclareMathSymbol{\bmurcorner}{\mathclose}{AMSa}{"71}
+\DeclareMathSymbol{\bmllcorner}{\mathopen} {AMSa}{"78}
+\DeclareMathSymbol{\bmlrcorner}{\mathclose}{AMSa}{"79}
 \usepackage{bm}
 \usepackage[hmargin=1.65in,vmargin=1.25in]{geometry}
 \newcommand\test[1]{%
@@ -246,8 +250,8 @@
   \bumpeq\Bumpeq\lll\ggg % 4
 } % 39
 \newcommand*\amssymbolsiv{%
-  \ulcorner\urcorner\circledR\circledS\pitchfork\dotplus % 6
-  \backsim\backsimeq\llcorner\lrcorner\maltese % 5
+  \bmulcorner\bmurcorner\circledR\circledS\pitchfork\dotplus % 6
+  \backsim\backsimeq\bmllcorner\bmlrcorner\maltese % 5
   \complement\intercal\circledcirc\circledast\circleddash % 5
   \lvertneqq\gvertneqq\nleq\ngeq\nless\ngtr\nprec\nsucc % 8
   \lneqq\gneqq\nleqslant\ngeqslant\lneq\gneq\npreceq\nsucceq % 8
