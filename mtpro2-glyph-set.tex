@@ -16,16 +16,31 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\documentclass{article}
-\usepackage{mathtools}
-\usepackage[no-math]{fontspec}
+\documentclass[
+  linespread=1.10502958579881657
+]{ctexart}
+\ctexset{
+  section={
+    name={第,节},
+    aftername=\hskip\ccwd\relax,
+    format=\Large\bfseries
+  }
+}
 \setmainfont{TeX Gyre Termes}[
+  Scale=1.10502958579881657,
+  WordSpace={0.80990629183400268,1.38018741633199465,0.42971887550200803},
   SmallCapsFeatures={LetterSpace=5}
 ]
+\setCJKmainfont{Source Han Serif SC Medium}[
+  BoldFont=Source Han Serif SC Heavy,
+  Language=Chinese Simplified
+]
+\usepackage{mathtools}
 \usepackage[
   slantedGreek,
   mtpccal,mtpscr,mtpfrak,mtphrb
 ]{mtpro2}
+\input{mtpro2-patch}
 \DeclareMathSymbol{\zswash}  {\mathalpha}{letters}{"B4}
 \DeclareMathSymbol{\mbfimath}{\mathalpha}{letters}{"10}
 \DeclareMathSymbol{\mbfjmath}{\mathalpha}{letters}{"11}
@@ -85,8 +100,17 @@
 \DeclareMathSymbol{\bmurcorner}{\mathclose}{AMSa}{"71}
 \DeclareMathSymbol{\bmllcorner}{\mathopen} {AMSa}{"78}
 \DeclareMathSymbol{\bmlrcorner}{\mathclose}{AMSa}{"79}
+\DeclareMathSymbol{\bracemd}{\mathord}{largesymbols}{"86}
+\DeclareMathSymbol{\bracemu}{\mathord}{largesymbols}{"87}
+\DeclareMathDelimiter{\regularlmoustache}
+  {\mathopen}{largesymbols}{"89}{largesymbols}{"89}
+\DeclareMathDelimiter{\regularrmoustache}
+  {\mathclose}{largesymbols}{"8A}{largesymbols}{"8A}
+\DeclareMathAccent{\extwidehat}{\mathord}{largesymbols}{"62}
+\DeclareMathAccent{\extwidetilde}{\mathord}{largesymbols}{"65}
+\DeclareMathAccent{\extwidecheck}{\mathord}{largesymbols}{"7A}
 \usepackage{bm}
-\usepackage[hmargin=1.65in,vmargin=1.25in]{geometry}
+\usepackage[text={430.5bp,609bp},centering]{geometry}
 \newcommand\test[1]{%
   $#1$\par
   \smallskip\par
@@ -97,7 +121,6 @@
 }
 \newcommand\testext[1]{%
   $#1$\par
-  $\displaystyle#1$\par
   \medskip\par
 }
 \newcommand*\digits{%
@@ -279,6 +302,74 @@
   \upupharpoons\downdownharpoons % 2
   \undercurvearrowleft\undercurvearrowright % 2
 } % 40
+\newcommand*\mathneg[1]{\mskip-#1mu\relax}
+\newcommand*\td[1]{#1{\displaystyle#1}}
+\newcommand*\tdneg[1]{#1\mskip-4.5mu\relax
+  {\displaystyle#1}\mskip-4.5mu\relax}
+\newcommand*\vastl{\mathopen\vast}
+\newcommand*\vastm{\mathrel\vast}
+\newcommand*\vastr{\mathclose\vast}
+\newcommand*\Vastl{\mathopen\Vast}
+\newcommand*\Vastm{\mathrel\Vast}
+\newcommand*\Vastr{\mathclose\Vast}
+\makeatletter
+\newcommand*\vast{\bBigg@{3.1}}
+\newcommand*\Vast{\bBigg@{3.72}}
+\makeatother
+\newcommand*\extwideaccent[1]{%
+  #1{\mskip15mu\relax}%
+  #1{\mskip21mu\relax}%
+  #1{\mskip27mu\relax}%
+}
+\newcommand*\extsymbolsi{%
+  \bigl(\Bigl(\biggl(\Biggl(\Biggr)\biggr)\Bigr)\bigr)%
+  \bigl[\Bigl[\biggl[\Biggl[\Biggr]\biggr]\Bigr]\bigr]%
+  \bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}%
+  \bigl\langle\Bigl\langle\biggl\langle\Biggl\langle
+  \Biggr\rangle\biggr\rangle\Bigr\rangle\bigr\rangle
+  \bigl\lfloor\Bigl\lfloor\biggl\lfloor\Biggl\lfloor
+  \Biggr\rfloor\biggr\rfloor\Bigr\rfloor\bigr\rfloor
+  \bigl\lceil\Bigl\lceil\biggl\lceil\Biggl\lceil
+  \Biggr\rceil\biggr\rceil\Bigr\rceil\bigr\rceil
+  \bigl/\mathneg6\Bigl/\mathneg9\biggl/\mathneg{12}\Biggl/%
+  \Biggr\backslash\mathneg{12}\biggr\backslash\mathneg9%
+  \Bigr\backslash\mathneg6\bigr\backslash
+} % 56
+\newcommand*\extsymbolsii{%
+  \td\upsumop\td\upprodop\td\upcoprodop
+  \td\bigcup\td\bigcap\td\biguplus
+  \td\bigwedge\td\bigvee\td\bigsqcup
+  \td\bigodot\td\bigoplus\td\bigotimes
+  \tdneg\slsumop\tdneg\slprodop\tdneg\slcoprodop
+} % 30
+\newcommand*\extsymbolsiii{%
+  \td\intop\td\iintop\td\iiintop
+  \td\ointop\td\oiintop\td\oiiintop
+  \td\cwointop\td\awointop\td\cwintop
+  \td\barintop\td\slashintop
+  \sqrtsign{\vphantom{|^*}}\sqrtsign{\vphantom{\big|}}%
+  \sqrtsign{\vphantom{\Big|}}\sqrtsign{\vphantom{\bigg|}}%
+  \sqrtsign{\vphantom{\Bigg|}}%
+} % 29
+\newcommand*\extsymbolsiv{%
+  \vastl(\Vastl(\Vastr)\vastr)%
+  \vastl[\Vastl[\Vastr]\vastr]%
+  \vastl\{\Vastl\{\Vastr\}\vastr\}%
+  \vastl\lfloor\Vastl\lfloor\Vastr\rfloor\vastr\rfloor
+  \vastl\lceil\Vastl\lceil\Vastr\rceil\vastr\rceil
+  \mathen
+  \braceld\mathen\bracemu\mathen\bracerd\mathen
+  \bracelu\mathen\bracemd\mathen\braceru\mathen
+  \big\vert\big\Vert
+  \Big\updownarrow\Big\Updownarrow
+  \biggl\lgroup\biggr\rgroup
+} % 34 (regular) or 33 (bm, hm)
+\newcommand*\extsymbolsv{%
+  \td\bigcupprod\td\bigcapprod\td\bigvarland\td\bigast
+  \extwideaccent\extwidehat
+  \extwideaccent\extwidetilde
+  \extwideaccent\extwidecheck
+} % 17
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
 \medmuskip  0mu\relax
@@ -390,5 +481,48 @@
   \hm\amssymbolsiv  \hfill\mathstrut\penalty0 %
   \hm\amssymbolsv   \hfill\mathstrut\penalty0 %
   \hm\amssymbolsvi
+}%
+\section{Extensible symbols, 190}
+\testext{%
+  \extsymbolsi   \hfill\mathstrut\penalty0 %
+  \extsymbolsii  \hfill\mathstrut\penalty0 %
+  \extsymbolsiii \hfill\mathstrut\penalty0 %
+  \extsymbolsiv
+  \biggl\regularlmoustache\biggr\regularrmoustache
+  \wwhat\mathem\wwtilde\mathem\wwcheck\mathem
+  \hfill\mathstrut\penalty0 %
+  \extsymbolsv
+  \straightbraces
+  \bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}%
+  \morphedbraces
+  \bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}%
+}%
+\section{Bold extensible symbols, 181}
+\testext{%
+  \bm\extsymbolsi   \hfill\mathstrut\penalty0 %
+  \bm\extsymbolsii  \hfill\mathstrut\penalty0 %
+  \bm\extsymbolsiii \hfill\mathstrut\penalty0 %
+  \bm\extsymbolsiv
+  \bm{\biggl\lmoustache\biggr\rmoustache}%
+  \hfill\mathstrut\penalty0 %
+  \bm\extsymbolsv
+  \straightbraces
+  \bm{\bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}}%
+  \morphedbraces
+  \bm{\bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}}%
+}%
+\section{Heavy extensible symbols, 181}
+\testext{%
+  \hm\extsymbolsi   \hfill\mathstrut\penalty0 %
+  \hm\extsymbolsii  \hfill\mathstrut\penalty0 %
+  \hm\extsymbolsiii \hfill\mathstrut\penalty0 %
+  \hm\extsymbolsiv
+  \hm{\biggl\lmoustache\biggr\rmoustache}%
+  \hfill\mathstrut\penalty0 %
+  \hm\extsymbolsv
+  \straightbraces
+  \hm{\bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}}%
+  \morphedbraces
+  \hm{\bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}}%
 }%
 \end{document}
