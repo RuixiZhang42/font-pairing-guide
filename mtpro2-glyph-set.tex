@@ -41,6 +41,50 @@
   mtpccal,mtpscr,mtpfrak,mtphrb
 ]{mtpro2}
 \input{mtpro2-patch}
+\DeclareMathSymbol{\upGamma}{\mathalpha}{letters}{"80}
+\DeclareMathSymbol{\upDelta}{\mathalpha}{letters}{"81}
+\DeclareMathSymbol{\upTheta}{\mathalpha}{letters}{"82}
+\DeclareMathSymbol{\upLambda}{\mathalpha}{letters}{"83}
+\DeclareMathSymbol{\upXi}{\mathalpha}{letters}{"84}
+\DeclareMathSymbol{\upPi}{\mathalpha}{letters}{"85}
+\DeclareMathSymbol{\upSigma}{\mathalpha}{letters}{"86}
+\DeclareMathSymbol{\upUpsilon}{\mathalpha}{letters}{"87}
+\DeclareMathSymbol{\upPhi}{\mathalpha}{letters}{"88}
+\DeclareMathSymbol{\upPsi}{\mathalpha}{letters}{"89}
+\DeclareMathSymbol{\upOmega}{\mathalpha}{letters}{"7F}
+\DeclareMathSymbol{\upalpha}{\mathalpha}{letters}{"92}
+\DeclareMathSymbol{\upbeta}{\mathalpha}{letters}{"93}
+\DeclareMathSymbol{\upgamma}{\mathalpha}{letters}{"94}
+\DeclareMathSymbol{\updelta}{\mathalpha}{letters}{"95}
+\DeclareMathSymbol{\upepsilon}{\mathalpha}{letters}{"96}
+\DeclareMathSymbol{\upzeta}{\mathalpha}{letters}{"97}
+\DeclareMathSymbol{\upeta}{\mathalpha}{letters}{"98}
+\DeclareMathSymbol{\uptheta}{\mathalpha}{letters}{"99}
+\DeclareMathSymbol{\upiota}{\mathalpha}{letters}{"9A}
+\DeclareMathSymbol{\upkappa}{\mathalpha}{letters}{"9B}
+\DeclareMathSymbol{\uplambda}{\mathalpha}{letters}{"9C}
+\DeclareMathSymbol{\upmu}{\mathalpha}{letters}{"9D}
+\DeclareMathSymbol{\upnu}{\mathalpha}{letters}{"9E}
+\DeclareMathSymbol{\upxi}{\mathalpha}{letters}{"9F}
+\DeclareMathSymbol{\uppi}{\mathalpha}{letters}{160}
+\DeclareMathSymbol{\uprho}{\mathalpha}{letters}{161}
+\DeclareMathSymbol{\upsigma}{\mathalpha}{letters}{162}
+\DeclareMathSymbol{\uptau}{\mathalpha}{letters}{163}
+\DeclareMathSymbol{\upupsilon}{\mathalpha}{letters}{164}
+\DeclareMathSymbol{\upphi}{\mathalpha}{letters}{165}
+\DeclareMathSymbol{\upchi}{\mathalpha}{letters}{166}
+\DeclareMathSymbol{\uppsi}{\mathalpha}{letters}{167}
+\DeclareMathSymbol{\upomega}{\mathalpha}{letters}{168}
+\DeclareMathSymbol{\upvarepsilon}{\mathalpha}{letters}{169}
+\DeclareMathSymbol{\upvartheta}{\mathalpha}{letters}{170}
+\DeclareMathSymbol{\upvarpi}{\mathalpha}{letters}{171}
+\DeclareMathSymbol{\upvarrho}{\mathalpha}{letters}{172}
+\DeclareMathSymbol{\upvarsigma}{\mathalpha}{letters}{173}
+\DeclareMathSymbol{\upvarphi}{\mathalpha}{letters}{174}
+\DeclareMathSymbol{\upvarkappa}{\mathalpha}{letters}{175}
+\DeclareMathSymbol{\upvarbeta}{\mathalpha}{letters}{177}
+\DeclareMathSymbol{\upvardelta}{\mathalpha}{letters}{179}
+\DeclareMathAlphabet{\mathbbit}{U}{mt2hrb}{m}{it}
 \DeclareMathSymbol{\zswash}  {\mathalpha}{letters}{"B4}
 \DeclareMathSymbol{\mbfimath}{\mathalpha}{letters}{"10}
 \DeclareMathSymbol{\mbfjmath}{\mathalpha}{letters}{"11}
@@ -422,6 +466,14 @@
 \test{\bm{\mathbb\digits}}%
 \test{\bm{\mathbb\calandbblatinalphabet}}%
 \test{\bm{\mathbb\Latinalphabet}}%
+\section{Math holey bold italic, 150 \& space}
+\test{\mathbbit\digits}%
+\test{\mathbbit\calandbblatinalphabet}%
+\test{\mathbbit\Latinalphabet}%
+\test{\mathbbit\greekalphabet}%
+\test{\mathbbit\Greekalphabet}%
+\test{\mathbbit\upgreekalphabet}%
+\test{\mathbbit\upGreekalphabet}%
 \section{Basic symbols, 187}
 \test{%
   \basicsymbolsi   \hfill\mathstrut\penalty0 %
