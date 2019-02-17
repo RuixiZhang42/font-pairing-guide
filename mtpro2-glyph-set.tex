@@ -85,6 +85,9 @@
 \DeclareMathSymbol{\upvarbeta}{\mathalpha}{letters}{177}
 \DeclareMathSymbol{\upvardelta}{\mathalpha}{letters}{179}
 \DeclareMathAlphabet{\mathbbit}{U}{mt2hrb}{m}{it}
+\DeclareMathAlphabet{\mathbbb}  {U}{mt2bb}{m}{n}
+\SetMathAlphabet{\mathbbb}{bold}{U}{mt2bb}{b}{n}
+\DeclareMathAlphabet{\mathbbbit}{U}{mt2bb}{m}{it}
 \DeclareMathSymbol{\zswash}  {\mathalpha}{letters}{"B4}
 \DeclareMathSymbol{\mbfimath}{\mathalpha}{letters}{"10}
 \DeclareMathSymbol{\mbfjmath}{\mathalpha}{letters}{"11}
@@ -474,6 +477,22 @@
 \test{\mathbbit\Greekalphabet}%
 \test{\mathbbit\upgreekalphabet}%
 \test{\mathbbit\upGreekalphabet}%
+\section{Math blackboard bold, 64 \& space}
+\test{\mathbbb\digits}%
+\test{\mathbbb\calandbblatinalphabet}%
+\test{\mathbbb\Latinalphabet}%
+\section{Math blackboard dark, 64 \& space}
+\test{\bm{\mathbbb\digits}}%
+\test{\bm{\mathbbb\calandbblatinalphabet}}%
+\test{\bm{\mathbbb\Latinalphabet}}%
+\section{Math blackboard italic, 150 \& space}
+\test{\mathbbbit\digits}%
+\test{\mathbbbit\calandbblatinalphabet}%
+\test{\mathbbbit\Latinalphabet}%
+\test{\mathbbbit\greekalphabet}%
+\test{\mathbbbit\Greekalphabet}%
+\test{\mathbbbit\upgreekalphabet}%
+\test{\mathbbbit\upGreekalphabet}%
 \section{Basic symbols, 187}
 \test{%
   \basicsymbolsi   \hfill\mathstrut\penalty0 %
