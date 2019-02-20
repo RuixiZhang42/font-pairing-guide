@@ -359,10 +359,6 @@
 \newcommand*\Vastl{\mathopen\Vast}
 \newcommand*\Vastm{\mathrel\Vast}
 \newcommand*\Vastr{\mathclose\Vast}
-\makeatletter
-\newcommand*\vast{\bBigg@{3.1}}
-\newcommand*\Vast{\bBigg@{3.72}}
-\makeatother
 \newcommand*\extwideaccent[1]{%
   #1{\mskip15mu\relax}%
   #1{\mskip21mu\relax}%
@@ -417,6 +413,39 @@
   \extwideaccent\extwidetilde
   \extwideaccent\extwidecheck
 } % 17
+\newcommand*\zerodel{.\kern-\nulldelimiterspace}
+\makeatletter
+\newcommand*\vast{\bBigg@{3.1}}
+\newcommand*\Vast{\bBigg@{3.72}}
+\newcommand*\vcontent[1]{%
+  \vrule\@height
+  \ifcase#1 1.0em%
+  \or       1.2em%
+  \or       1.8em%
+  \or       2.4em%
+  \or       3.0em%
+  \or       3.6em%
+  \or       4.2em%
+  \or       4.8em%
+  \or       5.4em%
+  \or       6.0em%
+  \or       7.2em%
+  \or       8.4em%
+  \or       9.6em%
+  \or      10.8em%
+  \or      12.0em%
+  \or      14.4em%
+  \or      16.8em%
+  \or      19.2em%
+  \or      21.6em%
+  \or      24.0em%
+  \or      26.4em%
+  \or      28.8em%
+  \else       \z@
+  \fi
+  \@width\z@\relax
+}
+\makeatother
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
 \medmuskip  0mu\relax
@@ -596,4 +625,39 @@
   \morphedbraces
   \hm{\bigl\{\Bigl\{\biggl\{\Biggl\{\Biggr\}\biggr\}\Bigr\}\bigr\}}%
 }%
+\section{Extra large symbols}
+\hbox to\textwidth{\hss$%
+\LEFTRIGHT(\zerodel{\vcontent{ 5}}\mathneg{ 7.246}% EXE
+\LEFTRIGHT(\zerodel{\vcontent{ 6}}\mathneg{ 8.074}%
+\LEFTRIGHT(\zerodel{\vcontent{ 7}}\mathneg{ 8.866}%
+\LEFTRIGHT(\zerodel{\vcontent{ 8}}\mathneg{ 9.694}%
+\LEFTRIGHT(\zerodel{\vcontent{ 9}}\mathneg{ 4.448}%
+\LEFTRIGHT(\zerodel{\vcontent{10}}\mathneg{ 6.284}% EXF
+\LEFTRIGHT(\zerodel{\vcontent{11}}\mathneg{ 7.940}%
+\LEFTRIGHT(\zerodel{\vcontent{12}}\mathneg{ 9.668}%
+\LEFTRIGHT(\zerodel{\vcontent{13}}\mathneg{11.252}%
+\LEFTRIGHT(\zerodel{\vcontent{14}}\mkern1.039mu%
+\LEFTRIGHT(\zerodel{\vcontent{15}}\mathneg{ 3.929}% EXG
+\LEFTRIGHT(\zerodel{\vcontent{16}}\mathneg{ 8.969}%
+\LEFTRIGHT(\zerodel{\vcontent{17}}\mathneg{13.865}%
+\LEFTRIGHT(\zerodel{\vcontent{18}}\mathneg{18.761}%
+\LEFTRIGHT(\zerodel{\vcontent{19}}\mathneg{23.801}%
+\LEFTRIGHT(\zerodel{\vcontent{20}}\mathneg{28.697}%
+\LEFTRIGHT()       {\vcontent{21}}\mathneg{28.697}%
+\LEFTRIGHT\zerodel){\vcontent{20}}\mathneg{23.801}%
+\LEFTRIGHT\zerodel){\vcontent{19}}\mathneg{18.761}%
+\LEFTRIGHT\zerodel){\vcontent{18}}\mathneg{13.865}%
+\LEFTRIGHT\zerodel){\vcontent{17}}\mathneg{ 8.969}%
+\LEFTRIGHT\zerodel){\vcontent{16}}\mathneg{ 3.929}%
+\LEFTRIGHT\zerodel){\vcontent{15}}\mkern1.039mu%
+\LEFTRIGHT\zerodel){\vcontent{14}}\mathneg{11.252}% EXF
+\LEFTRIGHT\zerodel){\vcontent{13}}\mathneg{ 9.668}%
+\LEFTRIGHT\zerodel){\vcontent{12}}\mathneg{ 7.940}%
+\LEFTRIGHT\zerodel){\vcontent{11}}\mathneg{ 6.284}%
+\LEFTRIGHT\zerodel){\vcontent{10}}\mathneg{ 4.448}%
+\LEFTRIGHT\zerodel){\vcontent{ 9}}\mathneg{ 9.694}% EXE
+\LEFTRIGHT\zerodel){\vcontent{ 8}}\mathneg{ 8.866}%
+\LEFTRIGHT\zerodel){\vcontent{ 7}}\mathneg{ 8.074}%
+\LEFTRIGHT\zerodel){\vcontent{ 6}}\mathneg{ 7.246}%
+\LEFTRIGHT\zerodel){\vcontent{ 5}}$\hss}%
 \end{document}
