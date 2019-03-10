@@ -414,6 +414,13 @@
   \extwideaccent\extwidecheck
 } % 17
 \newcommand*\zerodel{.\kern-\nulldelimiterspace}
+\newcommand*\xloperator[1]{%
+  \leavevmode
+  \hbox to  2462526sp{\hss$\xl  #1$\hss}%
+  \hbox to  3693789sp{\hss$\XL  #1$\hss}%
+  \hbox to  7387577sp{\hss$\XXL #1$\hss}%
+  \hbox to 14775155sp{\hss$\XXXL#1$\hss}%
+}
 \makeatletter
 \newcommand*\vast{\bBigg@{3.10}}
 \newcommand*\Vast{\bBigg@{3.72}}
@@ -781,4 +788,55 @@
 \LEFTRIGHT\zerodel\backslash{\vcontent{21}}\mathneg{133.673}%
 \LEFTRIGHT\zerodel\backslash{\vcontent{22}}\mathneg{149.657}%
 \LEFTRIGHT\zerodel\backslash{\vcontent{23}}$\hss}\par
+\hbox to\textwidth{\hss$%
+\vcenter{\SQRT{\vcontent{ 4}}}\mathneg{ 7.760}% EXE
+\vcenter{\SQRT{\vcontent{ 5}}}\mathneg{ 8.588}%
+\vcenter{\SQRT{\vcontent{ 6}}}\mathneg{10.388}%
+\vcenter{\SQRT{\vcontent{ 7}}}\mathneg{12.188}%
+\vcenter{\SQRT{\vcontent{ 8}}}\mathneg{16.508}%
+\vcenter{\SQRT{\vcontent{ 9}}}\mathneg{17.948}%
+\vcenter{\SQRT{\vcontent{10}}}\mathneg{ 8.177}% EXF
+\vcenter{\SQRT{\vcontent{11}}}\mathneg{14.369}%
+\vcenter{\SQRT{\vcontent{12}}}\mathneg{20.561}%
+\vcenter{\SQRT{\vcontent{13}}}\mathneg{26.681}%
+\vcenter{\SQRT{\vcontent{14}}}\mathneg{32.873}%
+\vcenter{\SQRT{\vcontent{15}}}\mathneg{39.137}%
+\vcenter{\SQRT{\vcontent{16}}}\mathneg{19.810}% EXG
+\vcenter{\SQRT{\vcontent{17}}}\mathneg{31.330}%
+\vcenter{\SQRT{\vcontent{18}}}\mathneg{43.138}%
+\vcenter{\SQRT{\vcontent{19}}}\mathneg{54.946}%
+\vcenter{\SQRT{\vcontent{20}}}\mathneg{66.466}%
+\vcenter{\SQRT{\vcontent{21}}}\mathneg{78.274}%
+\vcenter{\SQRT{\vcontent{22}}}$\hss}\par
+\lineskip0pt\relax
+\xloperator\upsum      \par\vfill
+\xloperator\upprod     \par\vfill
+\xloperator\upcoprod   \par\vfill
+\xloperator\bigcup     \par\vfill
+\xloperator\bigcap     \par\vfill
+\xloperator\biguplus   \par\vfill
+\xloperator\bigwedge   \par\vfill
+\xloperator\bigvee     \par\vfill
+\xloperator\bigsqcup   \par\vfill
+\xloperator\bigodot    \par\vfill
+\xloperator\bigoplus   \par\vfill
+\xloperator\bigotimes  \par\vfill
+\xloperator\slsum      \par\vfill
+\xloperator\slprod     \par\vfill
+\xloperator\slcoprod   \par\vfill
+\xloperator\bigcupprod \par\vfill
+\xloperator\bigcapprod \par\vfill
+\xloperator\bigvarland \par\vfill
+\xloperator\bigast     \par\vfill
+\xloperator\int        \par\vfill
+\xloperator\iint       \par\vfill
+\xloperator\iiint      \par\vfill
+\xloperator\oint       \par\vfill
+\xloperator\oiint      \par\vfill
+\xloperator\oiiint     \par\vfill
+\xloperator\cwoint     \par\vfill
+\xloperator\awoint     \par\vfill
+\xloperator\cwint      \par\vfill
+\xloperator\barint     \par\vfill
+\xloperator\slashint
 \end{document}
