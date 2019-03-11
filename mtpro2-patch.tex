@@ -295,11 +295,15 @@
  \fi
  \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
  \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
+% Troubles with U+00B7 (\char183, \char'267) as CJK punctuation
 \AtBeginDocument{%
   \@ifpackageloaded{xeCJK}{%
     \let\xeCJK@mtp@patch@overcbrace\overcbrace
     \def\overcbrace#1{{\makexeCJKinactive
       \xeCJK@mtp@patch@overcbrace{#1}}}%
+    \let\xeCJK@mtp@patch@widearc\widearc
+    \def\widearc#1{{\makexeCJKinactive
+      \xeCJK@mtp@patch@widearc{#1}}}%
   }{}%
 }
 % CTeX setup
