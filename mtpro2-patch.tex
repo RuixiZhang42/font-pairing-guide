@@ -295,6 +295,13 @@
  \fi
  \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
  \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
+\AtBeginDocument{%
+  \@ifpackageloaded{xeCJK}{%
+    \let\xeCJK@mtp@patch@overcbrace\overcbrace
+    \def\overcbrace#1{{\makexeCJKinactive
+      \xeCJK@mtp@patch@overcbrace{#1}}}%
+  }{}%
+}
 % CTeX setup
 %   Assuming \mtpscale             = 1.10502958579881657
 %            \mtpscriptscale       = 1.03309552688947532
