@@ -1,7 +1,7 @@
 %
 % This is file `mtpro2-patch.tex'.
 %
-% There are 3 bugs needed to be fixed by hand.
+% There are 7 bugs needed to be fixed by hand.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -12,6 +12,17 @@
 % with
 %
 %   \newcount\pointcount@
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', remove the pair
+%
+%   \@ifpackageloaded{amsmath}{}{%
+%   }
+%
+% containing
+%
+%   \let\doteq\@undefined ...
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -35,121 +46,259 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% In `mtpro2.sty', replace the following 2 lines
+%
+%   \ifx\next\uprod\xlposition@10\else
+%   \ifx\next\ucoprod\xlposition@11\else
+%
+% with
+%
+%   \ifx\next\upprod\xlposition@10\else
+%   \ifx\next\upcoprod\xlposition@11\else
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', insert the following 9 lines
+%
+%   \DeclareMathSymbol{\nleq}         {\mathrel}{AMSa}{"82}
+%   \DeclareMathSymbol{\ngeq}         {\mathrel}{AMSa}{"83}
+%   \DeclareMathSymbol{\nless}        {\mathrel}{AMSa}{"84}
+%   \DeclareMathSymbol{\ngtr}         {\mathrel}{AMSa}{"85}
+%   \DeclareMathSymbol{\nprec}        {\mathrel}{AMSa}{"86}
+%   \DeclareMathSymbol{\nsucc}        {\mathrel}{AMSa}{"87}
+%   \DeclareMathSymbol{\ncong}        {\mathrel}{AMSa}{"9D}
+%   \DeclareMathSymbol{\nsqsubseteq}    {\mathrel}{AMSa}{217}
+%   \DeclareMathSymbol{\nsqsupseteq}    {\mathrel}{AMSa}{218}
+%
+% according to `mtpro2.dtx'
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', remove the pair
+%
+%   \@ifpackageloaded{textcomp}{}{%
+%   }
+%
+% containing
+%
+%   \DeclareTextSymbolDefault{\textdagger}{LMP1} ...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \makeatletter
 % Scaling factors
-\ifx\mtp@scale\@undefined
-  \def\mtp@scale{1.10502958579881657}
+\ifx\mtpscale\@undefined
+  \def\mtpscale{1}
 \fi
-\ifx\mtp@scriptscale\@undefined
-  \def\mtp@scriptscale{1.03309552688947532}
+\ifx\mtpscriptscale\@undefined
+  \def\mtpscriptscale{1}
 \fi
-\ifx\mtp@scriptscriptscale\@undefined
-  \def\mtp@scriptscriptscale{1.01898220001940052}
+\ifx\mtpscriptscriptscale\@undefined
+  \def\mtpscriptscriptscale{1}
 \fi
 % MathTime Professional 2 Lite
 \DeclareFontShape{LMP1}{mtt}{m}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2mif
-  <7-9> s*[\mtp@scriptscale] mt2mis
-  <9-> s*[\mtp@scale] mt2mit}{}
+  <-7> s*[\mtpscriptscriptscale] mt2mif
+  <7-9> s*[\mtpscriptscale] mt2mis
+  <9-> s*[\mtpscale] mt2mit}{}
 \DeclareFontShape{LMP2}{mtt}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2syf
-  <7-9> s*[\mtp@scriptscale] mt2sys
-  <9-> s*[\mtp@scale] mt2syt}{\skewchar\font32}
+  <-7> s*[\mtpscriptscriptscale] mt2syf
+  <7-9> s*[\mtpscriptscale] mt2sys
+  <9-> s*[\mtpscale] mt2syt}{\skewchar\font32}
 \DeclareFontShape{LMP3}{mtt}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2exa
-  <7-9> s*[\mtp@scriptscale] mt2exa
-  <9-> s*[\mtp@scale] mt2exa}{}
+  <-7> s*[\mtpscriptscriptscale] mt2exa
+  <7-9> s*[\mtpscriptscale] mt2exa
+  <9-> s*[\mtpscale] mt2exa}{}
 \DeclareFontShape{U}{mtt}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2mbf
-  <7-9> s*[\mtp@scriptscale] mt2mbs
-  <9-> s*[\mtp@scale] mt2mbt}{}
+  <-7> s*[\mtpscriptscriptscale] mt2mbf
+  <7-9> s*[\mtpscriptscale] mt2mbs
+  <9-> s*[\mtpscale] mt2mbt}{}
+\normalsize
+\dimen@\f@size\p@
+\dimen@\mtpscale\dimen@
+\newdimen\tMTPscalesize
+\tMTPscalesize\dimen@
+\font\MTEXA@=mt2exa at \the\dimen@
+\font\MTXL@=mt2xl at \the\dimen@
+\multiply\dimen@\tw@
+\font\MTEXE@=mt2exe at \the\dimen@
+\font\MTXXXL@=mt2xxxl at \the\dimen@
+\multiply\dimen@\tw@
+\font\MTEXF@=mt2exf at \the\dimen@
+\multiply\dimen@\tw@
+\font\MTEXG@=mt2exg at \the\dimen@
 % MathTime Professional 2 Complete
 \ifmtp@full
 \DeclareFontShape{LMP1}{mtt}{b}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bmif
-  <7-9> s*[\mtp@scriptscale] mt2bmis
-  <9-> s*[\mtp@scale] mt2bmit}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bmif
+  <7-9> s*[\mtpscriptscale] mt2bmis
+  <9-> s*[\mtpscale] mt2bmit}{}
 \DeclareFontShape{LMP2}{mtt}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bsyf
-  <7-9> s*[\mtp@scriptscale] mt2bsys
-  <9-> s*[\mtp@scale] mt2bsyt}{\skewchar\font32}
+  <-7> s*[\mtpscriptscriptscale] mt2bsyf
+  <7-9> s*[\mtpscriptscale] mt2bsys
+  <9-> s*[\mtpscale] mt2bsyt}{\skewchar\font32}
 \DeclareFontShape{LMP2}{mtt}{eb}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hsyf
-  <7-9> s*[\mtp@scriptscale] mt2hsys
-  <9-> s*[\mtp@scale] mt2hsyt}{\skewchar\font32}
+  <-7> s*[\mtpscriptscriptscale] mt2hsyf
+  <7-9> s*[\mtpscriptscale] mt2hsys
+  <9-> s*[\mtpscale] mt2hsyt}{\skewchar\font32}
 \DeclareFontShape{LMP3}{mtt}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bexa
-  <7-9> s*[\mtp@scriptscale] mt2bexa
-  <9-> s*[\mtp@scale] mt2bexa}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bexa
+  <7-9> s*[\mtpscriptscale] mt2bexa
+  <9-> s*[\mtpscale] mt2bexa}{}
 \DeclareFontShape{LMP3}{mtt}{eb}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hexa
-  <7-9> s*[\mtp@scriptscale] mt2hexa
-  <9-> s*[\mtp@scale] mt2hexa}{}
+  <-7> s*[\mtpscriptscriptscale] mt2hexa
+  <7-9> s*[\mtpscriptscale] mt2hexa
+  <9-> s*[\mtpscale] mt2hexa}{}
 \DeclareFontShape{U}{mt2sya}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2syaf
-  <7-9> s*[\mtp@scriptscale] mt2syas
-  <9-> s*[\mtp@scale] mt2syat}{}
+  <-7> s*[\mtpscriptscriptscale] mt2syaf
+  <7-9> s*[\mtpscriptscale] mt2syas
+  <9-> s*[\mtpscale] mt2syat}{}
 \DeclareFontShape{U}{mt2sya}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bsyaf
-  <7-9> s*[\mtp@scriptscale] mt2bsyas
-  <9-> s*[\mtp@scale] mt2bsyat}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bsyaf
+  <7-9> s*[\mtpscriptscale] mt2bsyas
+  <9-> s*[\mtpscale] mt2bsyat}{}
 \DeclareFontShape{U}{mt2sya}{eb}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hsyaf
-  <7-9> s*[\mtp@scriptscale] mt2hsyas
-  <9-> s*[\mtp@scale] mt2hsyat}{}
+  <-7> s*[\mtpscriptscriptscale] mt2hsyaf
+  <7-9> s*[\mtpscriptscale] mt2hsyas
+  <9-> s*[\mtpscale] mt2hsyat}{}
 % umt2ms.fd
 \DeclareFontFamily{U}{mt2ms}{\skewchar\font42}
 \DeclareFontShape{U}{mt2ms}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2mcf
-  <7-9> s*[\mtp@scriptscale] mt2mcs
-  <9-> s*[\mtp@scale] mt2mct}{}
+  <-7> s*[\mtpscriptscriptscale] mt2mcf
+  <7-9> s*[\mtpscriptscale] mt2mcs
+  <9-> s*[\mtpscale] mt2mct}{}
 \DeclareFontShape{U}{mt2ms}{m}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2msf
-  <7-9> s*[\mtp@scriptscale] mt2mss
-  <9-> s*[\mtp@scale] mt2mst}{}
+  <-7> s*[\mtpscriptscriptscale] mt2msf
+  <7-9> s*[\mtpscriptscale] mt2mss
+  <9-> s*[\mtpscale] mt2mst}{}
 \DeclareFontShape{U}{mt2ms}{b}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bmsf
-  <7-9> s*[\mtp@scriptscale] mt2bmss
-  <9-> s*[\mtp@scale] mt2bmst}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bmsf
+  <7-9> s*[\mtpscriptscale] mt2bmss
+  <9-> s*[\mtpscale] mt2bmst}{}
 % umt2mf.fd
 \DeclareFontFamily{U}{mt2mf}{}
 \DeclareFontShape{U}{mt2mf}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2mff
-  <7-9> s*[\mtp@scriptscale] mt2mfs
-  <9-> s*[\mtp@scale] mt2mft}{}
+  <-7> s*[\mtpscriptscriptscale] mt2mff
+  <7-9> s*[\mtpscriptscale] mt2mfs
+  <9-> s*[\mtpscale] mt2mft}{}
 \DeclareFontShape{U}{mt2mf}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bmff
-  <7-9> s*[\mtp@scriptscale] mt2bmfs
-  <9-> s*[\mtp@scale] mt2bmft}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bmff
+  <7-9> s*[\mtpscriptscale] mt2bmfs
+  <9-> s*[\mtpscale] mt2bmft}{}
 % umt2bb.fd
 \DeclareFontFamily{U}{mt2bb}{\skewchar\font45}
 \DeclareFontShape{U}{mt2bb}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bbf
-  <7-9> s*[\mtp@scriptscale] mt2bbs
-  <9-> s*[\mtp@scale] mt2bbt}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bbf
+  <7-9> s*[\mtpscriptscale] mt2bbs
+  <9-> s*[\mtpscale] mt2bbt}{}
 \DeclareFontShape{U}{mt2bb}{m}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bbif
-  <7-9> s*[\mtp@scriptscale] mt2bbis
-  <9-> s*[\mtp@scale] mt2bbit}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bbif
+  <7-9> s*[\mtpscriptscale] mt2bbis
+  <9-> s*[\mtpscale] mt2bbit}{}
 \DeclareFontShape{U}{mt2bb}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2bbdf
-  <7-9> s*[\mtp@scriptscale] mt2bbds
-  <9-> s*[\mtp@scale] mt2bbdt}{}
+  <-7> s*[\mtpscriptscriptscale] mt2bbdf
+  <7-9> s*[\mtpscriptscale] mt2bbds
+  <9-> s*[\mtpscale] mt2bbdt}{}
 % umt2hrb.fd
 \DeclareFontFamily{U}{mt2hrb}{\skewchar\font45}
 \DeclareFontShape{U}{mt2hrb}{m}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hrbf
-  <7-9> s*[\mtp@scriptscale] mt2hrbs
-  <9-> s*[\mtp@scale] mt2hrbt}{}
+  <-7> s*[\mtpscriptscriptscale] mt2hrbf
+  <7-9> s*[\mtpscriptscale] mt2hrbs
+  <9-> s*[\mtpscale] mt2hrbt}{}
 \DeclareFontShape{U}{mt2hrb}{m}{it}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hbif
-  <7-9> s*[\mtp@scriptscale] mt2hbis
-  <9-> s*[\mtp@scale] mt2hbit}{}
+  <-7> s*[\mtpscriptscriptscale] mt2hbif
+  <7-9> s*[\mtpscriptscale] mt2hbis
+  <9-> s*[\mtpscale] mt2hbit}{}
 \DeclareFontShape{U}{mt2hrb}{b}{n}{%
-  <-7> s*[\mtp@scriptscriptscale] mt2hrbdf
-  <7-9> s*[\mtp@scriptscale] mt2hrbds
-  <9-> s*[\mtp@scale] mt2hrbdt}{}
+  <-7> s*[\mtpscriptscriptscale] mt2hrbdf
+  <7-9> s*[\mtpscriptscale] mt2hrbds
+  <9-> s*[\mtpscale] mt2hrbdt}{}
 \fi
+% Fix \undercbrace and \overcbrace
+\def\undercbrace#1{\setbox\z@\hbox{$\displaystyle#1$}%
+ \dimen@\wd\z@
+ \pointcount@\numexpr(\dimen@-\tMTPscalesize/2)/\tMTPscalesize\relax
+ \ifnum\pointcount@<4
+  \ifdim\wd\z@<1.201\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char144}}%
+  \else\ifdim\wd\z@<1.501\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char145}}%
+  \else\ifdim\wd\z@<1.801\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char146}}%
+  \else\ifdim\wd\z@<2.101\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char147}}%
+  \else\ifdim\wd\z@<2.401\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char148}}%
+  \else\ifdim\wd\z@<2.701\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char149}}%
+  \else\ifdim\wd\z@<3.001\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char150}}%
+  \else\ifdim\wd\z@<3.301\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char151}}%
+  \else
+   \def\thebrace@{\hbox{\MTEXE@\char152}}%
+  \fi\fi\fi\fi\fi\fi\fi\fi
+ \else
+  \ifnum\pointcount@<12
+    \advance\pointcount@149
+    \def\thebrace@{\hbox{\MTEXE@\char\pointcount@}}%
+  \else
+   \ifnum\pointcount@<24
+    \advance\pointcount@132
+    \def\thebrace@{\hbox{\MTEXF@\char\pointcount@}}%
+   \else
+    \advance\pointcount@120
+    \ifnum\pointcount@>149 \pointcount@149 \fi
+    \def\thebrace@{\hbox{\MTEXG@\char\pointcount@}}%
+   \fi
+  \fi
+ \fi
+ \mathop{\vtop{\ialign{\hfil##\hfil\cr$\displaystyle#1$\crcr\noalign
+  {\vskip3pt\nointerlineskip}\thebrace@\cr\noalign{\kern3pt}}}}\limits}%
+\def\overcbrace#1{\setbox\z@\hbox{$\displaystyle#1$}%
+ \dimen@\wd\z@
+ \pointcount@\numexpr(\dimen@-\tMTPscalesize/2)/\tMTPscalesize\relax
+ \ifnum\pointcount@<4
+  \ifdim\wd\z@<1.201\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char176}}%
+  \else\ifdim\wd\z@<1.501\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char177}}%
+  \else\ifdim\wd\z@<1.801\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char178}}%
+  \else\ifdim\wd\z@<2.101\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char179}}%
+  \else\ifdim\wd\z@<2.401\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char180}}%
+  \else\ifdim\wd\z@<2.701\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char181}}%
+  \else\ifdim\wd\z@<3.001\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char182}}%
+  \else\ifdim\wd\z@<3.301\tMTPscalesize
+   \def\thebrace@{\hbox{\MTEXE@\char183}}%
+  \else
+   \def\thebrace@{\hbox{\MTEXE@\char184}}%
+  \fi\fi\fi\fi\fi\fi\fi\fi
+ \else
+  \ifnum\pointcount@<12
+    \advance\pointcount@181
+    \def\thebrace@{\hbox{\MTEXE@\char\pointcount@}}%
+  \else
+   \ifnum\pointcount@<24
+    \advance\pointcount@148
+    \def\thebrace@{\hbox{\MTEXF@\char\pointcount@}}%
+   \else
+    \advance\pointcount@136
+    \ifnum\pointcount@>165 \pointcount@165 \fi
+    \def\thebrace@{\hbox{\MTEXG@\char\pointcount@}}%
+   \fi
+  \fi
+ \fi
+ \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
+ \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
+% CTeX setup
+%   Assuming \mtpscale             = 1.10502958579881657
+%            \mtpscriptscale       = 1.03309552688947532
+%            \mtpscriptscriptscale = 1.01898220001940052
 % \defaultscriptratio       = 0.7
 % \defaultscriptscriptratio = 0.55
 \DeclareMathSizes{7.5bp}{7.5bp}{5.343pt}{5pt}
