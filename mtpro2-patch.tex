@@ -1,7 +1,7 @@
 %
 % This is file `mtpro2-patch.tex'.
 %
-% There are 7 bugs needed to be fixed by hand.
+% There are 10 bugs needed to be fixed by hand.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -26,11 +26,21 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% In `mtpro2.sty', replace the following 2 occurrences of
+%
+%   \char12
+%
+% in \EXtest@ (twice) with
+%
+%   \char28
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % In `mtpro2.sty', replace the following line
 %
 %   \left#1
 %
-% with
+% in \LEFTRIGHT with
 %
 %   \left#1%
 %
@@ -40,9 +50,29 @@
 %
 %   \kern-2\nulldelimiterspace\mskip-\thinmuskip
 %
-% with
+% in \LEFTRIGHT with
 %
 %   \kern-2\nulldelimiterspace
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following 2 occurrences of
+%
+%   \MTEXA@ d
+%
+% in \@widetilde (once) and \widetildedown (once) with
+%
+%   \MTEXA@ g
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following 2 occurrences of
+%
+%   \MTEXA@ z
+%
+% in \@widecheck (once) and \widecheckdown (once) with
+%
+%   \MTEXA@|
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -51,7 +81,7 @@
 %   \ifx\next\uprod\xlposition@10\else
 %   \ifx\next\ucoprod\xlposition@11\else
 %
-% with
+% in \XXXL@ with
 %
 %   \ifx\next\upprod\xlposition@10\else
 %   \ifx\next\upcoprod\xlposition@11\else
@@ -70,7 +100,7 @@
 %   \DeclareMathSymbol{\nsqsubseteq}    {\mathrel}{AMSa}{217}
 %   \DeclareMathSymbol{\nsqsupseteq}    {\mathrel}{AMSa}{218}
 %
-% according to `mtpro2.dtx'
+% in order according to `mtpro2.dtx'
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
