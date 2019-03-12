@@ -295,15 +295,66 @@
  \fi
  \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
  \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
-% Troubles with U+00B7 (\char183, \char'267) as CJK punctuation
+% Troubles with U+00B7 (\char'267, \char183) being CJK punctuation
 \AtBeginDocument{%
   \@ifpackageloaded{xeCJK}{%
-    \let\xeCJK@mtp@patch@overcbrace\overcbrace
-    \def\overcbrace#1{{\makexeCJKinactive
-      \xeCJK@mtp@patch@overcbrace{#1}}}%
-    \let\xeCJK@mtp@patch@widearc\widearc
-    \def\widearc#1{{\makexeCJKinactive
-      \xeCJK@mtp@patch@widearc{#1}}}%
+    \def\widearc#1{\setbox\ARCbox@\hbox{$\displaystyle{#1}$}%
+      \setbox\z@\hbox{\makexeCJKinactive\MTEXF@\char'267}%
+       \ifdim\wd\ARCbox@>\wd\z@
+        \hbox{\textfont3=\MTEXG@ $\mathaccent"03B1 {\box\ARCbox@}$}%
+       \else
+        \setbox\z@\hbox{\MTEXE@\char'326}%
+        \ifdim\wd\ARCbox@>\wd\z@
+         \hbox{\textfont3=\MTEXF@ $\mathaccent"03B1 {\box\ARCbox@}$}%
+        \else
+         \setbox\z@\hbox{\MTEXA@ \char'302}%
+         \ifdim\wd\ARCbox@>\wd\z@
+          \hbox{\textfont3=\MTEXE@ $\mathaccent"03D0 {\box\ARCbox@}$}%
+         \else
+          \hbox{\textfont3=\MTEXA@ $\mathaccent"03BF {\box\ARCbox@}$}%
+         \fi
+        \fi
+       \fi}%
+    \def\overcbrace#1{\setbox\z@\hbox{$\displaystyle#1$}%
+     \dimen@\wd\z@
+     \pointcount@\numexpr(\dimen@-\tMTPscalesize/2)/\tMTPscalesize\relax
+     \ifnum\pointcount@<4
+      \ifdim\wd\z@<1.201\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char176}}%
+      \else\ifdim\wd\z@<1.501\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char177}}%
+      \else\ifdim\wd\z@<1.801\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char178}}%
+      \else\ifdim\wd\z@<2.101\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char179}}%
+      \else\ifdim\wd\z@<2.401\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char180}}%
+      \else\ifdim\wd\z@<2.701\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char181}}%
+      \else\ifdim\wd\z@<3.001\tMTPscalesize
+       \def\thebrace@{\hbox{\MTEXE@\char182}}%
+      \else\ifdim\wd\z@<3.301\tMTPscalesize
+       \def\thebrace@{\hbox{\makexeCJKinactive\MTEXE@\char183}}%
+      \else
+       \def\thebrace@{\hbox{\MTEXE@\char184}}%
+      \fi\fi\fi\fi\fi\fi\fi\fi
+     \else
+      \ifnum\pointcount@<12
+        \advance\pointcount@181
+        \def\thebrace@{\hbox{\MTEXE@\char\pointcount@}}%
+      \else
+       \ifnum\pointcount@<24
+        \advance\pointcount@148
+        \def\thebrace@{\hbox{\MTEXF@\char\pointcount@}}%
+       \else
+        \advance\pointcount@136
+        \ifnum\pointcount@>165 \pointcount@165 \fi
+        \def\thebrace@{\hbox{\MTEXG@\char\pointcount@}}%
+       \fi
+      \fi
+     \fi
+     \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
+     \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
   }{}%
 }
 % CTeX setup
