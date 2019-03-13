@@ -1,7 +1,7 @@
 %
 % This is file `mtpro2-patch.tex'.
 %
-% There are 12 bugs needed to be fixed by hand.
+% There are 13 bugs needed to be fixed by hand.
 %
 % Warning: The \arc, \Arc and \widearc math accents are
 %          incomplete in the Complete font set!!!
@@ -17,6 +17,18 @@
 % with
 %
 %   \newcount\pointcount@
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', remove all the occurrences of
+%
+%   \let\{=\lbrace % 3 times
+%
+% and
+%
+%   \let\}=\rbrace % 3 times
+%
+% in \curlybraces, \straightbraces and \morphedbraces
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -350,8 +362,24 @@
  \fi
  \mathop{\vbox{\ialign{\hfil##\hfil\cr\noalign{\kern3\p@}\thebrace@\crcr
  \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
-% Troubles with U+00B7 (\char'267, \char183) being CJK punctuation
+% Add \textbardbl and \textbigcircle; Redeclare \textcircled
+\DeclareTextSymbolDefault{\textbardbl}{LMP2}
+\DeclareTextSymbol{\textbardbl}{LMP2}{107}
+\DeclareTextSymbol{\textbigcircle}{LMP2}{13}
+\DeclareTextCommand{\textcircled}{LMP2}[1]{\hmode@bgroup
+   \ooalign{%
+      \hfil \raise .07ex\hbox {\upshape#1}\hfil \crcr
+      \char 13 % "0D
+   }%
+ \egroup}
 \AtBeginDocument{%
+  % Fix \mathsterling and \mathunderscore for OpenType text fonts
+  \@ifpackageloaded{fontspec}{%
+    \DeclareMathSymbol{\mathsterling}{\mathord}{operators}{"A3}%
+    \let\mathunderscore\@undefined
+    \DeclareMathSymbol{\mathunderscore}{\mathord}{operators}{95}%
+  }{}%
+  % Troubles with U+00B7 (\char'267, \char183) being CJK punctuation
   \@ifpackageloaded{xeCJK}{%
     \def\widearc#1{\setbox\ARCbox@\hbox{$\displaystyle{#1}$}%
       \setbox\z@\hbox{\makexeCJKinactive\MTEXF@\char'267}%
