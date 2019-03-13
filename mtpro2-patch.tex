@@ -1,6 +1,15 @@
 %
 % This is file `mtpro2-patch.tex'.
 %
+% The standard usage is:
+%
+%   \usepackage[<options>]{mtpro2}
+%   \newcommand*\mtpscale{1.1}
+%   % If not specified, then \mtpscale will be set to 1.
+%   % If not specified, then each of \mtpscriptscale and
+%   % \mtpscriptscriptscale will be set to \mtpscale.
+%   \input{mtpro2-patch}
+%
 % There are 13 bugs needed to be fixed by hand.
 %
 % Warning: The \arc, \Arc and \widearc math accents are
@@ -158,10 +167,10 @@
   \def\mtpscale{1}
 \fi
 \ifx\mtpscriptscale\@undefined
-  \def\mtpscriptscale{1}
+  \let\mtpscriptscale\mtpscale
 \fi
 \ifx\mtpscriptscriptscale\@undefined
-  \def\mtpscriptscriptscale{1}
+  \let\mtpscriptscriptscale\mtpscale
 \fi
 % MathTime Professional 2 Lite
 \DeclareFontShape{LMP1}{mtt}{m}{it}{%
