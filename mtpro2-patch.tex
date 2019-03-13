@@ -1,7 +1,7 @@
 %
 % This is file `mtpro2-patch.tex'.
 %
-% There are 11 bugs needed to be fixed by hand.
+% There are 12 bugs needed to be fixed by hand.
 %
 % Warning: The \arc, \Arc and \widearc math accents are
 %          incomplete in the Complete font set!!!
@@ -88,6 +88,16 @@
 % in \widearc with
 %
 %   \mathaccent"03CF
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% In `mtpro2.sty', replace the following line
+%
+%   \mkern-1mu\kern-.13\dimen@\mkern\LEFTROOT@ mu\box\z@\kern-\wd\rootbox
+%
+% in \R@@T with
+%
+%   \mkern-1mu\kern-.13\dimen@\mkern\LEFTROOT@ mu\box\z@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
