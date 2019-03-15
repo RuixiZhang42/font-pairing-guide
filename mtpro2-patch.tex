@@ -4,11 +4,14 @@
 % The standard usage is:
 %
 %   \usepackage[<options>]{mtpro2}
-%   \newcommand*\mtpscale{1.1}
-%   % If not specified, then \mtpscale will be set to 1.
-%   % If not specified, then each of \mtpscriptscale and
-%   % \mtpscriptscriptscale will be set to \mtpscale.
+%   \newcommand*\mtpscale{0.908}
+%   \newcommand*\mtpscriptscale{0.845}
+%   \newcommand*\mtpscriptscriptscale{0.792}
 %   \input{mtpro2-patch}
+%   % Note:
+%   %   If not specified, then \mtpscale will be set to 1.
+%   %   If not specified, then each of \mtpscriptscale and
+%   % \mtpscriptscriptscale will be set to \mtpscale.
 %
 % There are 13 bugs needed to be fixed by hand.
 %
@@ -387,6 +390,16 @@
     \DeclareMathSymbol{\mathsterling}{\mathord}{operators}{"A3}%
     \let\mathunderscore\@undefined
     \DeclareMathSymbol{\mathunderscore}{\mathord}{operators}{95}%
+    % These should be fixed by fontspec, I think...
+    \DeclareSymbolFont{operators}{\encodingdefault}{\rmdefault}{\mddefault}{\updefault}%
+    \SetSymbolFont{operators}{bold}{\encodingdefault}{\rmdefault}{\bfdefault}{\updefault}%
+    \DeclareMathAlphabet{\mathbf}{\encodingdefault}{\rmdefault}{\bfdefault}{\updefault}%
+    \DeclareMathAlphabet{\mathit}{\encodingdefault}{\rmdefault}{\mddefault}{\itdefault}%
+    \DeclareMathAlphabet{\mathsf}{\encodingdefault}{\sfdefault}{\mddefault}{\updefault}%
+    \DeclareMathAlphabet{\mathtt}{\encodingdefault}{\ttdefault}{\mddefault}{\updefault}%
+    \SetMathAlphabet{\mathit}{bold}{\encodingdefault}{\rmdefault}{\bfdefault}{\itdefault}%
+    \SetMathAlphabet{\mathsf}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{\updefault}%
+    \SetMathAlphabet{\mathtt}{bold}{\encodingdefault}{\ttdefault}{\bfdefault}{\updefault}%
   }{}%
   % Troubles with U+00B7 (\char'267, \char183) being CJK punctuation
   \@ifpackageloaded{xeCJK}{%
