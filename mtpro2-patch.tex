@@ -65,6 +65,26 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% In `mtpro2.sty', replace the definition of \specdelim@ with
+%
+%   \def\specdelim@#1{\ifx#1(\specdelim@true
+%    \else\ifx#1)\specdelim@true
+%    \else\ifx#1<\specdelim@true
+%    \else\ifx#1\langle\specdelim@true
+%    \else\ifx#1>\specdelim@true
+%    \else\ifx#1\rangle\specdelim@true
+%    \else\ifx#1/\specdelim@true
+%    \else\ifx#1\backslash\specdelim@true
+%    \else\ifx#1\{\specdelim@true
+%    \else\ifx#1\}\specdelim@true
+%    \else\ifx#1\lbrace\specdelim@true
+%    \else\ifx#1\rbrace\specdelim@true
+%    \else\ifx#1\lcbrace\specdelim@true
+%    \else\ifx#1\rcbrace\specdelim@true
+%    \else\specdelim@false\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % In `mtpro2.sty', replace the following line
 %
 %   \left#1
