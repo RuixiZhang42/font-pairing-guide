@@ -457,6 +457,37 @@
   \fi
   \@width\z@\relax
 }
+\newcommand*\hcontentarc[1]{%
+  \vrule\@width
+  \ifcase#1 0.512em%
+  \or       0.743em%
+  \or       1.201em%
+  \or       1.801em%
+  \or       2.401em%
+  \or       3.001em%
+  \or       3.601em%
+  \or       4.201em%
+  \or       4.801em%
+  \or       5.401em%
+  \or       6.001em%
+  \or       6.601em%
+  \or       7.201em%
+  \or       8.401em%
+  \or       9.601em%
+  \or      10.801em%
+  \or      12.001em%
+  \or      13.201em%
+  \or      14.401em%
+  \or      16.801em%
+  \or      19.201em%
+  \or      21.601em%
+  \or      24.001em%
+  \or      26.401em%
+  \or      28.801em%
+  \else         \z@
+  \fi
+  \@height\z@\relax
+}
 \makeatother
 \parindent  0pt\relax
 \thinmuskip 0mu\relax
@@ -678,7 +709,7 @@
 \LEFTRIGHT\zerodel){\vcontent{ 5}}$\hss}\par
 \lineskip-63bp\relax
 \hbox to\textwidth{\hss$%
-\LEFTRIGHT\{\zerodel{\vcontent{23}}\mkern 2.983mu% EXG
+\LEFTRIGHT\{\zerodel{\vcontent{23}}\mkern 2.983mu%  EXG
 \LEFTRIGHT\{\zerodel{\vcontent{22}}\mkern 4.279mu%
 \LEFTRIGHT\{\zerodel{\vcontent{21}}\mkern 5.575mu%
 \LEFTRIGHT\{\zerodel{\vcontent{20}}\mkern 6.727mu%
@@ -708,7 +739,7 @@
 \LEFTRIGHT\zerodel\}{\vcontent{14}}\mathneg{3.548}%
 \LEFTRIGHT\zerodel\}{\vcontent{15}}\mathneg{4.484}%
 \LEFTRIGHT\zerodel\}{\vcontent{16}}\mathneg{5.420}%
-\LEFTRIGHT\zerodel\}{\vcontent{17}}\mkern 9.031mu% EXG
+\LEFTRIGHT\zerodel\}{\vcontent{17}}\mkern 9.031mu%  EXG
 \LEFTRIGHT\zerodel\}{\vcontent{18}}\mkern 7.879mu%
 \LEFTRIGHT\zerodel\}{\vcontent{19}}\mkern 6.727mu%
 \LEFTRIGHT\zerodel\}{\vcontent{20}}\mkern 5.575mu%
@@ -843,4 +874,30 @@
 \xloperator\barint     \par\vfill
 \xloperator\slashint
 \newpage
+\section{The arc accents}
+$\arc    {\hcontentarc{ 0}}$\par % EXA
+$\Arc    {\hcontentarc{ 1}}$\par
+$\widearc{\hcontentarc{ 2}}$\par
+$\widearc{\hcontentarc{ 3}}$\par
+$\widearc{\hcontentarc{ 4}}$\par
+$\widearc{\hcontentarc{ 5}}$\par % EXE
+$\widearc{\hcontentarc{ 6}}$\par
+$\widearc{\hcontentarc{ 7}}$\par
+$\widearc{\hcontentarc{ 8}}$\par
+$\widearc{\hcontentarc{ 9}}$\par
+$\widearc{\hcontentarc{10}}$\par
+$\widearc{\hcontentarc{11}}$\par
+$\widearc{\hcontentarc{12}}$\par % EXF
+$\widearc{\hcontentarc{13}}$\par
+$\widearc{\hcontentarc{14}}$\par
+$\widearc{\hcontentarc{15}}$\par
+$\widearc{\hcontentarc{16}}$\par
+$\widearc{\hcontentarc{17}}$\par
+$\widearc{\hcontentarc{18}}$\par % EXG
+$\widearc{\hcontentarc{19}}$\par
+$\widearc{\hcontentarc{20}}$\par
+$\widearc{\hcontentarc{21}}$\par
+$\widearc{\hcontentarc{22}}$\par
+$\widearc{\hcontentarc{23}}$\par
+$\widearc{\hcontentarc{24}}$
 \end{document}
