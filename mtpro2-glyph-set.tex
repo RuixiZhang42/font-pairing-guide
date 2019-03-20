@@ -40,6 +40,9 @@
   slantedGreek,
   mtpccal,mtpscr,mtpfrak,mtphrb
 ]{mtpro2}
+\newcommand*\mtpscale{1.10502958579881657}
+\newcommand*\mtpscriptscale{1.03309552688947532}
+\newcommand*\mtpscriptscriptscale{1.01898220001940052}
 \input{mtpro2-patch}
 \DeclareMathSymbol{\upGamma}{\mathalpha}{letters}{"80}
 \DeclareMathSymbol{\upDelta}{\mathalpha}{letters}{"81}
@@ -640,14 +643,14 @@
 \LEFTRIGHT(\zerodel{\vcontent{ 6}}\mathneg{ 8.074}%
 \LEFTRIGHT(\zerodel{\vcontent{ 7}}\mathneg{ 8.866}%
 \LEFTRIGHT(\zerodel{\vcontent{ 8}}\mathneg{ 9.694}%
-\LEFTRIGHT(\zerodel{\vcontent{ 9}}\mathneg{ 4.448}%
-%\LEFTRIGHT(\zerodel{\vcontent{10}}%                 ?
+\LEFTRIGHT(\zerodel{\vcontent{ 9}}\mathneg{11.386}%
+\LEFTRIGHT(\zerodel{\vcontent{10}}\mathneg{12.214}%
 \LEFTRIGHT(\zerodel{\vcontent{11}}\mathneg{ 6.284}% EXF
 \LEFTRIGHT(\zerodel{\vcontent{12}}\mathneg{ 7.940}%
 \LEFTRIGHT(\zerodel{\vcontent{13}}\mathneg{ 9.668}%
 \LEFTRIGHT(\zerodel{\vcontent{14}}\mathneg{11.252}%
-\LEFTRIGHT(\zerodel{\vcontent{15}}\mkern1.039mu%
-%\LEFTRIGHT(\zerodel{\vcontent{16}}%                 ?
+\LEFTRIGHT(\zerodel{\vcontent{15}}\mathneg{12.836}%
+\LEFTRIGHT(\zerodel{\vcontent{16}}\mathneg{14.492}%
 \LEFTRIGHT(\zerodel{\vcontent{17}}\mathneg{ 3.929}% EXG
 \LEFTRIGHT(\zerodel{\vcontent{18}}\mathneg{ 8.969}%
 \LEFTRIGHT(\zerodel{\vcontent{19}}\mathneg{13.865}%
@@ -660,36 +663,36 @@
 \LEFTRIGHT\zerodel){\vcontent{20}}\mathneg{13.865}%
 \LEFTRIGHT\zerodel){\vcontent{19}}\mathneg{ 8.969}%
 \LEFTRIGHT\zerodel){\vcontent{18}}\mathneg{ 3.929}%
-\LEFTRIGHT\zerodel){\vcontent{17}}\mkern1.039mu%
-%\LEFTRIGHT\zerodel){\vcontent{16}}%                 ?
-\LEFTRIGHT\zerodel){\vcontent{15}}\mathneg{11.252}% EXF
+\LEFTRIGHT\zerodel){\vcontent{17}}\mathneg{14.492}%
+\LEFTRIGHT\zerodel){\vcontent{16}}\mathneg{12.836}% EXF
+\LEFTRIGHT\zerodel){\vcontent{15}}\mathneg{11.252}%
 \LEFTRIGHT\zerodel){\vcontent{14}}\mathneg{ 9.668}%
 \LEFTRIGHT\zerodel){\vcontent{13}}\mathneg{ 7.940}%
 \LEFTRIGHT\zerodel){\vcontent{12}}\mathneg{ 6.284}%
-\LEFTRIGHT\zerodel){\vcontent{11}}\mathneg{ 4.448}%
-%\LEFTRIGHT\zerodel){\vcontent{10}}%                 ?
-\LEFTRIGHT\zerodel){\vcontent{ 9}}\mathneg{ 9.694}% EXE
+\LEFTRIGHT\zerodel){\vcontent{11}}\mathneg{12.214}%
+\LEFTRIGHT\zerodel){\vcontent{10}}\mathneg{11.386}% EXE
+\LEFTRIGHT\zerodel){\vcontent{ 9}}\mathneg{ 9.694}%
 \LEFTRIGHT\zerodel){\vcontent{ 8}}\mathneg{ 8.866}%
 \LEFTRIGHT\zerodel){\vcontent{ 7}}\mathneg{ 8.074}%
 \LEFTRIGHT\zerodel){\vcontent{ 6}}\mathneg{ 7.246}%
 \LEFTRIGHT\zerodel){\vcontent{ 5}}$\hss}\par
 \lineskip-63bp\relax
 \hbox to\textwidth{\hss$%
-\LEFTRIGHT\{\zerodel{\vcontent{23}}\mkern 2.983mu%  EXG
+\LEFTRIGHT\{\zerodel{\vcontent{23}}\mkern 2.983mu% EXG
 \LEFTRIGHT\{\zerodel{\vcontent{22}}\mkern 4.279mu%
 \LEFTRIGHT\{\zerodel{\vcontent{21}}\mkern 5.575mu%
 \LEFTRIGHT\{\zerodel{\vcontent{20}}\mkern 6.727mu%
 \LEFTRIGHT\{\zerodel{\vcontent{19}}\mkern 7.879mu%
 \LEFTRIGHT\{\zerodel{\vcontent{18}}\mkern 9.031mu%
-\LEFTRIGHT\{\zerodel{\vcontent{17}}\mkern10.831mu%
-%\LEFTRIGHT\{\zerodel{\vcontent{16}}%                ?
-\LEFTRIGHT\{\zerodel{\vcontent{15}}\mathneg{3.548}% EXF
+\LEFTRIGHT\{\zerodel{\vcontent{17}}\mathneg{5.420}%
+\LEFTRIGHT\{\zerodel{\vcontent{16}}\mathneg{4.484}% EXF
+\LEFTRIGHT\{\zerodel{\vcontent{15}}\mathneg{3.548}%
 \LEFTRIGHT\{\zerodel{\vcontent{14}}\mathneg{2.612}%
 \LEFTRIGHT\{\zerodel{\vcontent{13}}\mathneg{1.892}%
 \LEFTRIGHT\{\zerodel{\vcontent{12}}\mathneg{0.956}%
-\LEFTRIGHT\{\zerodel{\vcontent{11}}\mkern 0.520mu%
-%\LEFTRIGHT\{\zerodel{\vcontent{10}}%                ?
-\LEFTRIGHT\{\zerodel{\vcontent{ 9}}\mathneg{6.130}% EXE
+\LEFTRIGHT\{\zerodel{\vcontent{11}}\mathneg{7.894}%
+\LEFTRIGHT\{\zerodel{\vcontent{10}}\mathneg{6.994}% EXE
+\LEFTRIGHT\{\zerodel{\vcontent{ 9}}\mathneg{6.130}%
 \LEFTRIGHT\{\zerodel{\vcontent{ 8}}\mathneg{5.302}%
 \LEFTRIGHT\{\zerodel{\vcontent{ 7}}\mathneg{4.510}%
 \LEFTRIGHT\{\zerodel{\vcontent{ 6}}\mathneg{3.754}%
@@ -697,15 +700,15 @@
 \LEFTRIGHT\zerodel\}{\vcontent{ 6}}\mathneg{4.510}%
 \LEFTRIGHT\zerodel\}{\vcontent{ 7}}\mathneg{5.302}%
 \LEFTRIGHT\zerodel\}{\vcontent{ 8}}\mathneg{6.130}%
-\LEFTRIGHT\zerodel\}{\vcontent{ 9}}\mkern 0.520mu%
-%\LEFTRIGHT\zerodel\}{\vcontent{10}}%                ?
+\LEFTRIGHT\zerodel\}{\vcontent{ 9}}\mathneg{6.994}%
+\LEFTRIGHT\zerodel\}{\vcontent{10}}\mathneg{7.894}%
 \LEFTRIGHT\zerodel\}{\vcontent{11}}\mathneg{0.956}% EXF
 \LEFTRIGHT\zerodel\}{\vcontent{12}}\mathneg{1.892}%
 \LEFTRIGHT\zerodel\}{\vcontent{13}}\mathneg{2.612}%
 \LEFTRIGHT\zerodel\}{\vcontent{14}}\mathneg{3.548}%
-\LEFTRIGHT\zerodel\}{\vcontent{15}}\mkern10.831mu%
-%\LEFTRIGHT\zerodel\}{\vcontent{16}}%                ?
-\LEFTRIGHT\zerodel\}{\vcontent{17}}\mkern 9.031mu%  EXG
+\LEFTRIGHT\zerodel\}{\vcontent{15}}\mathneg{4.484}%
+\LEFTRIGHT\zerodel\}{\vcontent{16}}\mathneg{5.420}%
+\LEFTRIGHT\zerodel\}{\vcontent{17}}\mkern 9.031mu% EXG
 \LEFTRIGHT\zerodel\}{\vcontent{18}}\mkern 7.879mu%
 \LEFTRIGHT\zerodel\}{\vcontent{19}}\mkern 6.727mu%
 \LEFTRIGHT\zerodel\}{\vcontent{20}}\mkern 5.575mu%
@@ -717,14 +720,14 @@
 \LEFTRIGHT<\zerodel{\vcontent{ 6}}\mathneg{ 7.138}%
 \LEFTRIGHT<\zerodel{\vcontent{ 7}}\mathneg{ 8.938}%
 \LEFTRIGHT<\zerodel{\vcontent{ 8}}\mathneg{10.702}%
-\LEFTRIGHT<\zerodel{\vcontent{ 9}}\mathneg{ 6.284}%
-%\LEFTRIGHT<\zerodel{\vcontent{10}}%                 ?
+\LEFTRIGHT<\zerodel{\vcontent{ 9}}\mathneg{12.466}%
+\LEFTRIGHT<\zerodel{\vcontent{10}}\mathneg{14.230}%
 \LEFTRIGHT<\zerodel{\vcontent{11}}\mathneg{ 9.524}% EXF
 \LEFTRIGHT<\zerodel{\vcontent{12}}\mathneg{12.764}%
 \LEFTRIGHT<\zerodel{\vcontent{13}}\mathneg{16.076}%
 \LEFTRIGHT<\zerodel{\vcontent{14}}\mathneg{19.316}%
-\LEFTRIGHT<\zerodel{\vcontent{15}}\mathneg{ 9.977}%
-%\LEFTRIGHT<\zerodel{\vcontent{16}}%                 ?
+\LEFTRIGHT<\zerodel{\vcontent{15}}\mathneg{22.556}%
+\LEFTRIGHT<\zerodel{\vcontent{16}}\mathneg{25.868}%
 \LEFTRIGHT<\zerodel{\vcontent{17}}\mathneg{16.457}% EXG
 \LEFTRIGHT<\zerodel{\vcontent{18}}\mathneg{22.937}%
 \LEFTRIGHT<\zerodel{\vcontent{19}}\mathneg{29.561}%
@@ -737,15 +740,15 @@
 \LEFTRIGHT\zerodel>{\vcontent{20}}\mathneg{29.561}%
 \LEFTRIGHT\zerodel>{\vcontent{19}}\mathneg{22.937}%
 \LEFTRIGHT\zerodel>{\vcontent{18}}\mathneg{16.457}%
-\LEFTRIGHT\zerodel>{\vcontent{17}}\mathneg{ 9.977}%
-%\LEFTRIGHT\zerodel>{\vcontent{16}}%                 ?
-\LEFTRIGHT\zerodel>{\vcontent{15}}\mathneg{19.316}% EXF
+\LEFTRIGHT\zerodel>{\vcontent{17}}\mathneg{25.868}%
+\LEFTRIGHT\zerodel>{\vcontent{16}}\mathneg{22.556}% EXF
+\LEFTRIGHT\zerodel>{\vcontent{15}}\mathneg{19.316}%
 \LEFTRIGHT\zerodel>{\vcontent{14}}\mathneg{16.076}%
 \LEFTRIGHT\zerodel>{\vcontent{13}}\mathneg{12.764}%
 \LEFTRIGHT\zerodel>{\vcontent{12}}\mathneg{ 9.524}%
-\LEFTRIGHT\zerodel>{\vcontent{11}}\mathneg{ 6.284}%
-%\LEFTRIGHT\zerodel>{\vcontent{10}}%                 ?
-\LEFTRIGHT\zerodel>{\vcontent{ 9}}\mathneg{10.702}% EXE
+\LEFTRIGHT\zerodel>{\vcontent{11}}\mathneg{14.230}%
+\LEFTRIGHT\zerodel>{\vcontent{10}}\mathneg{12.466}% EXE
+\LEFTRIGHT\zerodel>{\vcontent{ 9}}\mathneg{10.702}%
 \LEFTRIGHT\zerodel>{\vcontent{ 8}}\mathneg{ 8.938}%
 \LEFTRIGHT\zerodel>{\vcontent{ 7}}\mathneg{ 7.138}%
 \LEFTRIGHT\zerodel>{\vcontent{ 6}}\mathneg{ 5.374}%
@@ -757,36 +760,36 @@
 \LEFTRIGHT/\zerodel         {\vcontent{20}}\mathneg{101.705}%
 \LEFTRIGHT/\zerodel         {\vcontent{19}}\mathneg{ 85.721}%
 \LEFTRIGHT/\zerodel         {\vcontent{18}}\mathneg{ 69.737}%
-\LEFTRIGHT/\zerodel         {\vcontent{17}}\mathneg{ 53.753}%
-%\LEFTRIGHT/\zerodel         {\vcontent{16}}%                  ?
-\LEFTRIGHT/\zerodel         {\vcontent{15}}\mathneg{ 61.292}% EXF
+\LEFTRIGHT/\zerodel         {\vcontent{17}}\mathneg{ 77.276}%
+\LEFTRIGHT/\zerodel         {\vcontent{16}}\mathneg{ 69.284}% EXF
+\LEFTRIGHT/\zerodel         {\vcontent{15}}\mathneg{ 61.292}%
 \LEFTRIGHT/\zerodel         {\vcontent{14}}\mathneg{ 53.300}%
 \LEFTRIGHT/\zerodel         {\vcontent{13}}\mathneg{ 45.308}%
 \LEFTRIGHT/\zerodel         {\vcontent{12}}\mathneg{ 36.596}%
-\LEFTRIGHT/\zerodel         {\vcontent{11}}\mathneg{ 29.288}%
-%\LEFTRIGHT/\zerodel         {\vcontent{10}}%                  ?
-\LEFTRIGHT/\zerodel         {\vcontent{ 9}}\mathneg{ 32.878}% EXE
+\LEFTRIGHT/\zerodel         {\vcontent{11}}\mathneg{ 41.086}%
+\LEFTRIGHT/\zerodel         {\vcontent{10}}\mathneg{ 37.054}% EXE
+\LEFTRIGHT/\zerodel         {\vcontent{ 9}}\mathneg{ 32.878}%
 \LEFTRIGHT/\zerodel         {\vcontent{ 8}}\mathneg{ 28.774}%
 \LEFTRIGHT/\zerodel         {\vcontent{ 7}}\mathneg{ 24.994}%
 \LEFTRIGHT/\zerodel         {\vcontent{ 6}}\mathneg{ 20.494}%
-\LEFTRIGHT/\backslash       {\vcontent{ 5}}\mathneg{ 20.494}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{ 6}}\mathneg{ 24.994}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{ 7}}\mathneg{ 28.774}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{ 8}}\mathneg{ 32.878}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{ 9}}\mathneg{ 29.288}%
-%\LEFTRIGHT\zerodel\backslash{\vcontent{10}}%                  ?
-\LEFTRIGHT\zerodel\backslash{\vcontent{11}}\mathneg{ 36.596}% EXF
-\LEFTRIGHT\zerodel\backslash{\vcontent{12}}\mathneg{ 45.308}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{13}}\mathneg{ 53.300}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{14}}\mathneg{ 61.292}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{15}}\mathneg{ 53.753}%
-%\LEFTRIGHT\zerodel\backslash{\vcontent{16}}%                  ?
-\LEFTRIGHT\zerodel\backslash{\vcontent{17}}\mathneg{ 69.737}% EXG
-\LEFTRIGHT\zerodel\backslash{\vcontent{18}}\mathneg{ 85.721}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{19}}\mathneg{101.705}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{20}}\mathneg{117.689}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{21}}\mathneg{133.673}%
-\LEFTRIGHT\zerodel\backslash{\vcontent{22}}\mathneg{149.657}%
+\LEFTRIGHT/\backslash       {\vcontent{ 5}}\mathneg{ 24.377}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{ 6}}\mathneg{ 28.877}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{ 7}}\mathneg{ 32.657}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{ 8}}\mathneg{ 36.761}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{ 9}}\mathneg{ 40.937}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{10}}\mathneg{ 44.969}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{11}}\mathneg{ 44.362}% EXF
+\LEFTRIGHT\zerodel\backslash{\vcontent{12}}\mathneg{ 53.074}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{13}}\mathneg{ 61.066}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{14}}\mathneg{ 69.058}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{15}}\mathneg{ 77.050}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{16}}\mathneg{ 85.042}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{17}}\mathneg{ 85.268}% EXG
+\LEFTRIGHT\zerodel\backslash{\vcontent{18}}\mathneg{101.252}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{19}}\mathneg{117.236}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{20}}\mathneg{133.220}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{21}}\mathneg{149.204}%
+\LEFTRIGHT\zerodel\backslash{\vcontent{22}}\mathneg{165.188}%
 \LEFTRIGHT\zerodel\backslash{\vcontent{23}}$\hss}\par
 \hbox to\textwidth{\hss$%
 \vcenter{\SQRT{\vcontent{ 4}}}\mathneg{ 7.760}% EXE
@@ -839,4 +842,5 @@
 \xloperator\cwint      \par\vfill
 \xloperator\barint     \par\vfill
 \xloperator\slashint
+\newpage
 \end{document}
