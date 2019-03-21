@@ -424,6 +424,81 @@
   \hbox to  7387577sp{\hss$\XXL #1$\hss}%
   \hbox to 14775155sp{\hss$\XXXL#1$\hss}%
 }
+\newcommand\testextbrace[1]{%
+  \newpage
+  $#1{\hcontent{ 1}}$\par % EXE
+  $#1{\hcontent{ 2}}$\par
+  $#1{\hcontent{ 3}}$\par
+  $#1{\hcontent{ 4}}$\par
+  $#1{\hcontent{ 5}}$\par
+  $#1{\hcontent{ 6}}$\par
+  $#1{\hcontent{ 7}}$\par
+  $#1{\hcontent{ 8}}$\par
+  $#1{\hcontent{ 9}}$\par
+  $#1{\hcontent{10}}$\par
+  $#1{\hcontent{11}}$\par
+  $#1{\hcontent{12}}$\par
+  $#1{\hcontent{13}}$\par
+  $#1{\hcontent{14}}$\par
+  $#1{\hcontent{15}}$\par
+  $#1{\hcontent{16}}$\par
+  $#1{\hcontent{17}}$\par
+  $#1{\hcontent{18}}$\par % EXF
+  $#1{\hcontent{19}}$\par
+  $#1{\hcontent{20}}$\par
+  $#1{\hcontent{21}}$\par
+  $#1{\hcontent{22}}$\par
+  $#1{\hcontent{23}}$\par
+  $#1{\hcontent{24}}$\par
+  $#1{\hcontent{25}}$\par
+  $#1{\hcontent{26}}$\par
+  $#1{\hcontent{27}}$\par
+  $#1{\hcontent{28}}$\par
+  $#1{\hcontent{29}}$\par
+  $#1{\hcontent{30}}$\par % EXG
+  $#1{\hcontent{31}}$\par
+  $#1{\hcontent{32}}$\par
+  $#1{\hcontent{33}}$\par
+  $#1{\hcontent{34}}$\par
+  $#1{\hcontent{35}}$%
+}
+\newcommand\testextaccent[1]{%
+  \newpage
+  $#1{\hcontent{37}}$\par % EXA
+  $#1{\hcontent{38}}$\par
+  $#1{\hcontent{39}}$\par % EXE
+  $#1{\hcontent{40}}$\par
+  $#1{\hcontent{41}}$\par
+  $#1{\hcontent{42}}$\par
+  $#1{\hcontent{43}}$\par
+  $#1{\hcontent{44}}$\par
+  $#1{\hcontent{45}}$\par
+  $#1{\hcontent{46}}$\par
+  $#1{\hcontent{47}}$\par
+  $#1{\hcontent{48}}$\par % EXF
+  $#1{\hcontent{49}}$\par
+  $#1{\hcontent{50}}$\par
+  $#1{\hcontent{51}}$\par
+  $#1{\hcontent{52}}$\par
+  $#1{\hcontent{53}}$\par
+  $#1{\hcontent{54}}$\par
+  $#1{\hcontent{55}}$\par
+  $#1{\hcontent{56}}$\par
+  $#1{\hcontent{57}}$\par
+  $#1{\hcontent{58}}$\par
+  $#1{\hcontent{59}}$\par % EXG
+  $#1{\hcontent{60}}$\par
+  $#1{\hcontent{61}}$\par
+  $#1{\hcontent{62}}$\par
+  $#1{\hcontent{63}}$\par
+  $#1{\hcontent{64}}$\par
+  $#1{\hcontent{65}}$\par
+  $#1{\hcontent{66}}$\par
+  $#1{\hcontent{67}}$\par
+  $#1{\hcontent{68}}$\par
+  $#1{\hcontent{69}}$\par
+  $#1{\hcontent{70}}$%
+}
 \makeatletter
 \newcommand*\vast{\bBigg@{3.10}}
 \newcommand*\Vast{\bBigg@{3.72}}
@@ -456,6 +531,83 @@
   \else       \z@
   \fi
   \@width\z@\relax
+}
+\newcommand*\hcontent[1]{%
+  \vrule\@width
+  \ifcase#1 1.0em% \undercbrace and \overcbrace
+  \or       1.2em%
+  \or       1.5em%
+  \or       1.8em%
+  \or       2.1em%
+  \or       2.4em%
+  \or       2.7em%
+  \or       3.0em%
+  \or       3.3em%
+  \or       3.6em%
+  \or       4.6em%
+  \or       5.6em%
+  \or       6.6em%
+  \or       7.6em%
+  \or       8.6em%
+  \or       9.6em%
+  \or      10.6em%
+  \or      11.6em%
+  \or      12.6em%
+  \or      13.6em%
+  \or      14.6em%
+  \or      15.6em%
+  \or      16.6em%
+  \or      17.6em%
+  \or      18.6em%
+  \or      19.6em%
+  \or      20.6em%
+  \or      21.6em%
+  \or      22.6em%
+  \or      23.6em%
+  \or      24.6em%
+  \or      25.6em%
+  \or      26.6em%
+  \or      27.6em%
+  \or      28.6em%
+  \or      29.6em%
+  \or       0.512em% \widehat, \widetilde and \widecheck
+  \or       0.743em%
+  \or       1.076em%
+  \or       1.409em%
+  \or       2.073em%
+  \or       2.737em%
+  \or       3.401em%
+  \or       4.065em%
+  \or       4.729em%
+  \or       5.393em%
+  \or       6.057em%
+  \or       6.721em%
+  \or       7.385em%
+  \or       8.049em%
+  \or       8.713em%
+  \or       9.377em%
+  \or      10.041em%
+  \or      10.705em%
+  \or      11.369em%
+  \or      12.033em%
+  \or      12.697em%
+  \or      13.361em%
+  \or      14.025em%
+  \or      14.689em%
+  \or      16.017em%
+  \or      17.345em%
+  \or      18.673em%
+  \or      20.001em%
+  \or      21.329em%
+  \or      22.657em%
+  \or      23.985em%
+  \or      25.313em%
+  \or      26.641em%
+  \or      27.969em%
+  \or      29.297em%
+  \else         \z@
+  \fi
+  \@height\z@\relax
 }
 \newcommand*\hcontentarc[1]{%
   \vrule\@width
@@ -872,7 +1024,13 @@
 \xloperator\awoint     \par\vfill
 \xloperator\cwint      \par\vfill
 \xloperator\barint     \par\vfill
-\xloperator\slashint
+\xloperator\slashint   \par
+\linespread{1.25}\selectfont
+\testextbrace\undercbrace
+\testextbrace\overcbrace
+\testextaccent\widehat
+\testextaccent\widetilde
+\testextaccent\widecheck
 \newpage
 \section{The arc accents}
 $\arc    {\hcontentarc{ 0}}$\par % EXA
