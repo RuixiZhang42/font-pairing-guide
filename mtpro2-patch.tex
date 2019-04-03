@@ -406,15 +406,8 @@
  \egroup}
 \AtBeginDocument{%
   % Fix \big@size calculation
-  \newcommand*\big@to@normal@ratio{1.28893662728249194}% 1200/931, bm: 1200/914?
-  \@ifpackageloaded{amsmath}{%
-    \addto@hook\every@math@size{%
-      \global\big@size \big@to@normal@ratio\ht\Mathstrutbox@
-      \global\advance\big@size \big@to@normal@ratio\dp\Mathstrutbox@ }%
-  }{%
-    \addto@hook\every@math@size{\setbox\z@\vbox{\hbox{$($}\kern\z@}%
-      \global\big@size \big@to@normal@ratio\ht\z@}%
-  }%
+  \addto@hook\every@math@size{%
+    \global\big@size1.2\fontdimen6\textfont\thr@@\relax}%
   % Fix \mathsterling and \mathunderscore for OpenType text fonts
   \@ifpackageloaded{fontspec}{%
     \DeclareMathSymbol{\mathsterling}{\mathord}{operators}{"A3}%
