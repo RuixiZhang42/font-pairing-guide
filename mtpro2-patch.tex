@@ -407,7 +407,7 @@
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
-    \global\big@size1.2\fontdimen6\textfont\thr@@\relax}%
+    \global\big@size\dimexpr\fontdimen6\textfont\thr@@*6/5\relax}%
   % Fix \mathsterling and \mathunderscore for OpenType text fonts
   \@ifpackageloaded{fontspec}{%
     \DeclareMathSymbol{\mathsterling}{\mathord}{operators}{"A3}%
