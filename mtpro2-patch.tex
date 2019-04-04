@@ -313,6 +313,10 @@
   <7-9> s*[\mtpscriptscale] mt2hrbds
   <9-> s*[\mtpscale] mt2hrbdt}{}
 \fi
+% \bBiggg
+\newcommand*\mtp@bBigg@[3]{\leavevmode@ifvmode
+  {\hbox{\textfont\thr@@=#1$\left#3\vcenter to#2\big@size{}\right.\n@space$}}}
+\def\Big#1{\leavevmode@ifvmod
 % Fix \undercbrace and \overcbrace
 \def\undercbrace#1{\setbox\z@\hbox{$\displaystyle#1$}%
  \dimen@\wd\z@
