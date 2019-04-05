@@ -313,10 +313,30 @@
   <7-9> s*[\mtpscriptscale] mt2hrbds
   <9-> s*[\mtpscale] mt2hrbdt}{}
 \fi
-% \bBiggg
-\newcommand*\mtp@bBigg@[3]{\leavevmode@ifvmode
-  {\hbox{\textfont\thr@@=#1$\left#3\vcenter to#2\big@size{}\right.\n@space$}}}
-\def\Big#1{\leavevmode@ifvmod
+% \bBiggg support
+% Example definitions:
+%   \mtp@bBigg@\MTEXE@\thr@@, \mtp@bBigg@\MTEXE@{3.5}, ..., \mtp@bBigg@\MTEXE@{5.5};
+%   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
+%   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
+\newcommand*\mtp@bBigg@[3]{%
+  \leavevmode@ifvmode
+  {\hbox{%
+    \specdelim@#3%
+    \ifspecdelim@
+      \textfont\thr@@=#1%
+      \ifnum
+        \ifx#3\{ 1\else\ifx#3\} 1\else
+        \ifx#3\lbrace 1\else\ifx#3\rbrace 1\else 0\fi\fi\fi\fi
+          =1 %
+        \def\@tempa{\delimiter"4266308 }%
+        \ifx\lbrace\@tempa\else
+          \textfont\thr@@=\MTEXA@
+        \fi
+      \fi
+    \fi
+    $\left#3\vcenter to#2\big@size{}\right.\n@space$%
+  }}%
+}
 % Fix \undercbrace and \overcbrace
 \def\undercbrace#1{\setbox\z@\hbox{$\displaystyle#1$}%
  \dimen@\wd\z@
