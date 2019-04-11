@@ -325,11 +325,10 @@
     \ifspecdelim@
       \textfont\thr@@=#1%
       \ifnum
-        \ifx#3\{ 1\else\ifx#3\} 1\else
+        \ifx#3\{1\else\ifx#3\}1\else
         \ifx#3\lbrace 1\else\ifx#3\rbrace 1\else 0\fi\fi\fi\fi
           =1 %
-        \def\@tempa{\delimiter"4266308 }%
-        \ifx\lbrace\@tempa\else
+        \ifx\lbrace\lcbrace\else
           \textfont\thr@@=\MTEXA@
         \fi
       \fi
