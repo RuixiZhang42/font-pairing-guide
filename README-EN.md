@@ -4,4 +4,4 @@
 
 # Font pairing guide
 
-![Example](Example.png)
+![Example](Example.svg)

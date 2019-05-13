@@ -13,7 +13,7 @@
 本指南不涉及「哪种中文字体与西文字体配得比较好看」这类问题
 (毕竟审美因人而异), 而是侧重于上述的「技术性」问题.
 
-![Example](Example.png)<br>
+![Example](Example.svg)<br>
 <sup>字号:
 42&nbsp;bp (思源宋体&nbsp;Heavy),
 46.41&nbsp;bp (TeX Gyre Termes&nbsp;Bold).<br>
