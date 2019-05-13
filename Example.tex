@@ -2,11 +2,7 @@
 % !TeX encoding = UTF-8 Unicode
 \documentclass[
   varwidth=24884759sp,
-  convert={
-    convertexe={magick},
-    command=\unexpanded{\convertexe\space -density 137 -units PixelsPerInch
-      \infile\space \ifx\size\empty\else -resize \size\fi\space -quality 100 \outfile}
-  }
+  convert=pdf2svg
 ]{standalone}
 \usepackage{xcolor}
 \definecolor{ImperialRed}{HTML}{ED2939}
