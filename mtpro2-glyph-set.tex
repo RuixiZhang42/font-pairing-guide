@@ -28,13 +28,17 @@
 }
 \setmainfont{TeX Gyre Termes}[
   Scale=1.10502958579881657,
-  WordSpace={0.80990629183400268,1.38018741633199465,0.42971887550200803},
   SmallCapsFeatures={LetterSpace=5}
 ]
 \setCJKmainfont{Source Han Serif SC Medium}[
   BoldFont=Source Han Serif SC Heavy,
   Language=Chinese Simplified
 ]
+\xeCJKsetup{
+  xCJKecglue={\hskip 0.20247657295850067em
+                plus 0.10123828647925033em
+               minus 0.06749219098616689em\relax}
+}
 \usepackage{mathtools}
 \usepackage[
   slantedGreek,
