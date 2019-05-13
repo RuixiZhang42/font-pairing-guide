@@ -1,0 +1,35 @@
+%
+% This is file `adjustment-parameters.tex'.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+\def\setCJKecglue@nnn#1#2#3{%
+  \xeCJKsetup
+    { xCJKecglue = {\hskip #1em plus #2em minus #3em\relax} }%
+}
+\newcommand*\setCJKecglue{%
+  \ifnum\strcmp{\f@family}{\rmdefault}=0 %
+    % Code for the roman family
+    % \ifnum\strcmp{\f@series}{\mddefault}=0 %
+    %   \ifnum\strcmp{\f@shape}{\updefault}=0 %
+    %     % Code for roman regular
+    %   \else
+    %     % Code for roman italic
+    %   \fi
+    % \else
+    %   \ifnum\strcmp{\f@shape}{\updefault}=0 %
+    %     % Code for roman bold
+    %   \else
+    %     % Code for roman bolditalic
+    %   \fi
+    % \fi
+  \else
+    \ifnum\strcmp{\f@family}{\sfdefault}=0 %
+      % Code for the sans-serif family
+    \else
+      % Code for the mono-spaced family
+    \fi
+  \fi
+}
+\makeatother
