@@ -319,7 +319,6 @@
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
 \newcommand*\mtp@bBigg@[3]{%
-  \leavevmode@ifvmode
   {\hbox{%
     \specdelim@#3%
     \ifspecdelim@
@@ -508,14 +507,4 @@
      \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
   }{}%
 }
-% CTeX setup
-%   Assuming \mtpscale             = 1.10502958579881657
-%            \mtpscriptscale       = 1.03309552688947532
-%            \mtpscriptscriptscale = 1.01898220001940052
-% \defaultscriptratio       = 0.7
-% \defaultscriptscriptratio = 0.55
-\DeclareMathSizes{7.5bp}{7.5bp}{5.343pt}{5pt}
-\DeclareMathSizes{9bp}{9bp}{6.858pt}{5.388pt}
-\DeclareMathSizes{10.5bp}{10.5bp}{7.891pt}{6.286pt}
-\DeclareMathSizes{12bp}{12bp}{8.999pt}{6.999pt}% Sub-optimal
 \makeatother
