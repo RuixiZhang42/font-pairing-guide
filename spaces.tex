@@ -1,0 +1,60 @@
+%
+% This is file `spaces.tex'.
+%
+% The standard usage is:
+%
+%   \newcommand*\mathscalefractioninverse{25/26}
+%   \input{spaces}
+%   % Note:
+%   %   If not specified, then \mathscalefractioninverse
+%   % will be set to 1.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+% Math scale fraction inverse
+\ifx\mathscalefractioninverse\@undefined
+  \def\mathscalefractioninverse{1}
+\fi
+% Math spaces
+\thinmuskip =\muexpr\thinmuskip *\mathscalefractioninverse\relax
+\medmuskip  =\muexpr\medmuskip  *\mathscalefractioninverse\relax
+\thickmuskip=\muexpr\thickmuskip*\mathscalefractioninverse\relax
+% Text spaces
+\def\enspace{\kern\dimexpr\f@size\p@/2\relax}
+\def\enskip{\hskip\dimexpr\f@size\p@/2\relax\relax}
+\def\quad{\hskip\dimexpr\f@size\p@\relax\relax}
+\def\qquad{\hskip\dimexpr\f@size\p@*2\relax\relax}
+% \, and friends need extra care
+\AtBeginDocument{%
+  \@ifpackageloaded{amsmath}{%
+    \renewcommand\,{\tmspace+\thinmuskip{\dimexpr\f@size\p@/6}}%
+    \renewcommand\!{\tmspace-\thinmuskip{\dimexpr\f@size\p@/6}}%
+    \renewcommand\:{\tmspace+\medmuskip{\dimexpr\f@size\p@*2/9}}%
+    \renewcommand\negmedspace{\tmspace-\medmuskip{\dimexpr\f@size\p@*2/9}}%
+    \renewcommand\;{\tmspace+\thickmuskip{\dimexpr\f@size\p@*5/18}}%
+    \renewcommand\negthickspace{\tmspace-\thickmuskip{\dimexpr\f@size\p@*5/18}}%
+    \renewcommand\bmod{\nonscript\mskip-\medmuskip\mkern\thickmuskip\mathbin
+      {\operator@font mod}\penalty900
+      \mkern\thickmuskip\nonscript\mskip-\medmuskip}%
+    \renewcommand\pod[1]{\allowbreak
+      \if@display\mkern\muexpr18mu*\mathscalefractioninverse\relax
+      \else\mkern\muexpr8mu*\mathscalefractioninverse\relax\fi(#1)}%
+    \renewcommand\pmod[1]{\pod{{\operator@font mod}\,\,#1}}%
+    \renewcommand\mod[1]{\allowbreak
+      \if@display\mkern\muexpr18mu*\mathscalefractioninverse\relax
+      \else\mkern\muexpr12mu*\mathscalefractioninverse\relax\fi
+      {\operator@font mod}\,\,#1}%
+  }{%
+    \def\thinspace{\kern\dimexpr\f@size\p@/6\relax}%
+    \def\negthinspace{\kern-\dimexpr\f@size\p@/6\relax}%
+    \def\bmod{%
+      \nonscript\mskip-\medmuskip\mkern\thickmuskip
+      \mathbin{\operator@font mod}\penalty900\mkern\thickmuskip
+      \nonscript\mskip-\medmuskip}%
+    \def\pmod#1{%
+      \allowbreak\mkern\muexpr18mu*\mathscalefractioninverse\relax
+      ({\operator@font mod}\,\,#1)}%
+  }%
+}
+\makeatother
