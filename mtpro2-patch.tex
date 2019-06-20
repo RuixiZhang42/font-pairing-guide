@@ -214,7 +214,11 @@
   <9-> s*[\mtpscale] mt2mbt}{}
 \normalsize
 \dimen@\f@size\p@
-\dimen@\mtpscale\dimen@
+\ifx\AssignScaledResult\@undefined
+  \dimen@\mtpscale\dimen@
+\else
+  \AssignScaledResult\dimexpr\dimen@\mtpscale\dimen@
+\fi
 \newdimen\tMTPscalesize
 \tMTPscalesize\dimen@
 \font\MTEXA@=mt2exa at \the\dimen@

@@ -1,0 +1,51 @@
+%
+% This is file `allow-frac-scale.tex'.
+%
+%   The following code tries to hack into the LaTeX2e's NFSS!!!
+% In particular, the macro \empty@sfcnt, which is used by size
+% functions <empty>, s, gen, sgen, genb, sgenb, subf and ssubf,
+% is extended to support font scaling via fraction expressions.
+% For example, s*[6/5] in addition to s*[1.2]. Of course, this
+% requires eTeX's extensions of `expressions'.
+%
+% It should be input immediately after \documentclass:
+%
+%   \documentclass[<options>]{<class>}
+%   \input{allow-frac-scale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+% Look ahead for a decimal or a fraction
+\ifx\detect@decimal@or@frac\@undefined
+  \def\detect@decimal@or@frac#1/#2\detect@decimal@or@frac{%
+    \edef\@tempa{#2}%
+  }
+\fi
+% A general purpose macro \AssignScaledResult{#1}{#2}{#3}{#4}
+%   #1: One of \numexpr, \dimexpr, \glueexpr or \muexpr
+%   #2: The target register to hold the scaled result
+%   #3: Scale factor, either a decimal or a fraction
+%   #4: The original pre-scaled register
+\newcommand*\AssignScaledResult[4]{%
+  \expandafter\detect@decimal@or@frac#3/0\detect@decimal@or@frac
+  \def\@tempb{0}%
+  \ifx\@tempa\@tempb
+    #2=#3#4\relax
+  \else
+    #2=#1#4*#3\relax
+  \fi
+}
+% Redefine \empty@sfcnt
+\def\empty@sfcnt#1{%
+      \@tempdimb \f@size\p@
+      \ifx\optional@arg\@empty
+      \else
+%        \@tempdimb \optional@arg\@tempdimb
+        \AssignScaledResult\dimexpr\@tempdimb\optional@arg\@tempdimb
+        #1{Font\space shape\space `\curr@fontshape'\space
+           will\space be\MessageBreak
+           scaled\space to\space size\space \the\@tempdimb}%
+      \fi
+      \edef\external@font{\mandatory@arg\space at\the\@tempdimb}}
+\makeatother
