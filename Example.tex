@@ -4,6 +4,7 @@
   varwidth=24884759sp,
   convert=pdf2svg
 ]{standalone}
+\input{allow-frac-scale}
 \usepackage{xcolor}
 \definecolor{ImperialRed}{HTML}{ED2939}
 \definecolor{PaleBlue}{HTML}{C1E9F2}
@@ -12,7 +13,7 @@
 \newlength\ccwd
 \setlength\ccwd{2762834sp}
 \setmainfont{TeX Gyre Termes}[
-  Scale=1.10502958579881657,
+  Scale=747/676,
   SmallCapsFeatures={LetterSpace=5}
 ]
 \setCJKmainfont{Source Han Serif SC Medium}[
@@ -20,20 +21,18 @@
   Language=Chinese Simplified
 ]
 \xeCJKsetup{
-  xCJKecglue={\hskip 0.20247657295850067em
-                plus 0.10123828647925033em
-               minus 0.06749219098616689em\relax}
+  xCJKecglue={\hskip\glueexpr6em plus3em minus2em*605/17928\relax}
 }
 \newcommand*\sampletext{汉字示例 Example}
 \newcommand*\ideographicbaseline{-0.120}
 \newcommand*\xheight{0.461}
 \newcommand*\capheight{0.676}
-\newcommand*\spacewidth{0.20247657295850067}
+\newcommand*\spacewidth{605/2988}
 \newlength\totalwidth
 \setlength\totalwidth{4\ccwd}
 \newcommand*\drawbox[8]{%
   \leavevmode
-  \addtolength\totalwidth{\spacewidth em}%
+  \addtolength\totalwidth{\dimexpr1em*\spacewidth\relax}%
   \addtolength\totalwidth{#1em}%
   \addtolength\totalwidth{#2em}%
   \addtolength\totalwidth{#3em}%
@@ -76,7 +75,7 @@
     \kern-0.1pt%
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
     \kern-0.1pt%
-    \kern\spacewidth em%
+    \kern\dimexpr1em*\spacewidth\relax
     \kern-0.1pt%
     \rule[\ideographicbaseline\ccwd]{0.2pt}{\ccwd}%
     \kern-0.1pt%
@@ -114,12 +113,12 @@
   }%
 }
 \begin{document}
-\fontsize{2762834sp}{4144251sp}\selectfont
+\fontsize{2762834sp}{3683779sp}\selectfont
 \bfseries
 \rule{0pt}{3294679sp}%
 \rule{863386sp}{0pt}%
 \sampletext
-\rule{863399sp}{0pt}%
+\rule{863386sp}{0pt}%
 \par
 \rule[-1194926sp]{0pt}{1194926sp}%
 \rule{863386sp}{0pt}%

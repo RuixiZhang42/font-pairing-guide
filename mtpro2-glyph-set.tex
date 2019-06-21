@@ -19,6 +19,7 @@
 \documentclass[
   linespread=1.10502958579881657
 ]{ctexart}
+\input{allow-frac-scale}
 \ctexset{
   section={
     name={第,节},
@@ -27,7 +28,7 @@
   }
 }
 \setmainfont{TeX Gyre Termes}[
-  Scale=1.10502958579881657,
+  Scale=747/676,
   SmallCapsFeatures={LetterSpace=5}
 ]
 \setCJKmainfont{Source Han Serif SC Medium}[
@@ -35,18 +36,16 @@
   Language=Chinese Simplified
 ]
 \xeCJKsetup{
-  xCJKecglue={\hskip 0.20247657295850067em
-                plus 0.10123828647925033em
-               minus 0.06749219098616689em\relax}
+  xCJKecglue={\hskip\glueexpr6em plus3em minus2em*605/17928\relax}
 }
 \usepackage{mathtools}
 \usepackage[
   slantedGreek,
   mtpccal,mtpscr,mtpfrak,mtphrb
 ]{mtpro2}
-\newcommand*\mtpscale{1.10502958579881657}
-\newcommand*\mtpscriptscale{1.03309552688947532}
-\newcommand*\mtpscriptscriptscale{1.01898220001940052}
+\newcommand*\mtpscale{747/676}
+\newcommand*\mtpscriptscale{504225/488072}
+\newcommand*\mtpscriptscriptscale{168075/164944}
 \input{mtpro2-patch}
 % CTeX setup
 %   Assuming \mtpscale             = 1.10502958579881657
@@ -54,10 +53,10 @@
 %            \mtpscriptscriptscale = 1.01898220001940052
 % \defaultscriptratio       = 0.7
 % \defaultscriptscriptratio = 0.55
-\DeclareMathSizes{7.5bp}{7.5bp}{5.343pt}{5pt}
-\DeclareMathSizes{9bp}{9bp}{6.858pt}{5.388pt}
-\DeclareMathSizes{10.5bp}{10.5bp}{7.891pt}{6.286pt}
-\DeclareMathSizes{12bp}{12bp}{8.999pt}{6.999pt}% Sub-optimal
+\DeclareMathSizes{7.5bp}{7.5bp}{350138sp}{5pt}
+\DeclareMathSizes{9bp}{9bp}{449421sp}{353116sp}
+\DeclareMathSizes{10.5bp}{10.5bp}{517162sp}{411969sp}
+\DeclareMathSizes{12bp}{12bp}{589823sp}{458751sp}% Sub-optimal
 \DeclareMathSymbol{\upGamma}{\mathalpha}{letters}{"80}
 \DeclareMathSymbol{\upDelta}{\mathalpha}{letters}{"81}
 \DeclareMathSymbol{\upTheta}{\mathalpha}{letters}{"82}
