@@ -18,10 +18,10 @@
 42&nbsp;bp (思源宋体&nbsp;Heavy),
 46.41&nbsp;bp (TeX Gyre Termes&nbsp;Bold).<br>
 行距:
-63&nbsp;bp
+56&nbsp;bp
 /
 行间距:
-21&nbsp;bp.<sup>&ast;</sup><br>
+14&nbsp;bp.<sup>&ast;</sup><br>
 <sup>&ast;</sup>在 TeX 中,
 1&nbsp;bp = <sup>1</sup>&frasl;<sub>72</sub>&nbsp;in
 ≈ 0.35278&nbsp;mm&#8239;—&thinsp;即 Adobe 软件与
