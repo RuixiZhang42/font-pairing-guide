@@ -3,10 +3,11 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\makeatletter
-\def\setCJKecglue@nnn#1#2#3{%
+\expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
+\catcode`\@=11 %
+\def\setCJKecglue@frac#1{%
   \xeCJKsetup
-    { xCJKecglue = {\hskip #1em plus #2em minus #3em\relax} }%
+    {xCJKecglue={\hskip\glueexpr6em plus3em minus2em*#1\relax}}%
 }
 \newcommand*\setCJKecglue{%
   \ifnum\strcmp{\f@family}{\rmdefault}=0 %
@@ -32,4 +33,5 @@
     \fi
   \fi
 }
-\makeatother
+\catcode`\@=\current@catcode\relax
+\endinput
