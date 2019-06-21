@@ -184,7 +184,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\makeatletter
+\expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
+\catcode`\@=11 %
 % Scale factors
 \ifx\mtpscale\@undefined
   \def\mtpscale{1}
@@ -511,4 +512,5 @@
      \noalign{\kern3\p@\nointerlineskip}$\displaystyle#1$\crcr}}}\limits}%
   }{}%
 }
-\makeatother
+\catcode`\@=\current@catcode\relax
+\endinput

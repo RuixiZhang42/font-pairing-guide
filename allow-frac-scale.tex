@@ -15,7 +15,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\makeatletter
+\expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
+\catcode`\@=11 %
 % Look ahead for a decimal or a fraction
 \ifx\detect@decimal@or@frac\@undefined
   \def\detect@decimal@or@frac#1/#2\detect@decimal@or@frac{%
@@ -48,4 +49,5 @@
            scaled\space to\space size\space \the\@tempdimb}%
       \fi
       \edef\external@font{\mandatory@arg\space at\the\@tempdimb}}
-\makeatother
+\catcode`\@=\current@catcode\relax
+\endinput
