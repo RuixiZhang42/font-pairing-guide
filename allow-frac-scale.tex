@@ -23,7 +23,7 @@
     \edef\@tempa{#2}%
   }
 \fi
-% A general purpose macro \AssignScaledResult{#1}{#2}{#3}{#4}
+% A general-purpose macro \AssignScaledResult{#1}{#2}{#3}{#4}
 %   #1: One of \numexpr, \dimexpr, \glueexpr or \muexpr
 %   #2: The target register to hold the scaled result
 %   #3: Scale factor, either a decimal or a fraction
@@ -37,17 +37,18 @@
     #2=#1#4*#3\relax
   \fi
 }
+\RequirePackage{etoolbox}
+% Redefine \set@fontsize
+\patchcmd\set@fontsize
+  {\baselineskip\f@linespread\baselineskip}
+  {\AssignScaledResult\glueexpr\baselineskip\f@linespread\baselineskip}
+  {\typeout{Support line spreading with fractions}}
+  {\typeout{Couldn't patch \string\set@fontsize}}
 % Redefine \empty@sfcnt
-\def\empty@sfcnt#1{%
-      \@tempdimb \f@size\p@
-      \ifx\optional@arg\@empty
-      \else
-%        \@tempdimb \optional@arg\@tempdimb
-        \AssignScaledResult\dimexpr\@tempdimb\optional@arg\@tempdimb
-        #1{Font\space shape\space `\curr@fontshape'\space
-           will\space be\MessageBreak
-           scaled\space to\space size\space \the\@tempdimb}%
-      \fi
-      \edef\external@font{\mandatory@arg\space at\the\@tempdimb}}
+\patchcmd\empty@sfcnt
+  {\@tempdimb \optional@arg\@tempdimb}
+  {\AssignScaledResult\dimexpr\@tempdimb\optional@arg\@tempdimb}
+  {\typeout{Support font scaling with fractions}}
+  {\typeout{Couldn't patch \string\empty@sfcnt}}
 \catcode`\@=\current@catcode\relax
 \endinput
