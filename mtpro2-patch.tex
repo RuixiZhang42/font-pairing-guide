@@ -436,22 +436,23 @@
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
     \global\big@size\dimexpr\fontdimen6\textfont\thr@@*6/5\relax}%
-  % Fix  setup in 
+  % Fix \@arstrutbox setup
   \@ifpackageloaded{array}{%
     \patchcmd\@array
       {\arraystretch \@tempdima}
       {\dimexpr(\arraystretch\baselineskip
        +\arraystretch\extrarowheight
         +2\fontdimen22\textfont\tw@)/2\relax}
-      {\typeout{Fixed array strut height}}
+      {\typeout{Fixed array strut height for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp \strutbox}
       {\dimexpr(\arraystretch\baselineskip
        +\arraystretch\extrarowheight
         -2\fontdimen22\textfont\tw@)/2\relax}
-      {\typeout{Fixed array strut depth}}
+      {\typeout{Fixed array strut depth for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
+    \let\@@array\@array
   }{%
     \patchcmd\@array
       {\arraystretch\ht\strutbox}
@@ -466,6 +467,22 @@
       {\typeout{Fixed array strut depth}}
       {\typeout{Couldn't patch \string\@array}}%
   }%
+  \@ifpackageloaded{longtable}{%
+    \patchcmd\LT@array
+      {\arraystretch \@tempdima}
+      {\dimexpr(\arraystretch\@tempdima
+       +\arraystretch\dp\strutbox
+        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\typeout{Fixed array strut height for longtable.sty}}
+      {\typeout{Couldn't patch \string\LT@array}}%
+    \patchcmd\LT@array
+      {\arraystretch \dp \strutbox}
+      {\dimexpr(\arraystretch\@tempdima
+       +\arraystretch\dp\strutbox
+        -2\fontdimen22\textfont\tw@)/2\relax}
+      {\typeout{Fixed array strut depth for longtable.sty}}
+      {\typeout{Couldn't patch \string\LT@array}}%
+  }{}%
   % Fix \mathsterling and \mathunderscore for OpenType text fonts
   \@ifpackageloaded{fontspec}{%
     \DeclareMathSymbol{\mathsterling}{\mathord}{operators}{"A3}%
