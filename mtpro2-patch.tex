@@ -467,6 +467,11 @@
       {\typeout{Fixed array strut depth}}
       {\typeout{Couldn't patch \string\@array}}%
   }%
+  \@ifpackageloaded{delarray}{%
+    \def\@@array[#1]{\@ifnextchar\bgroup
+      {\let\@arrayleft\relax\let\@arrayright\relax\@array[#1]}%
+      {\@del@array[#1]}}%
+  }{}%
   \@ifpackageloaded{longtable}{%
     \patchcmd\LT@array
       {\arraystretch \@tempdima}
