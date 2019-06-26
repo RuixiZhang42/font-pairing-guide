@@ -432,6 +432,22 @@
    }%
  \egroup}
 \RequirePackage{etoolbox}
+% MathTime Professional 2 sets math axis at 252/1000
+%   Use \redistributestruthtdp to adjust text strut if necessary,
+% e.g., \redistributestruthtdp{71/100}{29/100} (one-time-only!).
+\newcommand*\redistributestruthtdp[2]{%
+  \patchcmd\set@fontsize
+    {.7\baselineskip}
+    {\dimexpr\baselineskip*#1\relax}
+    {\typeout{Redistribute strut height}}
+    {\typeout{Couldn't patch \string\set@fontsize}}%
+  \patchcmd\set@fontsize
+    {.3\baselineskip}
+    {\dimexpr\baselineskip*#2\relax}
+    {\typeout{Redistribute strut depth}}
+    {\typeout{Couldn't patch \string\set@fontsize}}%
+  \let\redistributestruthtdp\@undefined
+}
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
@@ -442,13 +458,13 @@
       {\arraystretch \@tempdima}
       {\dimexpr(\arraystretch\baselineskip
        +\arraystretch\extrarowheight
+       +\arraystretch\extrarowheight
         +2\fontdimen22\textfont\tw@)/2\relax}
       {\typeout{Fixed array strut height for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp \strutbox}
       {\dimexpr(\arraystretch\baselineskip
-       +\arraystretch\extrarowheight
         -2\fontdimen22\textfont\tw@)/2\relax}
       {\typeout{Fixed array strut depth for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
@@ -473,17 +489,26 @@
       {\@del@array[#1]}}%
   }{}%
   \@ifpackageloaded{longtable}{%
+   \ifx\extrarowheight\@undefined
     \patchcmd\LT@array
       {\arraystretch \@tempdima}
-      {\dimexpr(\arraystretch\@tempdima
-       +\arraystretch\dp\strutbox
+      {\dimexpr(\arraystretch\baselineskip
         +2\fontdimen22\textfont\tw@)/2\relax}
       {\typeout{Fixed array strut height for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
+   \else
+    \patchcmd\LT@array
+      {\arraystretch \@tempdima}
+      {\dimexpr(\arraystretch\baselineskip
+       +\arraystretch\extrarowheight
+       +\arraystretch\extrarowheight
+        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\typeout{Fixed array strut height for longtable.sty}}
+      {\typeout{Couldn't patch \string\LT@array}}%
+   \fi
     \patchcmd\LT@array
       {\arraystretch \dp \strutbox}
-      {\dimexpr(\arraystretch\@tempdima
-       +\arraystretch\dp\strutbox
+      {\dimexpr(\arraystretch\baselineskip
         -2\fontdimen22\textfont\tw@)/2\relax}
       {\typeout{Fixed array strut depth for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
