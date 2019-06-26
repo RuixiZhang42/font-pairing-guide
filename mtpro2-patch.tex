@@ -446,7 +446,10 @@
     {\dimexpr\baselineskip*#2\relax}
     {\typeout{Redistribute strut depth}}
     {\typeout{Couldn't patch \string\set@fontsize}}%
-  \let\redistributestruthtdp\@undefined
+  \renewcommand*\redistributestruthtdp[2]{%
+    \typeout{\string\redistributestruthtdp\space has already been
+      used. So ##1 and ##2 will be gobbled and have no effect.}%
+  }%
 }
 \AtBeginDocument{%
   % Fix \big@size calculation
