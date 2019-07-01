@@ -1,0 +1,15 @@
+%
+% This is file `punct-and-digits.tex'.
+%
+% The standard usage is:
+%
+%   \usepackage{mtpro2}
+%   \input{mtpro2-patch}
+%   \input{punct-and-digits}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
+\catcode`\@=11 %
+\catcode`\@=\current@catcode\relax
+\endinput
