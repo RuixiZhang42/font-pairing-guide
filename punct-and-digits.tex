@@ -7,9 +7,64 @@
 %   \input{mtpro2-patch}
 %   \input{punct-and-digits}
 %
+%   The punctuation symbols , ; . \ldotp : \colon ! ? will
+% now come from family 0.
+%
+%   The digits, in \displaystyle and \textstyle, will also
+% come from family 0. However, they will no longer respond
+% to font changing commands such as \mathbf.
+%
+%   The kerning between math letters and comma/period will
+% be lost. If things looked wrong, say in $f,g$, you could
+% try $f\fpmk,g$. The `pmk' stands for `post mkern'.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
 \catcode`\@=11 %
+\DeclareMathSymbol{,}{\mathpunct}{operators}{`,}
+\DeclareMathSymbol{;}{\mathpunct}{operators}{`;}
+\DeclareMathSymbol{.}{\mathord}{operators}{`.}
+\DeclareMathSymbol{\ldotp}{\mathpunct}{operators}{`.}
+\DeclareMathSymbol{:}{\mathrel}{operators}{`:}
+\DeclareMathSymbol{\colon}{\mathpunct}{operators}{`:}
+\DeclareMathSymbol{!}{\mathclose}{operators}{`!}
+\DeclareMathSymbol{?}{\mathclose}{operators}{`?}
+\begingroup
+\newcommand*\adjust@digit[1]{%
+  \begingroup\lccode`\~`#1 \lowercase{\endgroup
+    \expandafter\xdef\csname digit \romannumeral#1code\endcsname
+      {\the\mathcode`#1\relax}%
+    \gdef~{\csname digit \romannumeral#1\endcsname}%
+  }%
+  \expandafter\gdef\csname digit \romannumeral#1\endcsname{{%
+    \mathchoice
+      {\operator@font
+       \mathchar\csname digit \romannumeral#1code\endcsname}%
+      {\operator@font
+       \mathchar\csname digit \romannumeral#1code\endcsname}%
+      {\mathchar\csname digit \romannumeral#1code\endcsname}%
+      {\mathchar\csname digit \romannumeral#1code\endcsname}%
+  }}%
+  \AtBeginDocument{\mathcode`#1="8000 }%
+}
+\adjust@digit{0}
+\adjust@digit{1}
+\adjust@digit{2}
+\adjust@digit{3}
+\adjust@digit{4}
+\adjust@digit{5}
+\adjust@digit{6}
+\adjust@digit{7}
+\adjust@digit{8}
+\adjust@digit{9}
+\newcommand*\generate@post@mkern[2]{%
+  \expandafter\ifx\csname#1pmk\endcsname\relax
+    \expandafter\gdef\csname#1pmk\endcsname{\mkern#2mu}%
+  \fi
+}
+\generate@post@mkern{}{}
+
+\endgroup
 \catcode`\@=\current@catcode\relax
 \endinput
