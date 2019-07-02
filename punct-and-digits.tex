@@ -157,5 +157,24 @@
 \generate@post@mkern{upchi}     {-0.720}
 \generate@post@mkern{uppsi}     {-1.080}
 \endgroup
+\AtBeginDocument{%
+  \edef\@tempa{\csname opt@mtpro2.sty\endcsname}%
+  \def\@tempb{{slantedGreek}}%
+  \expandafter\expandafter\expandafter
+    \in@\expandafter\@tempb\expandafter{\@tempa}%
+  \ifin@\else
+    \let\Gammapmk\upGammapmk
+    \let\Deltapmk\upDeltapmk
+    \let\Thetapmk\upThetapmk
+    \let\Lambdapmk\relax
+    \let\Xipmk\relax
+    \let\Pipmk\relax
+    \let\Sigmapmk\upSigmapmk
+    \let\Upsilonpmk\upUpsilonpmk
+    \let\Phipmk\upPhipmk
+    \let\Psipmk\upPsipmk
+    \let\Omegapmk\upOmegapmk
+  \fi
+}
 \catcode`\@=\current@catcode\relax
 \endinput
