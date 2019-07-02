@@ -12,7 +12,8 @@
 %
 %   The digits, in \displaystyle and \textstyle, will also
 % come from family 0. However, they will no longer respond
-% to font changing commands such as \mathbf.
+% to font changing commands such as \mathbb. To get around
+% this, use, e.g., $\mathbb{\mtpdigit1}$.
 %
 %   The kerning between math letters and comma/period will
 % be lost. If things looked wrong, say in $f,g$, you could
@@ -157,6 +158,9 @@
 \generate@post@mkern{upchi}     {-0.720}
 \generate@post@mkern{uppsi}     {-1.080}
 \endgroup
+\newcommand*\mtpdigit[1]{%
+  \mathchar\csname digit \romannumeral#1code\endcsname
+}
 \AtBeginDocument{%
   \edef\@tempa{\csname opt@mtpro2.sty\endcsname}%
   \def\@tempb{{slantedGreek}}%
