@@ -452,10 +452,24 @@
       used. So ##1 and ##2 will be gobbled and have no effect.}%
   }%
 }
+% amsmath unfortunately codes \AtBeginDocument{\reset@strutbox@},
+% therefore any fix for \strutbox@ using \fontdimen22 must occur
+% after this. One must load amsmath prior and we make sure of it.
+\RequirePackage{amsmath}
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
     \global\big@size\dimexpr\fontdimen6\textfont\thr@@*6/5\relax}%
+  % Fix \strutbox@ setup
+  \patchcmd\reset@strutbox@
+    {\copy\strutbox}
+    {\hbox{\vrule\@height\dimexpr(\baselineskip
+                   +2\fontdimen22\textfont\tw@)/2\relax
+                 \@depth \dimexpr(\baselineskip
+                   -2\fontdimen22\textfont\tw@)/2\relax
+                 \@width \z@}}
+    {\typeout{Fixed strut setup for amsmath.sty}}
+    {\typeout{Couldn't patch \string\reset@strutbox@}}%
   % Fix \@arstrutbox setup
   \@ifpackageloaded{array}{%
     \patchcmd\@array
