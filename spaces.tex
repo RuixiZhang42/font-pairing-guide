@@ -46,6 +46,8 @@
       \if@display\mkern\muexpr18mu*\mathscalefractioninverse\relax
       \else\mkern\muexpr12mu*\mathscalefractioninverse\relax\fi
       {\operator@font mod}\,\,#1}%
+    \renewcommand\minalignsep{\f@size\p@}%
+    \renewcommand\mintagsep{0.5\dimexpr\f@size\p@\relax}%
   }{%
     \def\thinspace{\kern\dimexpr\f@size\p@/6\relax}%
     \def\negthinspace{\kern-\dimexpr\f@size\p@/6\relax}%
