@@ -462,6 +462,18 @@
   {\next@ \global\column@\z@ \cr}
   {\typeout{Reset \string\column@\space for each row in `aligned'}}
   {\typeout{Couldn't patch \string\math@cr@@@aligned}}
+% https://github.com/latex3/latex2e/issues/161
+\patchcmd\measure@
+  {%
+    \global\column@\z@
+    \add@amps\maxfields@\cr
+  }
+  {%
+    \advance\maxfields@\m@ne
+    \add@amps\maxfields@\cr
+  }%
+  {}
+  {}
 % https://github.com/latex3/latex2e/issues/136
 \iftagsleft@\else\if@fleqn\else
   \patchcmd\x@calc@shift@rc
