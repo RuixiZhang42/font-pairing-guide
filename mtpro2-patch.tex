@@ -456,6 +456,33 @@
 % therefore any fix for \strutbox@ using \fontdimen22 must occur
 % after this. One must load amsmath prior and we make sure of it.
 \RequirePackage{amsmath}
+% https://github.com/latex3/latex2e/issues/160
+\patchcmd\math@cr@@@aligned
+  {\next@ \cr}
+  {\next@ \global\column@\z@ \cr}
+  {\typeout{Reset \string\column@\space for each row in `aligned'}}
+  {\typeout{Couldn't patch \string\math@cr@@@aligned}}
+% https://github.com/latex3/latex2e/issues/136
+\iftagsleft@\else\if@fleqn\else
+  \patchcmd\x@calc@shift@rc
+    {%
+      \eqnshift@\displaywidth
+      \advance\eqnshift@-\@tempdima
+      \advance\eqnshift@-\@tempcntb\alignsep@
+      \global\divide\eqnshift@\tw@
+    }
+    {%
+      \dimen@\displaywidth
+      \advance\dimen@-\@tempdima
+      \advance\dimen@-\@tempcntb\alignsep@
+      \divide\dimen@\tw@
+      \ifdim\dimen@<\eqnshift@
+        \global\eqnshift@\dimen@
+      \fi
+    }
+    {\typeout{Allow decreasing \string\eqnshift@\space only}}
+    {\typeout{Couldn't patch \string\x@calc@shift@rc}}
+\fi\fi
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
