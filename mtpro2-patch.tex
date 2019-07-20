@@ -471,9 +471,9 @@
   {%
     \advance\maxfields@\m@ne
     \add@amps\maxfields@\cr
-  }%
-  {}
-  {}
+  }
+  {\typeout{Remove excessive column in `align'}}
+  {\typeout{Couldn't patch \string\measure@}}
 % https://github.com/latex3/latex2e/issues/136
 \iftagsleft@\else\if@fleqn\else
   \patchcmd\x@calc@shift@rc
