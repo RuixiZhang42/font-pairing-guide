@@ -500,18 +500,43 @@
 \iftagsleft@\else\if@fleqn\else
   \patchcmd\x@calc@shift@rc
     {%
-      \eqnshift@\displaywidth
-      \advance\eqnshift@-\@tempdima
-      \advance\eqnshift@-\@tempcntb\alignsep@
-      \global\divide\eqnshift@\tw@
+      \ifdim\dimen@<\minalignsep\relax
+          \global\alignsep@\minalignsep\relax
+          \eqnshift@\displaywidth
+          \advance\eqnshift@-\@tempdima
+          \advance\eqnshift@-\@tempcntb\alignsep@
+          \global\divide\eqnshift@\tw@
+      \else
+          \ifdim\dimen@<\eqnshift@
+              \ifdim\dimen@<\z@
+                  \global\eqnshift@\z@
+              \else
+                  \global\eqnshift@\dimen@
+              \fi
+          \fi
+          \ifdim\dimen@<\alignsep@
+              \global\alignsep@\dimen@
+          \fi
+      \fi
     }
     {%
-      \dimen@\displaywidth
-      \advance\dimen@-\@tempdima
-      \advance\dimen@-\@tempcntb\alignsep@
-      \divide\dimen@\tw@
+      \ifdim\dimen@<\minalignsep\relax
+          \global\alignsep@\minalignsep\relax
+          \dimen@\displaywidth
+          \advance\dimen@-\@tempdima
+          \advance\dimen@-\@tempcntb\alignsep@
+          \divide\dimen@\tw@
+      \else
+          \ifdim\dimen@<\alignsep@
+              \global\alignsep@\dimen@
+          \fi
+      \fi
       \ifdim\dimen@<\eqnshift@
-        \global\eqnshift@\dimen@
+          \ifdim\dimen@<\z@
+              \global\eqnshift@\z@
+          \else
+              \global\eqnshift@\dimen@
+          \fi
       \fi
     }
     {\typeout{Allow decreasing \string\eqnshift@\space only}}
