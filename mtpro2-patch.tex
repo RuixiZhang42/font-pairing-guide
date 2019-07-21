@@ -474,6 +474,28 @@
   }
   {\typeout{Remove excessive column in `align'}}
   {\typeout{Couldn't patch \string\measure@}}
+% https://github.com/latex3/latex2e/issues/162
+\iftagsleft@\else\if@fleqn
+  \patchcmd\x@calc@shift@rf
+    {%
+      \ifdim\dimen@<\minalignsep\relax
+          \global\alignsep@\minalignsep\relax
+      \else
+          \global\alignsep@\dimen@
+      \fi
+    }
+    {%
+      \ifdim\dimen@<\minalignsep\relax
+          \global\alignsep@\minalignsep\relax
+      \else
+        \ifdim\dimen@<\alignsep@
+          \global\alignsep@\dimen@
+        \fi
+      \fi
+    }
+    {\typeout{Allow decreasing \string\alignsep@\space only}}
+    {\typeout{Couldn't patch \string\x@calc@shift@rf}}
+\fi\fi
 % https://github.com/latex3/latex2e/issues/136
 \iftagsleft@\else\if@fleqn\else
   \patchcmd\x@calc@shift@rc
