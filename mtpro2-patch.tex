@@ -542,6 +542,60 @@
     {\typeout{Allow decreasing \string\eqnshift@\space only}}
     {\typeout{Couldn't patch \string\x@calc@shift@rc}}
 \fi\fi
+% https://github.com/latex3/latex2e/issues/156
+%   This is an experimental fix
+\iftagsleft@\if@fleqn
+    \def\calc@shift@align{%
+        \global\let\tag@shifts\@empty
+        \begingroup
+            \loop
+                \ifnum\row@>0
+                    \ifdim\tag@width\row@>\z@
+                        \x@calc@shift@lf
+                    \else
+                        \saveshift@0%
+                    \fi
+                    \advance\row@\m@ne
+            \repeat
+        \endgroup
+    }
+    \def\x@calc@shift@lf{%
+        \column@\z@
+        \@tempdima\z@
+        \@tempdimb\z@
+        \edef\@tempb{\fieldlengths@\row@}%
+        \@for\@tempa:=\@tempb\do{%
+            \advance\column@\@ne
+            \x@lcalc@width
+        }%
+        \advance\@tempdimb\eqnshift@
+        \advance\@tempdimb\count@\alignsep@
+        \advance\@tempdimb-\mintagsep\relax
+        \ifdim\tag@width\row@>\@tempdimb
+            \saveshift@1%
+        \else
+            \saveshift@0%
+        \fi
+    }
+    \def\x@lcalc@width{%
+        \ifdim\@tempdima = \z@
+            \ifdim\@tempa > \z@
+                \@tempdima\p@
+                \ifodd\column@
+                    \advance\@tempdimb \maxcol@width\column@
+                    \advance\@tempdimb-\@tempa
+                \fi
+                \count@\column@
+                \advance\count@\m@ne
+                \divide\count@\tw@
+                \advance\@tempcnta-\count@
+                \advance\@tempcntb-\count@
+            \else
+                \advance\@tempdimb \maxcol@width\column@\relax
+            \fi
+        \fi
+    }
+\fi\fi
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
