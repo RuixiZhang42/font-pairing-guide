@@ -22,19 +22,29 @@
 \medmuskip  =\muexpr\medmuskip  *\mathscalefractioninverse\relax
 \thickmuskip=\muexpr\thickmuskip*\mathscalefractioninverse\relax
 % Text spaces
-\def\enspace{\kern\dimexpr\f@size\p@/2\relax}
-\def\enskip{\hskip\dimexpr\f@size\p@/2\relax\relax}
-\def\quad{\hskip\dimexpr\f@size\p@\relax\relax}
-\def\qquad{\hskip\dimexpr\f@size\p@*2\relax\relax}
+\def\enspace{\kern\dimexpr\unexpanded{\f@size}\p@/2\relax}
+\def\enskip{\hskip\dimexpr\unexpanded{\f@size}\p@/2\relax\relax}
+\def\quad{\hskip\dimexpr\unexpanded{\f@size}\p@\relax\relax}
+\def\qquad{\hskip\dimexpr\unexpanded{\f@size}\p@*2\relax\relax}
 % \, and friends need extra care
 \AtBeginDocument{%
   \@ifpackageloaded{amsmath}{%
-    \renewcommand\,{\tmspace+\thinmuskip{\dimexpr\f@size\p@/6}}%
-    \renewcommand\!{\tmspace-\thinmuskip{\dimexpr\f@size\p@/6}}%
-    \renewcommand\:{\tmspace+\medmuskip{\dimexpr\f@size\p@*2/9}}%
-    \renewcommand\negmedspace{\tmspace-\medmuskip{\dimexpr\f@size\p@*2/9}}%
-    \renewcommand\;{\tmspace+\thickmuskip{\dimexpr\f@size\p@*5/18}}%
-    \renewcommand\negthickspace{\tmspace-\thickmuskip{\dimexpr\f@size\p@*5/18}}%
+    \renewcommand\,%
+      {\tmspace+\thinmuskip{\dimexpr\unexpanded{\f@size}\p@/6}}%
+    \let\thinspace\,%
+    \renewcommand\!%
+      {\tmspace-\thinmuskip{\dimexpr\unexpanded{\f@size}\p@/6}}%
+    \let\negthinspace\!%
+    \renewcommand\:%
+      {\tmspace+\medmuskip{\dimexpr\unexpanded{\f@size}\p@*2/9}}%
+    \let\medspace\:%
+    \renewcommand\negmedspace
+      {\tmspace-\medmuskip{\dimexpr\unexpanded{\f@size}\p@*2/9}}%
+    \renewcommand\;%
+      {\tmspace+\thickmuskip{\dimexpr\unexpanded{\f@size}\p@*5/18}}%
+    \let\thickspace\;%
+    \renewcommand\negthickspace
+      {\tmspace-\thickmuskip{\dimexpr\unexpanded{\f@size}\p@*5/18}}%
     \renewcommand\bmod{\nonscript\mskip-\medmuskip\mkern\thickmuskip\mathbin
       {\operator@font mod}\penalty900
       \mkern\thickmuskip\nonscript\mskip-\medmuskip}%
@@ -46,11 +56,11 @@
       \if@display\mkern\muexpr18mu*\mathscalefractioninverse\relax
       \else\mkern\muexpr12mu*\mathscalefractioninverse\relax\fi
       {\operator@font mod}\,\,#1}%
-    \renewcommand\minalignsep{\f@size\p@}%
-    \renewcommand\mintagsep{0.5\dimexpr\f@size\p@\relax}%
+    \renewcommand\minalignsep{\unexpanded{\f@size}\p@}%
+    \renewcommand\mintagsep{0.5\dimexpr\unexpanded{\f@size}\p@\relax}%
   }{%
-    \def\thinspace{\kern\dimexpr\f@size\p@/6\relax}%
-    \def\negthinspace{\kern-\dimexpr\f@size\p@/6\relax}%
+    \def\thinspace{\kern\dimexpr\unexpanded{\f@size}\p@/6\relax}%
+    \def\negthinspace{\kern-\dimexpr\unexpanded{\f@size}\p@/6\relax}%
     \def\bmod{%
       \nonscript\mskip-\medmuskip\mkern\thickmuskip
       \mathbin{\operator@font mod}\penalty900\mkern\thickmuskip
