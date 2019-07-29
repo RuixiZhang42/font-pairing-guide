@@ -56,8 +56,10 @@
       \if@display\mkern\muexpr18mu*\mathscalefractioninverse\relax
       \else\mkern\muexpr12mu*\mathscalefractioninverse\relax\fi
       {\operator@font mod}\,\,#1}%
-    \renewcommand\minalignsep{\unexpanded{\f@size}\p@}%
+    \renewcommand\minalignsep{\dimexpr\unexpanded{\f@size}\p@\relax}%
     \renewcommand\mintagsep{0.5\dimexpr\unexpanded{\f@size}\p@\relax}%
+    \multlinegap\f@size\p@\relax
+    \multlinetaggap\f@size\p@\relax
   }{%
     \def\thinspace{\kern\dimexpr\unexpanded{\f@size}\p@/6\relax}%
     \def\negthinspace{\kern-\dimexpr\unexpanded{\f@size}\p@/6\relax}%
