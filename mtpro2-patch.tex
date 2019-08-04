@@ -607,14 +607,16 @@
   \setbox\mtp@matrix@cases\hbox\bgroup$%
   \env@matrix
 }{%
-  \endmatrix\m@th$\egroup
+  \endmatrix
+  \m@th$\egroup
   \PARENS{\,\copy\mtp@matrix@cases\,}%
 }
 \renewenvironment{Bmatrix}{%
   \setbox\mtp@matrix@cases\hbox\bgroup$%
   \env@matrix
 }{%
-  \endmatrix\m@th$\egroup
+  \endmatrix
+  \m@th$\egroup
   \@ifcurlybraces{%
     \LEFTRIGHT@\lbrace\rbrace{\,\copy\mtp@matrix@cases\,}%
   }{%
@@ -625,10 +627,11 @@
   \matrix@check\cases
   \setbox\mtp@matrix@cases\hbox\bgroup$%
   \let\@ifnextchar\new@ifnextchar
-  \def\arraystretch{1.1}% smaller than 1000/\delimiterfactor
+  \def\arraystretch{1.1}% less than 1000/\delimiterfactor
   \array{@{}l@{\quad}l@{}}%
 }{%
-  \endarray\m@th$\egroup
+  \endarray
+  \m@th$\egroup
   \@ifcurlybraces{%
     \LEFTRIGHT@\lbrace.{\,\copy\mtp@matrix@cases}%
   }{%
