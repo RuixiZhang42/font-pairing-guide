@@ -324,6 +324,13 @@
 %   \mtp@bBigg@\MTEXE@\thr@@, \mtp@bBigg@\MTEXE@{3.5}, ..., \mtp@bBigg@\MTEXE@{5.5};
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
+\newcommand*\@ifcurlybraces{%
+  \ifx\lbrace\lcbrace
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
 \newcommand*\mtp@bBigg@[3]{%
   {\hbox{%
     \specdelim@#3%
@@ -333,9 +340,7 @@
         \ifx#3\{1\else\ifx#3\}1\else
         \ifx#3\lbrace 1\else\ifx#3\rbrace 1\else 0\fi\fi\fi\fi
           =1 %
-        \ifx\lbrace\lcbrace\else
-          \textfont\thr@@=\MTEXA@
-        \fi
+        \@ifcurlybraces{}{\textfont\thr@@=\MTEXA@}%
       \fi
     \fi
     $\left#3\vcenter to#2\big@size{}\right.\n@space$%
@@ -596,6 +601,40 @@
         \fi
     }
 \fi\fi
+\newsavebox\mtp@matrix@cases
+\renewenvironment{pmatrix}{%
+  \matrix@check\pmatrix
+  \setbox\mtp@matrix@cases\hbox\bgroup$%
+  \env@matrix
+}{%
+  \endmatrix\m@th$\egroup
+  \PARENS{\,\copy\mtp@matrix@cases\,}%
+}
+\renewenvironment{Bmatrix}{%
+  \setbox\mtp@matrix@cases\hbox\bgroup$%
+  \env@matrix
+}{%
+  \endmatrix\m@th$\egroup
+  \@ifcurlybraces{%
+    \LEFTRIGHT@\lbrace\rbrace{\,\copy\mtp@matrix@cases\,}%
+  }{%
+    \left\lbrace\copy\mtp@matrix@cases\right\rbrace
+  }%
+}
+\renewenvironment{cases}{%
+  \matrix@check\cases
+  \setbox\mtp@matrix@cases\hbox\bgroup$%
+  \let\@ifnextchar\new@ifnextchar
+  \def\arraystretch{1.1}% smaller than 1000/\delimiterfactor
+  \array{@{}l@{\quad}l@{}}%
+}{%
+  \endarray\m@th$\egroup
+  \@ifcurlybraces{%
+    \LEFTRIGHT@\lbrace.{\,\copy\mtp@matrix@cases}%
+  }{%
+    \left\lbrace\copy\mtp@matrix@cases\right.%
+  }%
+}
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
