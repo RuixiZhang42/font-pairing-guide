@@ -639,6 +639,31 @@
   }%
 }
 % Fix mathtools environments?
+\newcommand*\standardbin{+}
+\newcommand*\tabularbin[1]{%
+  \mathbin{\mathpalette{\@tabularsym\standardbin}{#1}}%
+}
+\newcommand*\standardrel{=}
+\newcommand*\tabularrel[1]{%
+  \mathrel{\mathpalette{\@tabularsym\standardrel}{#1}}%
+}
+\newcommand*\@tabularsym[3]{%
+  \setbox\z@\hbox{$#2#1\m@th$}%
+  \hbox to\wd\z@{\hss$#2#3\m@th$\hss}%
+}
+\newcommand\subalign[1]{%
+  \vcenter{%
+    \Let@ \restore@math@cr \default@tag
+    \baselineskip\fontdimen10 \scriptfont\tw@
+    \advance\baselineskip\fontdimen12 \scriptfont\tw@
+    \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
+    \lineskiplimit\lineskip
+    \ialign{%
+      \hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
+      #1\crcr
+    }%
+  }%
+}
 \AtBeginDocument{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
