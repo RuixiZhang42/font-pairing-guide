@@ -1,0 +1,18 @@
+%
+% This is file `fix-mathoperator-equity.tex'.
+%
+% This file manually kerns operator names when using Equity.
+%
+% It should be input as late as possible:
+%
+%   \input{fix-mathoperator-equity}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\expandafter\edef\csname current@catcode\endcsname{\the\catcode`\@}
+\catcode`\@=11 %
+% Make sure that amsopn is loaded
+\RequirePackage{amsopn}
+% Manual kerning
+\catcode`\@=\current@catcode\relax
+\endinput
