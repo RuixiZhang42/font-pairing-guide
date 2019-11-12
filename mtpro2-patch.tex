@@ -325,9 +325,9 @@
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
 \expandafter\ifx\csname lbrace \endcsname\relax
-%   Before the ltfssdcl.dtx 2019/08/27 v3.0s update, \lcbrace
-% pointed to a non-robust \lbrace (\delimiter"4266308 ). So a
-% straightforward comparison test is possible.
+%   Prior to ltfssdcl.dtx 2019/08/27 v3.0s, \lcbrace pointed
+% to the non-robust \lbrace (\let\lcbrace=\lbrace by mtpro2).
+% So a straightforward comparison is possible.
 \newcommand*\@ifcurlybraces{%
   \ifx\lcbrace\lbrace
     \expandafter\@firstoftwo
@@ -338,8 +338,7 @@
 \else
 %   Since ltfssdcl.dtx 2019/08/27 v3.0s, the LaTeX2e kernel
 % makes math delimiters robust (including \lbrace, \rbrace).
-% But mtpro2 uses the non-robust definitions. So we need to
-% use a different test.
+% So we need to use a different test.
 \newcommand*\@ifcurlybraces{%
   \expandafter\ifx\csname lbrace \endcsname\lbrace
     \expandafter\@firstoftwo
