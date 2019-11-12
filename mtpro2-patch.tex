@@ -325,6 +325,9 @@
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
 \expandafter\ifx\csname lbrace \endcsname\relax
+%   Before the ltfssdcl.dtx 2019/08/27 v3.0s update, \lcbrace
+% pointed to a non-robust \lbrace (\delimiter"4266308 ). So a
+% straightforward comparison test is possible.
 \newcommand*\@ifcurlybraces{%
   \ifx\lcbrace\lbrace
     \expandafter\@firstoftwo
