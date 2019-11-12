@@ -324,13 +324,27 @@
 %   \mtp@bBigg@\MTEXE@\thr@@, \mtp@bBigg@\MTEXE@{3.5}, ..., \mtp@bBigg@\MTEXE@{5.5};
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
+\expandafter\ifx\csname lbrace \endcsname\relax
 \newcommand*\@ifcurlybraces{%
-  \ifx\lbrace\lcbrace
+  \ifx\lcbrace\lbrace
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
   \fi
 }
+\else
+%   Since ltfssdcl.dtx 2019/08/27 v3.0s, the LaTeX2e kernel
+% makes math delimiters robust (including \lbrace, \rbrace).
+% But mtpro2 uses the non-robust definitions. So we need to
+% use a different test.
+\newcommand*\@ifcurlybraces{%
+  \expandafter\ifx\csname lbrace \endcsname\lbrace
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+\fi
 \newcommand*\mtp@bBigg@[3]{%
   {\hbox{%
     \specdelim@#3%
@@ -659,7 +673,7 @@
     \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
     \lineskiplimit\lineskip
     \ialign{%
-      \hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
+      &\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
       #1\crcr
     }%
   }%
