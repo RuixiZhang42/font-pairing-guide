@@ -4,27 +4,27 @@
 
 # 字体搭配指南
 
-针对中文与西文的混合排版, 本指南着重讨论以下三个方面:
+针对中文与西文的混合排版，本指南着重讨论以下三个需要注意的问题：
 
-- 相对字号大小 (relative font size);
-- 字重 (weight);
-- 中文汉字与西文字母及数字之间的空白间距.
+1. 中西文不同字体之间相对字号大小（relative font size）的调整；
+2. 字重（weight）的搭配；
+3. 中文汉字与西文字母、数字之间空白间距的调整。
 
-本指南不涉及「哪种中文字体与西文字体配得比较好看」这类问题
-(毕竟审美因人而异), 而是侧重于上述的「技术性」问题.
+本指南不涉及「哪种西文字体与中文字体搭配起来比较好看」的这类「审美」问题，而是侧重讨论上述三个「技术性」问题。
+
+对于在这里讨论出来的排版思路，我们将以「XeLaTeX 排版系统」为例提供具体的实现方法。
+
+---
 
 ![Example](Example.svg)<br>
-<sup>字号:
-42&nbsp;bp (思源宋体&nbsp;Heavy),
-46.41&nbsp;bp (TeX Gyre Termes&nbsp;Bold).<br>
-行距:
-56&nbsp;bp
-/
-行间距:
-14&nbsp;bp.<sup>&ast;</sup><br>
-<sup>&ast;</sup>在 TeX 中,
-1&nbsp;bp = <sup>1</sup>&frasl;<sub>72</sub>&nbsp;in
-≈ 0.35278&nbsp;mm&#8239;—&thinsp;即 Adobe 软件与
-Microsoft Office 中的「1&nbsp;磅」, 而
-1&nbsp;pt = <sup>1</sup>&frasl;<sub>72.27</sub>&nbsp;in
-≈ 0.35146&nbsp;mm.</sup>
+<sup>字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。<br>
+行距：56&#8239;bp / 行间距：14&#8239;bp。<sup>&ast;</sup><br>
+<sup>&ast;</sup>在 TeX 中，1&#8239;bp = <sup>1</sup>&frasl;<sub>72</sub>&#8239;in
+≈ 0.35278&#8239;mm——即 Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
+1&#8239;pt = <sup>1</sup>&frasl;<sub>72.27</sub>&#8239;in
+≈ 0.35146&#8239;mm。</sup>
+
+---
+
+## 相对字号大小的调整
+
