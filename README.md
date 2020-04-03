@@ -16,16 +16,19 @@
 
 ---
 
-<figure style="text-align:center;">
-  <img src="SVG/Example.svg" alt="Example">
-  <figcaption>字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。<br>
-  行距：56&#8239;bp / 行间距：14&#8239;bp。&zwj;<sup>&ast;</sup></figcaption>
+<figure>
+<img src="SVG/Example.svg" alt="Example">
+
+<figcaption>
+  字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。\
+  行距：56&#8239;bp / 行间距：14&#8239;bp。&zwj;<sup>&ast;</sup>
+</figcaption>
+
 </figure>
 
-<sup>&ast;</sup>在 TeX 中，1&#8239;bp = <sup>1</sup>&frasl;<sub>72</sub>&#8239;in
-≈ 0.35278&#8239;mm——即 Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
-1&#8239;pt = <sup>1</sup>&frasl;<sub>72.27</sub>&#8239;in
-≈ 0.35146&#8239;mm。
+<sup>&ast;</sup>在 TeX 中，1&#8239;bp&nbsp;= 1&frasl;72&#8239;in&nbsp;≈ 0.35278&#8239;mm——即
+Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
+1&#8239;pt&nbsp;= 100&frasl;7227&#8239;in&nbsp;≈ 0.35146&#8239;mm。
 
 ---
 
@@ -33,22 +36,34 @@
 
 我们先来看看下面这段话：
 
-<figure style="text-align:center;">
-  <img src="SVG/Example-1-1.svg" alt="Example 1.1">
-  <figcaption>字号：思源宋体&nbsp;Regular 16&#8239;bp，STIX&nbsp;Regular 16&#8239;bp。</figcaption>
+<figure>
+<img src="SVG/Example-1-1.svg" alt="Example 1.1">
+
+<figcaption>
+  字号：思源宋体&nbsp;Regular 16&#8239;bp，STIX&nbsp;Regular 16&#8239;bp。
+</figcaption>
+
 </figure>
 
 不难看出，当我们读到「typography」、「τύπος」这些西文单词时，会有一种「西文矮了一截、就像掉下去了」的感觉。为了解决这个「搭配不协调」的问题，我们可以从西文字母的形状出发，探讨解决方法。
 
-<figure style="text-align:center;">
-  <img src="SVG/Example-1-2.svg" alt="Example 1.2">
-  <figcaption>西文大小写字母的形状有差异。</figcaption>
+<figure>
+<img src="SVG/Example-1-2.svg" alt="Example 1.2">
+
+<figcaption>
+  西文大小写字母的形状有差异。
+</figcaption>
+
 </figure>
 
 因为西文的大写字母「等高」与汉字相似，所以我们可以用「**对齐大写字母中线与汉字中线**」作为方向性的指导：
 
-<figure style="text-align:center;">
-  <img src="SVG/Example-1-3.svg" alt="Example 1.3">
-  <figcaption>上图：通过上调西文的基线来对齐大写字母与汉字的中线。<br>
-  下图：通过放大西文的字号来对齐大写字母与汉字的中线。</figcaption>
+<figure>
+<img src="SVG/Example-1-3.svg" alt="Example 1.3">
+
+<figcaption>
+  上图：通过上调西文的基线来对齐大写字母与汉字的中线。\
+  下图：通过放大西文的字号来对齐大写字母与汉字的中线。
+</figcaption>
+
 </figure>
