@@ -20,7 +20,7 @@
 <img src="SVG/Example.svg" alt="Example">
 
 <figcaption>
-  字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。\
+  字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。<br />
   行距：56&#8239;bp / 行间距：14&#8239;bp。&zwj;<sup>&ast;</sup>
 </figcaption>
 
@@ -62,7 +62,7 @@ Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
 <img src="SVG/Example-1-3.svg" alt="Example 1.3">
 
 <figcaption>
-  上图：通过上调西文的基线来对齐大写字母与汉字的中线。\
+  上图：通过上调西文的基线来对齐大写字母与汉字的中线；<br />
   下图：通过放大西文的字号来对齐大写字母与汉字的中线。
 </figcaption>
 
