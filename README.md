@@ -51,7 +51,7 @@ Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
 <img src="SVG/Example-1-2.svg" alt="Example 1.2">
 </figure>
 
-因为西文的大写字母「等高」与汉字相似，所以我们可以将「**大写字母的中线与汉字的中线对齐**」作为方向性指导：
+因为西文的大写字母「等高」与汉字相似，所以我们可以将**大写字母的中线与汉字的中线对齐**，以此作为指导。
 
 <figure>
 <img src="SVG/Example-1-3.svg" alt="Example 1.3">
@@ -64,6 +64,9 @@ Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
 </figure>
 
 事实上，由奥村晴彦开发的 [jsclasses](https://ctan.org/pkg/jsclasses) 文档类就搭配了
-13&#8239;Q (3.25&#8239;mm) 的日文与
-10&#8239;pt (3.5146&#8239;mm) 的西文，这意味着西文字号大约是日文字号的
-1.08&nbsp;倍。
+13&#8239;Q（3.25&#8239;mm）的日文与
+10&#8239;pt（3.5146&#8239;mm）的西文，这意味着西文字号大约是日文字号的
+1.08&nbsp;倍。在直排时，jsclasses 会使用 [pLaTeX2e](https://ctan.org/pkg/platex)
+提供的 `\adjustbaseline` 机制，对齐大写字母「M」与汉字的中线。
+
+当然了，排版里讲究的是「视觉对齐」而非「数学严格对齐」。
