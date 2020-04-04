@@ -20,8 +20,8 @@
 <img src="SVG/Example.svg" alt="Example">
 
 <figcaption>
-  字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。<br />
-  行距：56&#8239;bp / 行间距：14&#8239;bp。&zwj;<sup>&ast;</sup>
+字号：思源宋体&nbsp;Heavy 42&#8239;bp，TeX Gyre Termes&nbsp;Bold 46.41&#8239;bp。<br />
+行距：56&#8239;bp / 行间距：14&#8239;bp。&zwj;<sup>&ast;</sup>
 </figcaption>
 
 </figure>
@@ -40,7 +40,7 @@ Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
 <img src="SVG/Example-1-1.svg" alt="Example 1.1">
 
 <figcaption>
-  字号：思源宋体&nbsp;Regular 16&#8239;bp，STIX&nbsp;Regular 16&#8239;bp。
+字号：思源宋体&nbsp;Regular 16&#8239;bp，STIX&nbsp;Regular 16&#8239;bp。
 </figcaption>
 
 </figure>
@@ -49,21 +49,21 @@ Adobe 软件与 Microsoft Office 中的「1&nbsp;磅」, 而
 
 <figure>
 <img src="SVG/Example-1-2.svg" alt="Example 1.2">
-
-<figcaption>
-  西文大小写字母的形状有差异。
-</figcaption>
-
 </figure>
 
-因为西文的大写字母「等高」与汉字相似，所以我们可以用「**对齐大写字母中线与汉字中线**」作为方向性的指导：
+因为西文的大写字母「等高」与汉字相似，所以我们可以将「**大写字母的中线与汉字的中线对齐**」作为方向性指导：
 
 <figure>
 <img src="SVG/Example-1-3.svg" alt="Example 1.3">
 
 <figcaption>
-  上图：通过上调西文的基线来对齐大写字母与汉字的中线；<br />
-  下图：通过放大西文的字号来对齐大写字母与汉字的中线。
+上图：通过「<strong>上调西文的基线</strong>」来对齐大写字母与汉字的中线；<br />
+下图：通过「<strong>放大西文的字号</strong>」来对齐大写字母与汉字的中线。
 </figcaption>
 
 </figure>
+
+事实上，由奥村晴彦开发的 [jsclasses](https://ctan.org/pkg/jsclasses) 文档类就搭配了
+13&#8239;Q (3.25&#8239;mm) 的日文与
+10&#8239;pt (3.5146&#8239;mm) 的西文，这意味着西文字号大约是日文字号的
+1.08&nbsp;倍。
