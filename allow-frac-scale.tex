@@ -8,10 +8,10 @@
 % For example, s*[6/5] in addition to s*[1.2]. Of course, this
 % requires eTeX's extensions of `expressions'.
 %
-% It should be input immediately after \documentclass:
+% It should be input immediately before \documentclass:
 %
-%   \documentclass[<options>]{<class>}
 %   \input{allow-frac-scale}
+%   \documentclass[<options>]{<class>}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -19,8 +19,8 @@
 \catcode`\@=11 %
 % Look ahead for a decimal or a fraction
 \ifx\detect@decimal@or@frac\@undefined
-  \def\detect@decimal@or@frac#1/#2\detect@decimal@or@frac{%
-    \edef\@tempa{#2}%
+  \def\detect@decimal@or@frac#1/#2\@nil{%
+    \def\@tempa{#2}%
   }
 \fi
 % A general-purpose macro \AssignScaledResult{#1}{#2}{#3}{#4}
@@ -29,10 +29,11 @@
 %   #3: Scale factor, either a decimal or a fraction
 %   #4: The original pre-scaled register
 \newcommand*\AssignScaledResult[4]{%
-  \expandafter\detect@decimal@or@frac#3/0\detect@decimal@or@frac
+  \edef\@tempa{#3}%
+  \expandafter\detect@decimal@or@frac\@tempa/0\@nil
   \def\@tempb{0}%
   \ifx\@tempa\@tempb
-    #2=#3#4\relax
+    #2=#3#4%
   \else
     #2=#1#4*#3\relax
   \fi
