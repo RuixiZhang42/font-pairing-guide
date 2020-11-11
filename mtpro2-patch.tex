@@ -727,10 +727,10 @@
   % Fix \strutbox@ setup
   \patchcmd\reset@strutbox@
     {\copy\strutbox}
-    {\hbox{\vrule\@height\dimexpr(\baselineskip
-                   +2\fontdimen22\textfont\tw@)/2\relax
-                 \@depth \dimexpr(\baselineskip
-                   -2\fontdimen22\textfont\tw@)/2\relax
+    {\hbox{\vrule\@height\dimexpr\baselineskip/2
+                   +\fontdimen22\textfont\tw@\relax
+                 \@depth \dimexpr\baselineskip/2
+                   -\fontdimen22\textfont\tw@\relax
                  \@width \z@}}
     {\typeout{Fixed strut setup for amsmath.sty}}
     {\typeout{Couldn't patch \string\reset@strutbox@}}%
@@ -738,30 +738,29 @@
   \@ifpackageloaded{array}{%
     \patchcmd\@array
       {\arraystretch \@tempdima}
-      {\dimexpr(\arraystretch\baselineskip
-       +\arraystretch\extrarowheight
-       +\arraystretch\extrarowheight
-        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        +\arraystretch\extrarowheight
+        +\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut height for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp \strutbox}
-      {\dimexpr(\arraystretch\baselineskip
-        -2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
     \let\@@array\@array
   }{%
     \patchcmd\@array
       {\arraystretch\ht\strutbox}
-      {\dimexpr(\arraystretch\baselineskip
-        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        +\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut height}}
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp\strutbox}
-      {\dimexpr(\arraystretch\baselineskip
-        -2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth}}
       {\typeout{Couldn't patch \string\@array}}%
   }%
@@ -771,27 +770,26 @@
       {\@del@array[#1]}}%
   }{}%
   \@ifpackageloaded{longtable}{%
-   \ifx\extrarowheight\@undefined
+    \ifx\extrarowheight\@undefined
     \patchcmd\LT@array
       {\arraystretch \@tempdima}
-      {\dimexpr(\arraystretch\baselineskip
-        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        +\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut height for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
-   \else
+    \else
     \patchcmd\LT@array
       {\arraystretch \@tempdima}
-      {\dimexpr(\arraystretch\baselineskip
-       +\arraystretch\extrarowheight
-       +\arraystretch\extrarowheight
-        +2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        +\arraystretch\extrarowheight
+        +\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut height for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
-   \fi
+    \fi
     \patchcmd\LT@array
       {\arraystretch \dp \strutbox}
-      {\dimexpr(\arraystretch\baselineskip
-        -2\fontdimen22\textfont\tw@)/2\relax}
+      {\dimexpr\arraystretch\baselineskip/2
+        -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
   }{}%
