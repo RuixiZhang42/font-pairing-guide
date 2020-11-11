@@ -205,7 +205,18 @@
   <-7> s*[\mtpscriptscriptscale] mt2syf
   <7-9> s*[\mtpscriptscale] mt2sys
   <9-> s*[\mtpscale] mt2syt}{%
-  \fontdimen20\font=\dimexpr\fontdimen6\font*119/50\relax}
+%   A TFM file allows only 16 different height specifications
+% and 16 different depth specifications. If the file has more,
+% then these `supposed' heights and depths will be changed.
+%   In mt2exa.tfm, each `\bigg'-variant delimiter has a total
+% height of 0.046+2.337999=2.383999, although it is `supposed'
+% to be 2-line tall (0.046+2.354=2.4=2*1.2).
+%   The \fontdimen20 in mt2syt.tfm is 2.39. So TeX in display
+% styles will construct \atopwithdelims using `\Bigg'-variant
+% delimiters, since the `\bigg'-variants are not `big enough'.
+% To fix this, we set \fontdimen20 to 2.383 in all three math
+% symbol fonts.
+  \fontdimen20\font=\dimexpr\fontdimen6\font*2383/1000\relax}
 \DeclareFontShape{LMP3}{mtt}{m}{n}{%
   <-7> s*[\mtpscriptscriptscale] mt2exa
   <7-9> s*[\mtpscriptscale] mt2exa
@@ -223,15 +234,15 @@
 \fi
 \newdimen\tMTPscalesize
 \tMTPscalesize\dimen@
-\font\MTEXA@=mt2exa at \the\dimen@
-\font\MTXL@=mt2xl at \the\dimen@
+\font\MTEXA@=mt2exa at \dimen@
+\font\MTXL@=mt2xl at \dimen@
 \multiply\dimen@\tw@
-\font\MTEXE@=mt2exe at \the\dimen@
-\font\MTXXXL@=mt2xxxl at \the\dimen@
+\font\MTEXE@=mt2exe at \dimen@
+\font\MTXXXL@=mt2xxxl at \dimen@
 \multiply\dimen@\tw@
-\font\MTEXF@=mt2exf at \the\dimen@
+\font\MTEXF@=mt2exf at \dimen@
 \multiply\dimen@\tw@
-\font\MTEXG@=mt2exg at \the\dimen@
+\font\MTEXG@=mt2exg at \dimen@
 % MathTime Professional 2 Complete
 \ifmtp@full
 \DeclareFontShape{LMP1}{mtt}{b}{it}{%
@@ -324,23 +335,30 @@
 %   \mtp@bBigg@\MTEXE@\thr@@, \mtp@bBigg@\MTEXE@{3.5}, ..., \mtp@bBigg@\MTEXE@{5.5};
 %   \mtp@bBigg@\MTEXF@6,      \mtp@bBigg@\MTEXF@7,     ..., \mtp@bBigg@\MTEXF@{11};
 %   \mtp@bBigg@\MTEXG@{12},   \mtp@bBigg@\MTEXG@{14},  ..., \mtp@bBigg@\MTEXG@{24}.
-\expandafter\ifx\csname lbrace \endcsname\relax
-%   Prior to ltfssdcl.dtx 2019/08/27 v3.0s, \lcbrace pointed
-% to the non-robust \lbrace (\let\lcbrace=\lbrace by mtpro2).
-% So a straightforward comparison is possible.
+\ifcsname lbrace \endcsname
+%   Since ltfssdcl.dtx 2019/08/27 v3.0s, the LaTeX2e kernel
+% makes math delimiters robust (including \lbrace, \rbrace).
+% So the `curly' definition `\delimiter"4266308 ' is now in
+% \csname lbrace\space\endcsname.
+%   In this case, the mtpro2 package first lets \lcbrace to
+% the robust \lbrace. Then, it redefines \lbrace to be non-
+% robust (specifically, to be one of `\delimiter"4266308 ',
+% `\delimiter"42B93AE ' and `\delimiter"42663B6 ').
+%   So, to test if \curlybraces is in force, we compare the
+% definitions of \csname lbrace\space\endcsname and \lbrace.
 \newcommand*\@ifcurlybraces{%
-  \ifx\lcbrace\lbrace
+  \expandafter\ifx\csname lbrace \endcsname\lbrace
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
   \fi
 }
 \else
-%   Since ltfssdcl.dtx 2019/08/27 v3.0s, the LaTeX2e kernel
-% makes math delimiters robust (including \lbrace, \rbrace).
-% So we need to use a different test.
+%   Prior to ltfssdcl.dtx 2019/08/27 v3.0s, \lcbrace pointed
+% to the non-robust \lbrace (\let\lcbrace=\lbrace by mtpro2).
+% So a straightforward comparison is possible.
 \newcommand*\@ifcurlybraces{%
-  \expandafter\ifx\csname lbrace \endcsname\lbrace
+  \ifx\lcbrace\lbrace
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
@@ -675,12 +693,34 @@
     \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
     \lineskiplimit\lineskip
     \ialign{%
-      &\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
+      &\hfil$\scriptstyle##\m@th$&$\scriptstyle{}##\m@th$\hfil\crcr
       #1\crcr
     }%
   }%
 }
-\AtBeginDocument{%
+%   The 2020/10/01 release of LaTeX2e introduces a new hook
+% management system. Consequently, different chunks of code
+% in the \AtBeginDocument hook (added by different packages
+% and/or classes) will be sorted at \begin{document}. Hence,
+% even though we've loaded amsmath prior to this point, the
+% amsmath code chunk can be sorted so it is executed `after'
+% our patch for \reset@strutbox@.
+%   We patch \reset@strutbox@ to use \fontdimen22\textfont2.
+% If amsmath's code is executed after ours, then we get the
+% `Font \nullfont has only 7 fontdimen parameters' error.
+%   To accommodate this new hook management system, we need
+% to explicitly declare the execution order.
+\ifx\DeclareHookRule\@undefined
+  \expandafter\@firstoftwo
+\else
+  \expandafter\@secondoftwo
+\fi
+{%
+  \AtBeginDocument
+}{%
+  \DeclareHookRule{begindocument}{amsmath}{before}{mtpro2-patch}%
+  \AtBeginDocument[mtpro2-patch]%
+}{%
   % Fix \big@size calculation
   \addto@hook\every@math@size{%
     \global\big@size\dimexpr\fontdimen6\textfont\thr@@*6/5\relax}%
