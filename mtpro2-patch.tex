@@ -338,7 +338,8 @@
 \ifcsname lbrace \endcsname
 %   Since ltfssdcl.dtx 2019/08/27 v3.0s, the LaTeX2e kernel
 % makes math delimiters robust (including \lbrace, \rbrace).
-% So the `curly' definition `\delimiter"4266308 ' is now in
+% Between 2019/08/27 v3.0s and 2020/01/20 v3.0t, the `curly'
+% definition `\delimiter"4266308 ' is in the space-appended
 % \csname lbrace\space\endcsname.
 %   In this case, the mtpro2 package first lets \lcbrace to
 % the robust \lbrace. Then, it redefines \lbrace to be non-
@@ -356,9 +357,16 @@
 \else
 %   Prior to ltfssdcl.dtx 2019/08/27 v3.0s, \lcbrace pointed
 % to the non-robust \lbrace (\let\lcbrace=\lbrace by mtpro2).
-% So a straightforward comparison is possible.
+% So it suffices to use the test \ifx\lcbrace\lbrace.
+%   But after ltfssdcl.dtx 2020/01/20 v3.0t, \lcbrace points
+% to the `protected' \lbrace (and there is no space-appended
+% \csname lbrace\space\endcsname defined). In this case, the
+% test \ifx\lcbrace\lbrace will always be false.
+%   To resolve this awkward situation, we can define our own
+% left curly brace.
+\expandafter\gdef\csname mtp2@lcbrace\endcsname{\delimiter"4266308 }
 \newcommand*\@ifcurlybraces{%
-  \ifx\lcbrace\lbrace
+  \expandafter\ifx\csname mtp2@lcbrace\endcsname\lbrace
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
