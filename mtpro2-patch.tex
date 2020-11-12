@@ -364,7 +364,15 @@
 % test \ifx\lcbrace\lbrace will always be false.
 %   To resolve this awkward situation, we can define our own
 % left curly brace.
-\expandafter\gdef\csname mtp2@lcbrace\endcsname{\delimiter"4266308 }
+\begingroup
+  \curlybraces % redefines \lbrace to `\delimiter"4266308 '
+  \ifx\lcbrace\lbrace\else % \lcbrace is `protected' \lbrace
+    \expandafter\gdef\csname mtp2@lcbrace\endcsname
+      {\delimiter"4266308 }% define our own left curly brace
+  \fi
+\endgroup
+\ifcsname mtp2@lcbrace\endcsname
+% For ltfssdcl.dtx 2020/01/20 v3.0t, or later.
 \newcommand*\@ifcurlybraces{%
   \expandafter\ifx\csname mtp2@lcbrace\endcsname\lbrace
     \expandafter\@firstoftwo
@@ -372,6 +380,16 @@
     \expandafter\@secondoftwo
   \fi
 }
+\else
+% For ltfssdcl.dtx before 2019/08/27 v3.0s.
+\newcommand*\@ifcurlybraces{%
+  \ifx\lcbrace\lbrace
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+\fi
 \fi
 \newcommand*\mtp@bBigg@[3]{%
   {\hbox{%
