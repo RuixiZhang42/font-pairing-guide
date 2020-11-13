@@ -755,7 +755,8 @@
     {\copy\strutbox}
     {\hbox{\vrule\@height\dimexpr\baselineskip/2
                    +\fontdimen22\textfont\tw@\relax
-                 \@depth \dimexpr\baselineskip/2
+                 \@depth \dimexpr\baselineskip
+                   -\baselineskip/2
                    -\fontdimen22\textfont\tw@\relax
                  \@width \z@}}
     {\typeout{Fixed strut setup for amsmath.sty}}
@@ -771,7 +772,8 @@
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp \strutbox}
-      {\dimexpr\arraystretch\baselineskip/2
+      {\dimexpr\arraystretch\baselineskip
+        -\arraystretch\baselineskip/2
         -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth for array.sty}}
       {\typeout{Couldn't patch \string\@array}}%
@@ -785,7 +787,8 @@
       {\typeout{Couldn't patch \string\@array}}%
     \patchcmd\@array
       {\arraystretch \dp\strutbox}
-      {\dimexpr\arraystretch\baselineskip/2
+      {\dimexpr\arraystretch\baselineskip
+        -\arraystretch\baselineskip/2
         -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth}}
       {\typeout{Couldn't patch \string\@array}}%
@@ -814,7 +817,8 @@
     \fi
     \patchcmd\LT@array
       {\arraystretch \dp \strutbox}
-      {\dimexpr\arraystretch\baselineskip/2
+      {\dimexpr\arraystretch\baselineskip
+        -\arraystretch\baselineskip/2
         -\fontdimen22\textfont\tw@\relax}
       {\typeout{Fixed array strut depth for longtable.sty}}
       {\typeout{Couldn't patch \string\LT@array}}%
