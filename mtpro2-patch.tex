@@ -517,6 +517,11 @@
       used. So ##1 and ##2 will be gobbled and have no effect.}%
   }%
 }
+% amsmath unfortunately codes \AtBeginDocument{\reset@strutbox@},
+% therefore any fix for \strutbox@ using \fontdimen22 must occur
+% after this. One must load amsmath prior and we make sure of it.
+% We also need \new@ifnextchar for \redistributestrutht.
+\RequirePackage{amsmath}
 \newcommand*\redistributestrutht[1]{%
   \new@ifnextchar\bgroup
     {\redistributestrutht@t@s{#1}}%
@@ -547,10 +552,6 @@
       used. So ##1 and so on will be gobbled and have no effect.}%
   }%
 }
-% amsmath unfortunately codes \AtBeginDocument{\reset@strutbox@},
-% therefore any fix for \strutbox@ using \fontdimen22 must occur
-% after this. One must load amsmath prior and we make sure of it.
-\RequirePackage{amsmath}
 % https://github.com/latex3/latex2e/issues/160
 \patchcmd\math@cr@@@aligned
   {\next@ \cr}
