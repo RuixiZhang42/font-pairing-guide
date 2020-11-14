@@ -509,12 +509,42 @@
     {\typeout{Couldn't patch \string\set@fontsize}}%
   \patchcmd\set@fontsize
     {.3\baselineskip}
-    {\dimexpr\baselineskip*#2\relax}
+    {\dimexpr\baselineskip-\baselineskip*#1\relax}
     {\typeout{Redistribute strut depth}}
     {\typeout{Couldn't patch \string\set@fontsize}}%
   \renewcommand*\redistributestruthtdp[2]{%
     \typeout{\string\redistributestruthtdp\space has already been
       used. So ##1 and ##2 will be gobbled and have no effect.}%
+  }%
+}
+\newcommand*\redistributestrutht[1]{%
+  \new@ifnextchar\bgroup
+    {\redistributestrutht@t@s{#1}}%
+    {\redistributestrutht@t@s{#1}{#1}}%
+}
+\newcommand*\redistributestrutht@t@s[2]{%
+  \new@ifnextchar\bgroup
+    {\redistributestrutht@t@s@ss{#1}{#2}}%
+    {\redistributestrutht@t@s@ss{#1}{#2}{#1}}%
+}
+\newcommand*\redistributestrutht@t@s@ss[3]{%
+  \patchcmd\set@fontsize
+    {.7\baselineskip}
+    {\dimexpr\baselineskip
+      *\ifdim\f@size\p@<7\p@ #3\else
+        \ifdim\f@size\p@<9\p@ #2\else #1\fi\fi\relax}
+    {\typeout{Redistribute strut height}}
+    {\typeout{Couldn't patch \string\set@fontsize}}%
+  \patchcmd\set@fontsize
+    {.3\baselineskip}
+    {\dimexpr\baselineskip-\baselineskip
+      *\ifdim\f@size\p@<7\p@ #3\else
+        \ifdim\f@size\p@<9\p@ #2\else #1\fi\fi\relax}
+    {\typeout{Redistribute strut depth}}
+    {\typeout{Couldn't patch \string\set@fontsize}}%
+  \renewcommand*\redistributestrutht@t@s@ss[3]{%
+    \typeout{\string\redistributestrutht\space has already been
+      used. So ##1 and so on will be gobbled and have no effect.}%
   }%
 }
 % amsmath unfortunately codes \AtBeginDocument{\reset@strutbox@},
