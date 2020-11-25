@@ -562,6 +562,12 @@
     \csname @@\ifx @#3@over\else above\fi
     \ifx\@tempa\@empty \else withdelims\fi\endcsname}
   \@tempb{#1#2#3}}
+% We can also hard code \binom for speed.
+\ifx\directlua\@undefined
+\DeclareRobustCommand{\binom}[2]{{\begingroup#1\endgroup\@@atopwithdelims()#2}}
+\else
+\DeclareRobustCommand{\binom}[2]{{\Ustack{\begingroup#1\endgroup\@@atopwithdelims()#2}}}
+\fi
 % https://github.com/latex3/latex2e/issues/160
 \patchcmd\math@cr@@@aligned
   {\next@ \cr}
