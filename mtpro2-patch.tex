@@ -552,6 +552,16 @@
       used. So ##1 and so on will be gobbled and have no effect.}%
   }%
 }
+%   Since mtpro2 is TFM-based, we should force \genfrac to be the
+% classical version to avoid (a) bugs across different mathstyles
+% (see https://github.com/latex3/latex2e/issues/432) and (b) slow
+% processing (see https://github.com/latex3/latex2e/issues/433).
+\DeclareRobustCommand{\genfrac}[4]{%
+  \def\@tempa{#1#2}%
+  \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
+    \csname @@\ifx @#3@over\else above\fi
+    \ifx\@tempa\@empty \else withdelims\fi\endcsname}
+  \@tempb{#1#2#3}}
 % https://github.com/latex3/latex2e/issues/160
 \patchcmd\math@cr@@@aligned
   {\next@ \cr}
