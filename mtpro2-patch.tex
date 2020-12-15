@@ -758,16 +758,49 @@
   \setbox\z@\hbox{$#2#1\m@th$}%
   \hbox to\wd\z@{\hss$#2#3\m@th$\hss}%
 }
-\newcommand\subalign[1]{%
-  \vcenter{%
+% Fix mathtools' \cramped
+\DeclareRobustCommand*\cramped[1][\@empty]{%
+  \relax
+  \ifx\@empty#1\@empty
+    \expandafter\mathpalette\expandafter\@cramped
+  \else
+    \expandafter\@cramped\expandafter#1%
+  \fi
+}
+\newcommand*\@cramped[2]{%
+  \sbox\z@{$\m@th#1\kern-\nulldelimiterspace\radical\z@{#2}$}%
+  \ifx#1\displaystyle
+    \dimen@\fontdimen8 \textfont\thr@@
+    \advance\dimen@0.25\fontdimen5 \textfont\tw@
+  \else
+    \dimen@1.25\fontdimen8 %
+      \ifx#1\textstyle
+          \textfont
+      \else
+        \ifx#1\scriptstyle
+          \scriptfont
+        \else
+          \scriptscriptfont
+        \fi
+      \fi
+      \thr@@
+  \fi
+  \advance\dimen@-\ht\z@
+  \ht\z@-\dimen@
+  \ifvmode\leavevmode\fi
+  {}\box\z@
+}
+\newcommand*\subalign[2][t]{%
+  \if#1t\vtop\else\if#1b\vbox\else\vcenter\fi\fi{%
     \Let@ \restore@math@cr \default@tag
     \baselineskip\fontdimen10 \scriptfont\tw@
     \advance\baselineskip\fontdimen12 \scriptfont\tw@
     \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
     \lineskiplimit\lineskip
     \ialign{%
-      &\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
-      #1\crcr
+      &\hfil\span\@cramped\scriptstyle{##}%
+      &\span\@cramped\scriptstyle{{}##}\hfil\crcr
+      #2\crcr
     }%
   }%
 }
