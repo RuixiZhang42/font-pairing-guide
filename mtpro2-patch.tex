@@ -792,6 +792,7 @@
 }
 \newcommand*\subalign[2][t]{%
   \if#1t\vtop\else\if#1b\vbox\else\vcenter\fi\fi{%
+    \let\centry\@centry
     \Let@ \restore@math@cr \default@tag
     \baselineskip\fontdimen10 \scriptfont\tw@
     \advance\baselineskip\fontdimen12 \scriptfont\tw@
@@ -803,6 +804,11 @@
       #2\crcr
     }%
   }%
+}
+\newcommand*\centry[1]{#1}
+\newcommand*\@centry[1]{%
+  \omit
+  \hfil\@cramped\scriptstyle{#1}\hfil
 }
 %   The 2020/10/01 release of LaTeX2e introduces a new hook
 % management system. Consequently, different chunks of code
