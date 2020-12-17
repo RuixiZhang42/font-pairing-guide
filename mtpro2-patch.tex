@@ -768,7 +768,7 @@
   \fi
 }
 \newcommand*\@cramped[2]{%
-  \sbox\z@{$\m@th#1\kern-\nulldelimiterspace\radical\z@{#2}$}%
+  \setbox\z@\hbox{$\m@th#1\kern-\nulldelimiterspace\radical\z@{#2}$}%
   \ifx#1\displaystyle
     \dimen@\fontdimen8 \textfont\thr@@
     \advance\dimen@0.25\fontdimen5 \textfont\tw@
