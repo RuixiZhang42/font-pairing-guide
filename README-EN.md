@@ -96,4 +96,4 @@ buggy than) the [`mathtools`](https://github.com/latex3/mathtools) version.
 - Finally, there are various fixes to the bugs I&rsquo;ve found in the
 [`amsmath`](https://github.com/latex3/latex2e/tree/master/required/amsmath)
 package and in the LaTeX2e kernel. These bugs were reported to the LaTeX team,
-but they might never get fixed because of backward compatibility concerns.
+but they might never get fixed due to backward compatibility concerns.
