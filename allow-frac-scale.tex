@@ -30,9 +30,8 @@
 %   #4: The original pre-scaled register
 \newcommand*\AssignScaledResult[4]{%
   \edef\@tempa{#3}%
-  \expandafter\detect@decimal@or@frac\@tempa/0\@nil
-  \def\@tempb{0}%
-  \ifx\@tempa\@tempb
+  \expandafter\detect@decimal@or@frac\@tempa/\@nil
+  \ifx\@tempa\@empty
     #2=#3#4%
   \else
     #2=#1#4*#3\relax
