@@ -32,10 +32,12 @@
   \edef\@tempa{#3}%
   \expandafter\detect@decimal@or@frac\@tempa/\@nil
   \ifx\@tempa\@empty
-    #2=#3#4%
+    \expandafter\@firstoftwo
   \else
-    #2=#1#4*#3\relax
+    \expandafter\@secondoftwo
   \fi
+  {#2=#3#4}% scale by decimal
+  {#2=#1#4*#3\relax}% scale by fraction
 }
 \RequirePackage{etoolbox}
 % Redefine \set@fontsize
